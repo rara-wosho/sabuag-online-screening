@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { ToggleThemeButton } from "@/components/ui/ToggleThemeButton";
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
                 <div className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto border-white">
                     <div className="max-w-[2200px] w-full">{children}</div>
                 </div>
+                <Toaster position="top-center" richColors />
             </body>
         </html>
     );

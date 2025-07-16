@@ -40,7 +40,7 @@ export default async function PositionsPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-4 mb-6 gap-3">
                 {data.map((pos) => (
-                    <PositionTab key={pos.id} data={pos} />
+                    <PositionTab key={pos.id} data={pos} isOpen={pos.is_open} />
                 ))}
             </div>
         </div>
