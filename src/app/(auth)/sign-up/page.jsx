@@ -10,7 +10,7 @@ export default function Page() {
             <Link href="/login">Login</Link>
 
             <Form
-                action={deleteUser("5b021e80-6656-41f2-83d8-c06b7a86347d")}
+                action={createUser}
                 className="flex flex-col gap-3 w-2xl mt-4"
             >
                 <input

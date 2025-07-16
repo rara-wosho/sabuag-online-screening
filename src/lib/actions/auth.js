@@ -6,58 +6,82 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function login(formData) {
-    const supabase = createClient();
-    // type-casting here for convenience
-    // in practice, you should validate your inputs
-    const cred = {
-        email: formData.get("email"),
-        password: formData.get("password"),
-    };
-    const { data, error } = await supabase.auth.signInWithPassword(cred);
-    console.log(data);
+    const supabase = await createClient();
 
-    if (error) {
-        console.log(error.message);
-        redirect("/sign-up");
-    }
+    const email = formData.get("email")?.toString();
+    const password = formData.get("password")?.toString();
 
-    revalidatePath("/", "layout");
-    redirect("/");
-}
-
-export async function logout() {
-    const { error } = await supabase.auth.signOut();
-
-    if (error) {
-        redirect("/sign-up");
-    }
-}
-
-export async function createUser(formData) {
-    console.log("create user executed");
-    const email = formData.get("email");
-    const password = formData.get("password");
     if (!email || !password) {
         throw new Error("Email and password are required");
     }
 
-    const { data, error } = await supabaseAdmin.auth.admin.createUser({
+    const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+    });
+
+    if (error) {
+        console.error("Login error:", error.message);
+        throw new Error("Invalid login credentials");
+    }
+
+    console.log("user sign in successfully");
+    revalidatePath("/", "layout");
+    redirect("/");
+}
+
+export async function createUser(formData) {
+    const supabase = await createClient();
+
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    if (!email || !password) {
+        throw new Error("Email and password are required");
+    }
+
+    const { data, error } = await supabase.auth.signUp({
         email,
         password,
     });
 
     if (error) {
         console.error("Error creating user:", error.message);
-        throw new Error(error.message); // Or redirect with error
+        throw new Error(error.message);
     }
 
     // Optional: redirect after success
-    console.log("redirect is reached");
-    redirect("/profile"); // or wherever you want
+    console.log("Created user successfully");
+    redirect("/profile");
 }
 
 export async function deleteUser(userId) {
-    const { data, error } = await supabaseAdmin.auth.admin.deleteUser(
-        "5b021e80-6656-41f2-83d8-c06b7a86347d"
-    );
+    if (!userId) {
+        throw new Error("User ID is required");
+    }
+
+    const { error } = await supabaseAdmin.auth.admin.deleteUser(userId);
+
+    if (error) {
+        console.error("Delete user error:", error.message);
+        throw new Error("Failed to delete user");
+    }
+
+    // Optionally delete from profiles table
+    // await supabaseAdmin.from("profiles").delete().eq("id", userId);
+
+    return { success: true };
+}
+
+export async function logout() {
+    const supabase = await createClient();
+    const { error } = await supabase.auth.signOut({ scope: "local" });
+
+    if (error) {
+        console.error("Logout error:", error.message);
+        throw new Error("Logout failed");
+    }
+
+    revalidatePath("/", "layout");
+    redirect("/login");
 }

@@ -1,16 +1,19 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToggleThemeButton } from "@/components/ui/ToggleThemeButton";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+import { Poppins, Montserrat, Inter, Raleway } from "next/font/google";
+
+const raleway = Raleway({
     subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-inter",
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
+// const montserrat = Montserrat({
+//     subsets: ["latin"],
+//     weight: ["400", "500", "600"],
+//     variable: "--font-montserrat",
+// });
 
 export const metadata = {
     title: "Create Next App",
@@ -20,15 +23,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en" className="dark">
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                <div className="root-layout-wrapper p-6">
-                    <div className="flex items-center mb-4 pb-4 border-b border-red-600 dark:border-neutral-900 justify-between">
+            <body className={`${raleway.variable} antialiased`}>
+                <div className="root-layout-wrapper">
+                    {/* <div className="flex items-center py-4 border-b border-red-600 dark:border-neutral-900 justify-between">
                         <h1>PDS Manager</h1>
                         <ToggleThemeButton />
-                    </div>
-                    <div className="flex flex-col items-center">{children}</div>
+                    </div> */}
+                    <div>{children}</div>
                 </div>
             </body>
         </html>
