@@ -32,11 +32,14 @@ import Link from "next/link";
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
-            <SidebarHeader className="border-b py-3">
+            <SidebarHeader className="border-b dark:border-neutral-800 py-2">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton asChild>
-                            <Link href="/profile" className="py-6">
+                            <Link
+                                href="/profile"
+                                className="py-6 flex items-center"
+                            >
                                 <Image
                                     alt="logo"
                                     src="/official-sabuag.png"
@@ -47,20 +50,16 @@ export function AppSidebar() {
                                     <span className="font-bold tracking-widest">
                                         SABUAG
                                     </span>
-                                    <span className="text-neutral-400 text-xs">
+                                    <span className="dark:text-neutral-400 text-xs">
                                         Campus Publication
                                     </span>
                                 </div>
+                                <div className="md:hidden ms-auto">
+                                    <SidebarTrigger />
+                                    <span></span>
+                                </div>
                             </Link>
                         </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
-                <SidebarMenu className="md:hidden">
-                    <SidebarMenuItem>
-                        <>
-                            <SidebarTrigger />
-                            <span></span>
-                        </>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
@@ -76,7 +75,7 @@ export function AppSidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel>Theme</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="text-neutral-400">
+                        <SidebarMenu className="dark:text-neutral-400">
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
                                     <div>
@@ -99,7 +98,7 @@ export function AppSidebar() {
                 <SidebarGroup>
                     <SidebarGroupLabel>Upcoming Features</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="text-neutral-400">
+                        <SidebarMenu className="dark:text-neutral-400">
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
                                     <div>
@@ -129,7 +128,7 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
 
-            <SidebarFooter className="border-t p-4">
+            <SidebarFooter className="border-t dark:border-neutral-800">
                 <SidebarMenu>
                     <SidebarMenuItem className="text-red-400">
                         <SidebarMenuButton

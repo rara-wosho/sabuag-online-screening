@@ -24,12 +24,8 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" className="dark">
             <body className={`${raleway.variable} antialiased`}>
-                <div className="root-layout-wrapper">
-                    {/* <div className="flex items-center py-4 border-b border-red-600 dark:border-neutral-900 justify-between">
-                        <h1>PDS Manager</h1>
-                        <ToggleThemeButton />
-                    </div> */}
-                    <div>{children}</div>
+                <div className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto border-white">
+                    <div className="max-w-[2200px] w-full">{children}</div>
                 </div>
             </body>
         </html>

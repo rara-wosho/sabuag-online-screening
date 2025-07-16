@@ -1,5 +1,6 @@
 "use client";
 
+import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const ToggleThemeButton = () => {
@@ -20,7 +21,7 @@ export const ToggleThemeButton = () => {
                 setDark(!dark);
             }}
         >
-            Toggle {dark ? "light" : "dark"} Theme
+            {dark ? <Moon /> : <Sun />}
         </button>
     );
 };
