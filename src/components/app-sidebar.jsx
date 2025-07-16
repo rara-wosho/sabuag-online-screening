@@ -1,4 +1,16 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+    Calendar,
+    Home,
+    Inbox,
+    Search,
+    Settings,
+    UsersRound,
+    HardHat,
+    Bell,
+    Sun,
+    Moon,
+    LogOut,
+} from "lucide-react";
 
 import {
     Sidebar,
@@ -11,85 +23,127 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
-    SidebarSeparator,
     SidebarTrigger,
 } from "@/components/ui/sidebar";
-
-// Menu items.
-const items = [
-    {
-        title: "Home",
-        url: "#",
-        icon: Home,
-    },
-    {
-        title: "Inbox",
-        url: "#",
-        icon: Inbox,
-    },
-    {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
-    },
-    {
-        title: "Search",
-        url: "#",
-        icon: Search,
-    },
-    {
-        title: "Settings",
-        url: "#",
-        icon: Settings,
-    },
-];
+import SidebarMenuClient from "./SidebarMenuClient";
+import Image from "next/image";
+import Link from "next/link";
 
 export function AppSidebar() {
     return (
         <Sidebar collapsible="icon">
-            <SidebarHeader className="border-b ">
-                <div className="flex items-center">
-                    header <SidebarTrigger />
-                </div>
+            <SidebarHeader className="border-b py-3">
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild>
+                            <Link href="/profile" className="py-6">
+                                <Image
+                                    alt="logo"
+                                    src="/official-sabuag.png"
+                                    width={30}
+                                    height={30}
+                                />
+                                <div className="flex flex-col">
+                                    <span className="font-bold tracking-widest">
+                                        SABUAG
+                                    </span>
+                                    <span className="text-neutral-400 text-xs">
+                                        Campus Publication
+                                    </span>
+                                </div>
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+                <SidebarMenu className="md:hidden">
+                    <SidebarMenuItem>
+                        <>
+                            <SidebarTrigger />
+                            <span></span>
+                        </>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarHeader>
+
+            {/* sidebar main content  */}
             <SidebarContent>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Application</SidebarGroupLabel>
+                    <SidebarGroupLabel>Main</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <a href={item.url}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                        </a>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
+                        <SidebarMenuClient />
+                    </SidebarGroupContent>
+                </SidebarGroup>
+                <SidebarGroup>
+                    <SidebarGroupLabel>Theme</SidebarGroupLabel>
+                    <SidebarGroupContent>
+                        <SidebarMenu className="text-neutral-400">
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <div>
+                                        <Sun />
+                                        <span>Light Mode</span>
+                                    </div>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <div>
+                                        <Moon />
+                                        <span>Dark Mode</span>
+                                    </div>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
                 <SidebarGroup>
-                    <SidebarGroupLabel>Others</SidebarGroupLabel>
+                    <SidebarGroupLabel>Upcoming Features</SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu>
-                            {items.map((item) => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
-                                        <a href={item.url}>
-                                            <item.icon />
-                                            <span>{item.title}</span>
-                                        </a>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
+                        <SidebarMenu className="text-neutral-400">
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <div>
+                                        <UsersRound />
+                                        <span>Manage Members</span>
+                                    </div>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <div>
+                                        <Bell />
+                                        <span>Notifications</span>
+                                    </div>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
+                            <SidebarMenuItem>
+                                <SidebarMenuButton asChild>
+                                    <div>
+                                        <Settings />
+                                        <span>Settings</span>
+                                    </div>
+                                </SidebarMenuButton>
+                            </SidebarMenuItem>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
 
-            <SidebarFooter>footer</SidebarFooter>
+            <SidebarFooter className="border-t p-4">
+                <SidebarMenu>
+                    <SidebarMenuItem className="text-red-400">
+                        <SidebarMenuButton
+                            asChild
+                            className="hover:bg-red-400/10 duration-200 transition-colors hover:text-red-400"
+                        >
+                            <div>
+                                <LogOut />
+                                <span>Logout</span>
+                            </div>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarFooter>
         </Sidebar>
     );
 }
