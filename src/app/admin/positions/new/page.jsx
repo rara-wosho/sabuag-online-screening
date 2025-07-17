@@ -1,5 +1,12 @@
 import BackButton from "@/components/ui/BackButton";
 import { Input } from "@/components/ui/input";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import SubmitButton from "@/components/ui/SubmitButton";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
@@ -14,7 +21,7 @@ export default function NewPosition() {
 
         const title = formData.get("title")?.toString();
         const description = formData.get("description")?.toString();
-        const acceptApplication = formData.get("acceptApplication");
+        const acceptApplication = formData.get("acceptApplication") == "yes";
 
         const { data, error } = await supabase
             .from("positions")
@@ -40,15 +47,18 @@ export default function NewPosition() {
                     <p className="text-sm mb-2">Description</p>
                     <Textarea name="description" placeholder="Description" />
                 </div>
-                <div className="mb-3 flex items-center gap-3">
-                    <Switch name="acceptApplication" />
-                    <p className="text-sm">Accept applicants</p>
+                <div className="mb-3">
+                    <Select name="acceptApplication">
+                        <p className="mb-2">Accept applicants?</p>
+                        <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Accept applicants" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="yes">Accept</SelectItem>
+                            <SelectItem value="no">Do not accept</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
-
-                <em className="text-sm dark:text-neutral-500 text-neutral-400">
-                    Toggle to mark if this position is currently accepting
-                    applicants
-                </em>
 
                 <div className="mt-8 flex justify-end gap-2">
                     <BackButton

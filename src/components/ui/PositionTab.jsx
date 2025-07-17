@@ -1,29 +1,39 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronRight, Pen, Trash } from "lucide-react";
+import { Pen, Trash } from "lucide-react";
 
 import {
     Dialog,
     DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 import SubmitButton from "./SubmitButton";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
 import { deletePosition, updatePosition } from "@/lib/actions/positions";
 import { toast } from "sonner";
-import Submit from "./Submit";
-import { Switch } from "./switch";
+import { useState } from "react";
 
-export default function PositionTab({ data, isOpen }) {
+export default function PositionTab({ id, title, description, is_open }) {
+    const [openDialog, setOpenDialog] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
+
     const handleDeletePosition = async (id) => {
+        setDeleteLoading(true);
         const res = await deletePosition(id);
 
         if (res?.failed) {
@@ -32,11 +42,34 @@ export default function PositionTab({ data, isOpen }) {
         }
 
         toast.success("Deleted successfully");
+        setDeleteLoading(false);
     };
+
+    async function handleUpdate(formData) {
+        const this_id = formData.get("id");
+        const this_title = formData.get("title");
+        const this_description = formData.get("description");
+        const this_is_open = formData.get("is_open") === "yes";
+
+        const data = { this_id, this_title, this_description, this_is_open };
+        const { success, message } = await updatePosition(data);
+
+        if (!success) {
+            toast.error("Failed to update position.", message);
+        }
+
+        if (success) {
+            toast.success("Updated successfully");
+
+            setTimeout(() => {
+                setOpenDialog(false);
+            }, 1000);
+        }
+    }
 
     return (
         <>
-            <Dialog>
+            <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent>
                     <DialogHeader>
                         <>
@@ -45,35 +78,48 @@ export default function PositionTab({ data, isOpen }) {
                             </DialogTitle>
                         </>
                     </DialogHeader>
-                    <form action={updatePosition}>
-                        <input type="hidden" name="id" value={data.id} />
+                    <DialogDescription></DialogDescription>
+                    <form action={handleUpdate}>
+                        <input type="hidden" name="id" value={id} />
                         <div className="mb-3">
                             <p className="mb-1">Title</p>
                             <Input
                                 placeholder="Title"
-                                defaultValue={data.title}
+                                defaultValue={title}
                                 name="title"
+                                required
                             />
                         </div>
                         <div className="mb-3">
                             <p className="mb-1">Description</p>
                             <Textarea
                                 placeholder="Description"
-                                defaultValue={data.description}
+                                defaultValue={description}
                                 name="description"
+                                required
                             />
                         </div>
-                        <div className="mb-1 mt-4 flex items-center">
-                            <Switch
+                        <div className="mb-1 mt-4 flex flex-col items-start">
+                            <Select
                                 name="is_open"
-                                defaultChecked={data.is_open}
-                            />
-                            <p className="mb-1 ms-2">Accept applicants</p>
-                            {data.is_open && (
-                                <small className="text-xs text-neutral-400 ms-auto">
-                                    Currently Accepting
-                                </small>
-                            )}
+                                defaultValue={is_open ? "yes" : "no"}
+                            >
+                                <p className="mb-1">Accept applicants?</p>
+                                <SelectTrigger className="w-full">
+                                    <SelectValue placeholder="Accept applicants" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="yes">Accept</SelectItem>
+                                    <SelectItem value="no">
+                                        Do not accept
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <small className="text-xs text-neutral-400 ms-auto mt-2">
+                                {is_open
+                                    ? "Currently accepting"
+                                    : "Not accepting"}
+                            </small>
                         </div>
                         <div className="flex justify-end gap-3 pt-4 mt-3">
                             <DialogClose asChild>
@@ -89,32 +135,29 @@ export default function PositionTab({ data, isOpen }) {
                     </form>
 
                     <div className="pt-4 mt-3 border-t">
-                        <form
-                            action={() => handleDeletePosition(data.id)}
-                            className="flex justify-center"
+                        <button
+                            onClick={() => handleDeletePosition(id)}
+                            className="dark:text-red-400/80 text-red-600 cursor-pointer flex justify-center items-center gap-2 text-sm"
+                            disabled={deleteLoading}
                         >
-                            <Submit
-                                label="Remove position"
-                                loadingLabel="Removing.."
-                                icon={<Trash size={14} />}
-                                containerStyle="dark:text-red-400/80 text-red-600 cursor-pointer"
-                            />
-                        </form>
+                            <Trash size={14} />
+                            {deleteLoading ? "Removing..." : "Remove position"}
+                        </button>
                     </div>
                 </DialogContent>
 
                 <div
                     className={cn(
                         "border rounded-md p-3 dark:bg-neutral-900/30",
-                        isOpen && "border-emerald-700 shadow"
+                        is_open && "dark:border-emerald-700 shadow"
                     )}
                 >
                     <DialogTrigger className="w-full group cursor-pointer">
                         <div className="flex items-center mb-1">
                             <h1 className="font font-semibold group-hover:underline">
-                                {data.title}
+                                {title}
                             </h1>
-                            {isOpen && (
+                            {is_open && (
                                 <div className="relative ms-3">
                                     <div className="size-2 bg-emerald-500 dark:bg-emerald-600 rounded-full"></div>
                                     <div className="size-2 bg-emerald-500 dark:bg-emerald-600 rounded-full animate-ping absolute top-0"></div>
@@ -126,12 +169,12 @@ export default function PositionTab({ data, isOpen }) {
                         </div>
                     </DialogTrigger>
                     <p className="text-[14px] text-neutral-500 dark:text-neutral-400">
-                        {!data.description ? (
+                        {!description ? (
                             <span className="italic">
                                 No description provided.
                             </span>
                         ) : (
-                            data.description
+                            description
                         )}
                     </p>
                 </div>

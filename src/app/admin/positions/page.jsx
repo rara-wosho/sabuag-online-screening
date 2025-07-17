@@ -3,15 +3,41 @@ import PrimaryLabel from "@/components/ui/PrimaryLabel";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 
-export default async function PositionsPage() {
+async function getOpenPositions() {
     const supabase = await createClient();
 
     const { data, error } = await supabase
         .from("positions")
         .select()
+        .eq("is_open", true)
         .order("title", { ascending: true });
 
-    const openPositions = data.filter((da) => da.is_open);
+    return data;
+}
+
+async function getOtherPositions() {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from("positions")
+        .select()
+        .eq("is_open", false)
+        .order("title", { ascending: true });
+
+    return data;
+}
+
+export default async function PositionsPage() {
+    const openPositions = getOpenPositions();
+    const otherPositions = getOtherPositions();
+
+    const [open, other] = await Promise.all([openPositions, otherPositions]);
+
+    // console.log("other : ", other);
+
+    // if (getOtherPositions.error || getOpenPositions.error) {
+    //     return <p>Something went wrong while we fetch the data.</p>;
+    // }
 
     return (
         <div>
@@ -23,9 +49,20 @@ export default async function PositionsPage() {
                     <div className="size-2 bg-emerald-600 rounded-full animate-ping absolute top-0"></div>
                 </div>
             </div>
+
+            {/* {getOpenPositions.data.length === 0 && (
+                <p>No available positions</p>
+            )} */}
+
             <div className="grid grid-cols-1 md:grid-cols-4 mb-6 gap-3 pb-8">
-                {openPositions.map((pos) => (
-                    <PositionTab key={pos.id} data={pos} />
+                {open.map((pos) => (
+                    <PositionTab
+                        key={pos.id}
+                        id={pos.id}
+                        title={pos.title}
+                        description={pos.description}
+                        is_open={pos.is_open}
+                    />
                 ))}
             </div>
             <div className="flex items-center">
@@ -38,9 +75,18 @@ export default async function PositionsPage() {
                     Create new position
                 </Link>
             </div>
+
+            {/* {getOtherPositions.data.length === 0 && <p>No positions found.</p>} */}
+
             <div className="grid grid-cols-1 md:grid-cols-4 mb-6 gap-3">
-                {data.map((pos) => (
-                    <PositionTab key={pos.id} data={pos} isOpen={pos.is_open} />
+                {other.map((pos) => (
+                    <PositionTab
+                        key={pos.id}
+                        id={pos.id}
+                        title={pos.title}
+                        description={pos.description}
+                        is_open={pos.is_open}
+                    />
                 ))}
             </div>
         </div>
