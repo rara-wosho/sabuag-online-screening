@@ -3,6 +3,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { ToggleThemeButton } from "@/components/ui/ToggleThemeButton";
 import Image from "next/image";
 import { createClient } from "@/utils/supabase/server";
+import RightPanel from "./right-panel";
 
 export default async function Layout({ children }) {
     const supabase = await createClient();
@@ -14,7 +15,8 @@ export default async function Layout({ children }) {
             <AppSidebar />
             <div className="w-full">
                 <main className="min-h-screen md:pe-5">
-                    <div className="flex items-center px-4 py-[17px] border-b dark:border-neutral-900">
+                    {/* layout header  */}
+                    <div className="flex items-center px-4 py-[15.3px] border-b dark:border-neutral-900">
                         <SidebarTrigger />
                         <div className="flex items-center  gap-2 border-s ps-3 ms-2">
                             <Image
@@ -30,8 +32,15 @@ export default async function Layout({ children }) {
                             <ToggleThemeButton />
                         </div>
                     </div>
-                    <div className="p-4">{children}</div>
+
+                    {/* layout body  */}
+                    <div className="p-4 flex gap-2 lg:gap-4">
+                        <div className="w-full">{children}</div>
+                        <RightPanel />
+                    </div>
                 </main>
+
+                {/* footer  */}
                 <div className="p-4 border-t border-neutral-900">
                     <p className="font-bold uppercase py-1">SABUAG</p>
                 </div>

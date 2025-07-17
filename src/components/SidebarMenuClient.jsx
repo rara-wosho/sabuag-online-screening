@@ -21,9 +21,11 @@ export default function SidebarMenuClient() {
         <SidebarMenu className="dark:text-neutral-400">
             <SidebarMenuItem>
                 <SidebarMenuButton
-                    className={cn(pathName === "/admin" && "bg-neutral-600")}
                     asChild
-                    isActive={pathName === "/admin"}
+                    isActive={
+                        pathName.startsWith("/admin/applications") ||
+                        pathName === "/admin"
+                    }
                 >
                     <Link href="/admin">
                         <Contact />
@@ -33,9 +35,6 @@ export default function SidebarMenuClient() {
             </SidebarMenuItem>
             <SidebarMenuItem>
                 <SidebarMenuButton
-                    className={cn(
-                        pathName === "/admin/positions" && "bg-neutral-600"
-                    )}
                     asChild
                     isActive={pathName.startsWith("/admin/positions")}
                 >

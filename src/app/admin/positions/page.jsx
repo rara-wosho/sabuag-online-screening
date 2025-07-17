@@ -58,7 +58,7 @@ export default async function PositionsPage() {
                 <p>No available positions</p>
             )} */}
 
-            <div className="grid grid-cols-1 md:grid-cols-4 mb-6 gap-3 pb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 mb-6 gap-3 pb-8">
                 {open.map((pos) => (
                     <PositionTab
                         key={pos.id}
@@ -82,7 +82,7 @@ export default async function PositionsPage() {
 
             {/* {getOtherPositions.data.length === 0 && <p>No positions found.</p>} */}
 
-            <div className="grid grid-cols-1 md:grid-cols-4 mb-6 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 mb-6 gap-3">
                 {other.map((pos) => (
                     <PositionTab
                         key={pos.id}

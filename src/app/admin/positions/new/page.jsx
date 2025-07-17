@@ -40,7 +40,7 @@ export default function NewPosition() {
 
                 <div className="mb-3">
                     <p className="text-sm mb-2">Title</p>
-                    <Input name="title" placeholder="Position Title" />
+                    <Input required name="title" placeholder="Position Title" />
                 </div>
 
                 <div className="mb-6">
@@ -60,10 +60,10 @@ export default function NewPosition() {
                     </Select>
                 </div>
 
-                <div className="mt-8 flex justify-end gap-2">
+                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3.5 flex-col-reverse">
                     <BackButton
-                        label="Cancel"
-                        containerStyle="rounded border border-neutral-300 dark:border-neutral-600 px-4 cursor-pointer"
+                        label="Back"
+                        containerStyle="rounded border border-neutral-300 dark:border-neutral-600 px-4 py-2 cursor-pointer"
                     />
                     <SubmitButton label="Create Position" />
                 </div>

@@ -38,7 +38,7 @@ export function AppSidebar() {
                         <SidebarMenuButton asChild>
                             <Link
                                 href="/profile"
-                                className="py-6 flex items-center"
+                                className="py-5 flex items-center"
                             >
                                 <Image
                                     alt="logo"
@@ -123,25 +123,26 @@ export function AppSidebar() {
                                     </div>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
+                            <div className="py-4 border-t mt-2">
+                                <SidebarMenuItem className="text-destructive">
+                                    <SidebarMenuButton
+                                        asChild
+                                        className="hover:bg-red-400/10 duration-200 transition-colors hover:text-red-400"
+                                    >
+                                        <div>
+                                            <LogOut />
+                                            <span>Logout</span>
+                                        </div>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            </div>
                         </SidebarMenu>
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
 
             <SidebarFooter className="border-t dark:border-neutral-800">
-                <SidebarMenu>
-                    <SidebarMenuItem className="text-red-400">
-                        <SidebarMenuButton
-                            asChild
-                            className="hover:bg-red-400/10 duration-200 transition-colors hover:text-red-400"
-                        >
-                            <div>
-                                <LogOut />
-                                <span>Logout</span>
-                            </div>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
+                <SidebarMenu></SidebarMenu>
             </SidebarFooter>
         </Sidebar>
     );

@@ -27,6 +27,7 @@ import { Textarea } from "./textarea";
 import { deletePosition, updatePosition } from "@/lib/actions/positions";
 import { toast } from "sonner";
 import { useState } from "react";
+import ApplicantCount from "@/app/admin/positions/applicant-count";
 
 export default function PositionTab({ id, title, description, is_open }) {
     const [openDialog, setOpenDialog] = useState(false);
@@ -146,7 +147,11 @@ export default function PositionTab({ id, title, description, is_open }) {
                     </div>
                 </DialogContent>
 
-                <div className={cn("border rounded-md p-3 dark:bg-card")}>
+                <div
+                    className={cn(
+                        "border rounded-md p-3 dark:bg-card flex flex-col"
+                    )}
+                >
                     <DialogTrigger className="w-full group cursor-pointer">
                         <div className="flex items-center mb-1">
                             <h1 className="font font-semibold group-hover:underline">
@@ -163,6 +168,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                             </div>
                         </div>
                     </DialogTrigger>
+
                     <p className="text-[14px] text-neutral-500 dark:text-neutral-400">
                         {!description ? (
                             <span className="italic">
@@ -172,6 +178,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                             description
                         )}
                     </p>
+                    {is_open && <ApplicantCount id={id} />}
                 </div>
             </Dialog>
         </>
