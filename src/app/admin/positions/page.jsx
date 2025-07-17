@@ -48,15 +48,15 @@ export default async function PositionsPage() {
             <div className="flex gap-3 items-center">
                 <PrimaryLabel>Available Positions</PrimaryLabel>
 
-                <div className="relative mb-3">
-                    <div className="size-2 bg-emerald-600 rounded-full"></div>
-                    <div className="size-2 bg-emerald-600 rounded-full animate-ping absolute top-0"></div>
-                </div>
+                <Link
+                    href="/admin/positions/new"
+                    className="rounded ms-auto mb-4 px-4 py-1 bg-primary font-semibold text-white"
+                >
+                    Add New
+                </Link>
             </div>
 
-            {/* {getOpenPositions.data.length === 0 && (
-                <p>No available positions</p>
-            )} */}
+            {open.length === 0 && <p>No available positions</p>}
 
             <div className="grid grid-cols-1 md:grid-cols-3 mb-6 gap-3 pb-8">
                 {open.map((pos) => (
@@ -70,14 +70,7 @@ export default async function PositionsPage() {
                 ))}
             </div>
             <div className="flex items-center">
-                <PrimaryLabel>All Positions</PrimaryLabel>
-
-                <Link
-                    href="/admin/positions/new"
-                    className="rounded ms-auto mb-4 px-4 py-1 bg-primary font-semibold text-white"
-                >
-                    Create new position
-                </Link>
+                <PrimaryLabel>Closed Positions</PrimaryLabel>
             </div>
 
             {/* {getOtherPositions.data.length === 0 && <p>No positions found.</p>} */}

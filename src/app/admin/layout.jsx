@@ -28,7 +28,7 @@ export default async function Layout({ children }) {
                             <p className="font-bold uppercase">sabuag</p>
                         </div>
                         <div className="ms-auto flex items-center">
-                            <p className="px-3">{data.user.email}</p>
+                            <p className="px-3 text-sm">{data.user.email}</p>
                             <ToggleThemeButton />
                         </div>
                     </div>

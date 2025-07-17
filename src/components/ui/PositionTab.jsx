@@ -147,6 +147,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                     </div>
                 </DialogContent>
 
+                {/* MAIN BODY  */}
                 <div
                     className={cn(
                         "border rounded-md p-3 dark:bg-card flex flex-col"

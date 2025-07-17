@@ -14,13 +14,13 @@ export default async function RightPanel() {
             <h5 className="text-[12px] font-semibold">Available positions</h5>
 
             {data && (
-                <ul className="mt-2 dark:text-neutral-400 text-neutral-500">
+                <ul className="mt-2 dark:text-neutral-400 text-neutral-700">
                     {data.map((pos) => (
                         <Link
                             key={pos.id}
                             href={`/admin/applications/${pos.id}`}
                         >
-                            <li className="text-[13px] tracking-wide duration-200 transition-colors hover:text-neutral-800 dark:hover:text-neutral-300 py-2 ">
+                            <li className="text-[13px] tracking-wide duration-200 transition-colors hover:text-accent-foreground py-2 ">
                                 {pos.title}
                             </li>
                         </Link>
