@@ -37,7 +37,7 @@ export default function SidebarMenuClient() {
                         pathName === "/admin/positions" && "bg-neutral-600"
                     )}
                     asChild
-                    isActive={pathName === "/admin/positions"}
+                    isActive={pathName.startsWith("/admin/positions")}
                 >
                     <Link href="/admin/positions">
                         <HardHat />

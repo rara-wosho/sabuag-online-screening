@@ -3,6 +3,10 @@ import PrimaryLabel from "@/components/ui/PrimaryLabel";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Positions",
+};
+
 async function getOpenPositions() {
     const supabase = await createClient();
 
@@ -70,7 +74,7 @@ export default async function PositionsPage() {
 
                 <Link
                     href="/admin/positions/new"
-                    className="rounded ms-auto mb-4 px-4 py-1 bg-emerald-600 font-semibold text-white"
+                    className="rounded ms-auto mb-4 px-4 py-1 bg-primary font-semibold text-white"
                 >
                     Create new position
                 </Link>

@@ -7,7 +7,7 @@ const SubmitButton = ({ label }) => {
 
     return (
         <button
-            className="bg-emerald-600 flex justify-center py-1 px-4 text-white rounded cursor-pointer"
+            className="bg-primary flex justify-center py-1 px-4 text-white rounded cursor-pointer"
             type="submit"
         >
             {pending ? "Please wait..." : label}

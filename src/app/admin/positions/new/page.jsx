@@ -48,7 +48,7 @@ export default function NewPosition() {
                     <Textarea name="description" placeholder="Description" />
                 </div>
                 <div className="mb-3">
-                    <Select name="acceptApplication">
+                    <Select name="acceptApplication" defaultValue="yes">
                         <p className="mb-2">Accept applicants?</p>
                         <SelectTrigger className="w-full">
                             <SelectValue placeholder="Accept applicants" />

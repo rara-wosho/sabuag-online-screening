@@ -70,7 +70,7 @@ export default function PositionTab({ id, title, description, is_open }) {
     return (
         <>
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-                <DialogContent>
+                <DialogContent className="bg-card">
                     <DialogHeader>
                         <>
                             <DialogTitle className="text-start">
@@ -146,12 +146,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                     </div>
                 </DialogContent>
 
-                <div
-                    className={cn(
-                        "border rounded-md p-3 dark:bg-neutral-900/30",
-                        is_open && "dark:border-emerald-700 shadow"
-                    )}
-                >
+                <div className={cn("border rounded-md p-3 dark:bg-card")}>
                     <DialogTrigger className="w-full group cursor-pointer">
                         <div className="flex items-center mb-1">
                             <h1 className="font font-semibold group-hover:underline">
@@ -159,8 +154,8 @@ export default function PositionTab({ id, title, description, is_open }) {
                             </h1>
                             {is_open && (
                                 <div className="relative ms-3">
-                                    <div className="size-2 bg-emerald-500 dark:bg-emerald-600 rounded-full"></div>
-                                    <div className="size-2 bg-emerald-500 dark:bg-emerald-600 rounded-full animate-ping absolute top-0"></div>
+                                    <div className="size-2 bg-primary rounded-full"></div>
+                                    <div className="size-2 bg-primary rounded-full animate-ping absolute top-0"></div>
                                 </div>
                             )}
                             <div className="ms-auto scale-0 group-hover:scale-100 duration-200 transition-transform">

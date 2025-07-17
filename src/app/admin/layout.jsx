@@ -2,15 +2,21 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ToggleThemeButton } from "@/components/ui/ToggleThemeButton";
 import Image from "next/image";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase.auth.getUser();
+
     return (
         <SidebarProvider>
             <AppSidebar />
             <div className="w-full">
                 <main className="min-h-screen md:pe-5">
                     <div className="flex items-center px-4 py-[17px] border-b dark:border-neutral-900">
-                        <div className="flex items-center md:hidden gap-2 border-e pe-4 me-2">
+                        <SidebarTrigger />
+                        <div className="flex items-center  gap-2 border-s ps-3 ms-2">
                             <Image
                                 alt="sabuag logo"
                                 src="/official-sabuag.png"
@@ -19,8 +25,8 @@ export default function Layout({ children }) {
                             />
                             <p className="font-bold uppercase">sabuag</p>
                         </div>
-                        <SidebarTrigger />
-                        <div className="ms-auto">
+                        <div className="ms-auto flex items-center">
+                            <p className="px-3">{data.user.email}</p>
                             <ToggleThemeButton />
                         </div>
                     </div>
