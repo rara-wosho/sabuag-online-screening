@@ -6,12 +6,16 @@ import {
     TooltipContent,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 export default function ApplicationCard({ applicantData }) {
     return (
-        <div className="bg-card border-neutral-200 dark:border-neutral-800 cursor-pointer rounded-md border p-3">
+        <Link
+            href={`/admin/applications/${applicantData.id}`}
+            className="bg-card border-neutral-200 dark:border-neutral-800 cursor-pointer rounded-md border p-3"
+        >
             <div className="dark:text-neutral-200 text-neutral-800 font-semibold mb-3 w-[94%] relative">
-                <p>Senior Software Developer</p>
+                <p>{applicantData.position_name}</p>
                 <div className="rounded-full flex items-center justify-center absolute -right-4 top-1">
                     <Tooltip>
                         <TooltipTrigger>
@@ -34,6 +38,6 @@ export default function ApplicationCard({ applicantData }) {
                     <ArrowRight className="text-white" size={16} />
                 </div>
             </button>
-        </div>
+        </Link>
     );
 }

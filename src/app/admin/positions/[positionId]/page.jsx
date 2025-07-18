@@ -1,3 +1,5 @@
+import ApplicationCard from "@/components/ui/applicationCard";
+import PrimaryLabel from "@/components/ui/PrimaryLabel";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Page({ params }) {
@@ -5,24 +7,41 @@ export default async function Page({ params }) {
 
     const supabase = await createClient();
 
-    const { data: position, error } = await supabase
+    const { data: position, errorPosition } = await supabase
         .from("positions")
         .select()
+        .single()
         .eq("id", positionId);
 
-    if (error) {
+    if (errorPosition) {
         throw new Error("Cannot fetch data");
     }
 
+    const { data: applicants, errorApplicant } = await supabase
+        .from("applicants")
+        .select()
+
+        .eq("position_id", positionId);
+
     return (
         <div>
-            position ID : {positionId}
-            {position.map((pos) => (
-                <div key={pos.id}>
-                    <p>{pos.title}</p>
-                    <p>{pos.description}</p>
-                </div>
-            ))}
+            <div className="mb-4 pb-4 border-b dark:border-neutral-900">
+                <h1 className="text-3xl  mb-1 font-semibold">
+                    {position.title}
+                </h1>
+                <p className="text-sm dark:text-neutral-400">
+                    {position.description}
+                </p>
+            </div>
+            <PrimaryLabel>Applicants</PrimaryLabel>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {applicants.map((applicant) => (
+                    <ApplicationCard
+                        key={applicant.id}
+                        applicantData={applicant}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

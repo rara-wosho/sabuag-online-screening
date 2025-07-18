@@ -5,7 +5,10 @@ import { createClient } from "@/utils/supabase/server";
 export default async function AdminPage() {
     const db = await createClient();
 
-    const { data, error } = await db.from("applicants").select();
+    const { data, error } = await db
+        .from("applicants")
+        .select()
+        .order("created_at", { ascending: false });
 
     console.log(data);
     return (

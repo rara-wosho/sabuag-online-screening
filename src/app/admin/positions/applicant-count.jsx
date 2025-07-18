@@ -2,6 +2,7 @@
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ApplicantCount({ id }) {
@@ -30,12 +31,12 @@ export default function ApplicantCount({ id }) {
     if (loading || count === 0) return null;
 
     return (
-        <div className="mt-auto">
+        <Link href={`/admin/positions/${id}`} className="mt-auto">
             <div className="bg-accent inline-flex px-3 py-1 rounded-full mt-3">
                 <p className="text-xs text-accent-foreground">
                     {count} Applicant{count > 1 ? "s" : ""}
                 </p>
             </div>
-        </div>
+        </Link>
     );
 }
