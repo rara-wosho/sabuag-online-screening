@@ -1,49 +1,46 @@
 "use client";
 
-import {
-    Calendar,
-    Home,
-    Inbox,
-    Search,
-    Settings,
-    HardHat,
-    Contact,
-} from "lucide-react";
+import { HardHat, Contact } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 
 export default function SidebarMenuClient() {
     const pathName = usePathname();
 
+    const main = [
+        {
+            href: "/admin",
+            icon: <Contact />,
+            label: "Applications",
+            isActiveLink:
+                pathName.startsWith("/admin/applications") ||
+                pathName === "/admin",
+        },
+        {
+            href: "/admin/positions",
+            icon: <HardHat />,
+            label: "Positions",
+            isActiveLink: pathName.startsWith("/admin/positions"),
+        },
+    ];
+
     return (
         <SidebarMenu className="dark:text-neutral-400">
-            <SidebarMenuItem>
-                <SidebarMenuButton
-                    asChild
-                    isActive={
-                        pathName.startsWith("/admin/applications") ||
-                        pathName === "/admin"
-                    }
-                >
-                    <Link href="/admin">
-                        <Contact />
-                        <span>Applications</span>
-                    </Link>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-                <SidebarMenuButton
-                    asChild
-                    isActive={pathName.startsWith("/admin/positions")}
-                >
-                    <Link href="/admin/positions">
-                        <HardHat />
-                        <span>Manage Positions</span>
-                    </Link>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
+            {main.map((item) => (
+                <SidebarMenuItem key={item.label}>
+                    <SidebarMenuButton
+                        tooltip={item.label}
+                        asChild
+                        isActive={item.isActiveLink}
+                    >
+                        <Link href={item.href}>
+                            {item.icon}
+                            <span>{item.label}</span>
+                        </Link>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            ))}
         </SidebarMenu>
     );
 }

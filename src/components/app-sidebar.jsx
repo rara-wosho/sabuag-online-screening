@@ -10,6 +10,7 @@ import {
     Sun,
     Moon,
     LogOut,
+    Mail,
 } from "lucide-react";
 
 import {
@@ -35,7 +36,7 @@ export function AppSidebar() {
             <SidebarHeader className="border-b dark:border-neutral-800 py-2">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
+                        <SidebarMenuButton variant="outline" asChild>
                             <Link
                                 href="/profile"
                                 className="py-5 flex items-center"
@@ -142,7 +143,14 @@ export function AppSidebar() {
             </SidebarContent>
 
             <SidebarFooter className="border-t dark:border-neutral-800">
-                <SidebarMenu></SidebarMenu>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton>
+                            <Mail />
+                            <span>Feedback</span>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarFooter>
         </Sidebar>
     );

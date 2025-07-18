@@ -13,7 +13,12 @@ export default async function AdminPage() {
     console.log(data);
     return (
         <div>
-            <PrimaryLabel>Pending Applications</PrimaryLabel>
+            <div className="flex items-center justify-between">
+                <PrimaryLabel>Pending Applications</PrimaryLabel>
+                <p className="text-accent-foreground mb-3 text-xs rounded-full bg-accent px-3 py-1 border-accent-foreground border">
+                    {data.length} Pending
+                </p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-3">
                 {data.map((app) => (
