@@ -12,7 +12,7 @@ export default async function AdminPage() {
 
     console.log(data);
     return (
-        <div>
+        <>
             <div className="flex items-center justify-between">
                 <PrimaryLabel>Pending Applications</PrimaryLabel>
                 <p className="text-accent-foreground mb-3 text-xs rounded-full bg-accent px-3 py-1 border-accent-foreground border">
@@ -25,6 +25,6 @@ export default async function AdminPage() {
                     <ApplicationCard key={app.id} applicantData={app} />
                 ))}
             </div>
-        </div>
+        </>
     );
 }

@@ -35,10 +35,10 @@ export default function JoinHero() {
                         View Open Roles
                     </Link>
                     <Link
-                        href="/apply"
+                        href="/join"
                         className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-medium transition-colors"
                     >
-                        Apply Now
+                        Join Now
                     </Link>
                 </div>
 

@@ -16,7 +16,7 @@ export default async function Layout({ children }) {
             <div className="w-full">
                 <main className="min-h-screen md:pe-5">
                     {/* layout header  */}
-                    <div className="flex items-center px-4 py-[15.3px] border-b dark:border-neutral-900">
+                    <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900">
                         <SidebarTrigger />
                         <div className="flex items-center  gap-2 border-s ps-3 ms-2">
                             <Image
@@ -36,7 +36,7 @@ export default async function Layout({ children }) {
                     </div>
 
                     {/* layout body  */}
-                    <div className="p-4 flex gap-2 lg:gap-4">
+                    <div className="py-4 flex gap-2 lg:gap-4">
                         <div className="w-full">{children}</div>
                         <RightPanel />
                     </div>

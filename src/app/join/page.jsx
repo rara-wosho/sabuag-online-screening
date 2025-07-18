@@ -1,63 +1,112 @@
 // "use client" is not required for static pages
+import AvailablePositionCard from "@/components/AvailablePositionCard";
+import { createClient } from "@/utils/supabase/server";
 import { Mail, User, BookOpen } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-export default function JoinUsPage() {
+export default async function JoinUsPage() {
+    const db = await createClient();
+
+    const { data, error } = await db
+        .from("positions")
+        .select()
+        .eq("is_open", true);
+
+    if (!data) {
+        notFound();
+    }
+
     return (
-        <main className="min-h-screen bg-white text-gray-900">
-            {/* Hero */}
-            <section className="bg-emerald-600 text-white py-20 px-6 text-center">
+        <main className="min-h-screen w-full max-w-[1200px] mx-auto">
+            <section className="pb-16 pt-28 px-6 text-center flex flex-col items-center">
+                <div className="md:flex items-center mb-5 hidden">
+                    <Image
+                        src="/official-sabuag.png"
+                        width={46}
+                        height={46}
+                        alt="sabuag logo"
+                    />
+
+                    <div className="flex flex-col items-start border-s ps-4 ms-3">
+                        <h2 className="uppercase font-semibold -tracking-wider">
+                            Sabuag
+                        </h2>
+                        <p className="text-neutral-400">Campus Publication</p>
+                    </div>
+                </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">
                     Join Our Organization
                 </h1>
-                <p className="text-lg md:text-xl max-w-2xl mx-auto">
-                    Be part of a community that grows, builds, and innovates
-                    together.
+                <p className="text-sm md:text-xl max-w-3xl mx-auto">
+                    {/* Be part of a community that grows, builds, and innovates
+                    together. */}
+                    Sustainable and Achievable Broadcasting with Unbiased and
+                    Attainable Goals
                 </p>
-            </section>
 
-            {/* About */}
+                <Link
+                    href="/about"
+                    className="py-1.5 px-4 cursor-pointer  tracking-wide bg-neutral-200 rounded text-neutral-900 mt-6 "
+                >
+                    Learn more
+                </Link>
+            </section>
+            <section className="flex flex-col items-center">
+                <h1 className="text-2xl font-semibold text-center">
+                    Available Positions
+                </h1>
+                <p className="text-neutral-400 text-xs text-center py-2">
+                    <span className="hidden md:inline-flex">
+                        Explore the roles you can be part of.
+                    </span>{" "}
+                    Browse through the list and submit your application for a
+                    position that matches your skills and interests.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4 md:mt-8">
+                    {data.map((pos) => (
+                        <AvailablePositionCard data={pos} key={pos.id} />
+                    ))}
+                </div>
+            </section>
             <section className="py-16 px-6 max-w-4xl mx-auto text-center">
-                <h2 className="text-3xl font-semibold mb-4">Why Join Us?</h2>
-                <p className="text-gray-700 text-lg">
+                <h2 className="text-2xl font-semibold mb-4">Why Join Us?</h2>
+                <p className="text-neutral-400/80 text-lg">
                     As an active member, you'll have opportunities to enhance
                     your skills through real-world projects, connect with other
                     passionate individuals, and represent the IT student body.
                 </p>
             </section>
 
-            {/* Benefits */}
-            <section className="bg-gray-100 py-16 px-6">
+            <section className="py-16 px-6">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
                     <div>
-                        <User className="mx-auto text-emerald-600" size={40} />
+                        <User className="mx-auto text-primary" size={40} />
                         <h3 className="text-xl font-medium mt-4">Leadership</h3>
                         <p className="text-gray-600 mt-2">
                             Build confidence and lead in various initiatives.
                         </p>
                     </div>
                     <div>
-                        <BookOpen
-                            className="mx-auto text-emerald-600"
-                            size={40}
-                        />
+                        <BookOpen className="mx-auto text-primary" size={40} />
                         <h3 className="text-xl font-medium mt-4">
                             Skill Development
                         </h3>
                         <p className="text-gray-600 mt-2">
-                            Work on events, websites, and org-wide activities.
+                            Work on events, and org-wide activities.
                         </p>
                     </div>
                     <div>
-                        <Mail className="mx-auto text-emerald-600" size={40} />
+                        <Mail className="mx-auto text-primary" size={40} />
                         <h3 className="text-xl font-medium mt-4">Networking</h3>
                         <p className="text-gray-600 mt-2">
-                            Collaborate with fellow IT students and faculty.
+                            Collaborate with fellow students and faculty.
                         </p>
                     </div>
                 </div>
             </section>
-
-            {/* Application Form */}
             <section className="py-16 px-6 max-w-2xl mx-auto">
                 <h2 className="text-3xl font-semibold text-center mb-6">
                     Apply Now
@@ -101,5 +150,7 @@ export default function JoinUsPage() {
                 </form>
             </section>
         </main>
+
+        // <div className="wrapper"></div>
     );
 }
