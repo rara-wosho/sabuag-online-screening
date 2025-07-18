@@ -57,7 +57,7 @@ export default async function JoinUsPage() {
                 <h1 className="text-2xl font-semibold text-center">
                     Available Positions
                 </h1>
-                <p className="text-neutral-400 text-xs text-center py-2">
+                <p className="text-neutral-400 text-xs md:text-sm text-center py-2">
                     <span className="hidden md:inline-flex">
                         Explore the roles you can be part of.
                     </span>{" "}
