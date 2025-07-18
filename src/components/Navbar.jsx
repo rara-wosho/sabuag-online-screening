@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -26,24 +27,33 @@ export default function Navbar() {
                     <span className="hidden md:flex">Sabuag</span>
                 </Link>
 
-                <div className="navlinks ms-auto flex items-center gap-2 md:gap-4">
+                <div className="navlinks ms-auto flex items-center gap-3 md:gap-6">
                     <Link
-                        className="text-sm hover:text-accent-foreground duration-200 transition-colors"
+                        className={cn(
+                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                            pathname === "/" && "text-primary"
+                        )}
                         href="/"
                     >
                         Home
                     </Link>
                     <Link
-                        className="text-sm hover:text-accent-foreground duration-200 transition-colors"
+                        className={cn(
+                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                            pathname === "/about" && "text-primary"
+                        )}
                         href="/about"
                     >
                         About
                     </Link>
                     <Link
-                        className="text-sm hover:text-accent-foreground duration-200 transition-colors"
-                        href="/feedback"
+                        className={cn(
+                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                            pathname === "/join" && "text-primary"
+                        )}
+                        href="/join"
                     >
-                        Feedback
+                        Join
                     </Link>
                     <Button asChild className="rounded text-sm ms-2" size="sm">
                         <Link href="/login">Sign In</Link>

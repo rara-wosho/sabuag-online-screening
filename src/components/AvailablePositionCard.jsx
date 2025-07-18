@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function AvailablePositionCard({ data }) {
@@ -11,8 +12,13 @@ export default function AvailablePositionCard({ data }) {
                     : "No description provided."}
             </p>
 
-            <Button className="mt-auto rounded" variant="outline" size="sm">
-                Apply
+            <Button
+                className="mt-auto rounded"
+                variant="outline"
+                size="sm"
+                asChild
+            >
+                <Link href={`/join/${data.id}?title=${data.title}`}>Apply</Link>
             </Button>
         </div>
     );
