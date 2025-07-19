@@ -6,13 +6,13 @@ export default function FeedbackCard({ feedbackData }) {
     const initial = feedbackData.feedback_author.charAt(0);
     return (
         <div>
-            <div className="flex flex-row items-start gap-3">
-                <div className="rounded-full p-[3px] border-2 flex items-center justify-center border-neutral-300 dark:border-neutral-700">
+            <div className="flex flex-row items-start gap-2">
+                <div className="rounded-full z-20 p-[3px] border-2 flex items-center justify-center border-neutral-300 dark:border-neutral-700 bg-background">
                     <div className="rounded-full bg-primary size-[32px] flex items-center justify-center">
                         <p className="text-white text-xs">{initial}</p>
                     </div>
                 </div>
-                <div>
+                <div className="relative after:absolute after:-left-[30px] after:w-[1px] after:bottom-[8px] after:h-[calc(100%-30px)]  dark:after:bg-neutral-800 after:bg-neutral-400/30 after:rounded-full before:absolute before:h-[1px] before:w-4 dark:before:bg-neutral-800 before:bg-neutral-300 before:rounded-full before:-left-[30px] before:bottom-[8px]">
                     <p className="tracking-wide">
                         {feedbackData.feedback_author}
                     </p>

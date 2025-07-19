@@ -55,7 +55,7 @@ export default async function FeedbackSection() {
             >
                 <FeedbackForm />
 
-                <div className="flex flex-col px-3">
+                <div className="flex flex-col px-2">
                     <p className="text-xl font-semibold mb-6">Feedbacks</p>
 
                     {data.length > 0 && (
