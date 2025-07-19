@@ -1,6 +1,13 @@
 import { Quote } from "lucide-react";
+import FeedbackForm from "./FeedbackForm";
+import FeedbackCard from "./FeedbackCard";
+import { createClient } from "@/utils/supabase/server";
 
-export default function FeedbackSection() {
+export default async function FeedbackSection() {
+    const db = await createClient();
+
+    const { data, error } = await db.from("feedbacks").select();
+
     return (
         <div className="w-full flex flex-col items-center">
             <h3 className="text-center text-4xl font-bold tracking-wider mb-6">
@@ -18,7 +25,7 @@ export default function FeedbackSection() {
                 <p className="italic text-center z-20 max-w-2xl leading-7  py-4 dark:text-neutral-400">
                     This website isn’t just a platform — it's also a testing
                     ground for our{" "}
-                    <span className="font-semibold text-neutral-200">
+                    <span className="font-semibold text-neutral-800 dark:text-neutral-200">
                         capstone project
                     </span>
                     . We're using the exact same tools and technologies here to
@@ -34,7 +41,31 @@ export default function FeedbackSection() {
                 <p className="text-xs dark:text-neutral-400">Developer</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2"></div>
+            <div
+                className="grid grid-cols-1 gap-10 md:grid-cols-2 w-full mt-20
+            "
+            >
+                <FeedbackForm />
+
+                <div className="flex flex-col">
+                    <p className="font-semibold text-sm dark:text-neutral-400 mb-2">
+                        All feedbacks
+                    </p>
+
+                    {data.length > 0 && (
+                        <div className="grid grid-cols-1 gap-3">
+                            {data.map((fb) => (
+                                <div
+                                    key={fb.id}
+                                    className="pb-6 mb-4 dark:border-neutral-800 border-b"
+                                >
+                                    <FeedbackCard feedbackData={fb} />
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

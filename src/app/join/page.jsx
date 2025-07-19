@@ -120,7 +120,7 @@ export default async function JoinUsPage() {
                     </>
                 )}
             </section>
-            <section className="py-20 px-6  mx-auto text-center border-t-0 md:border-t border-neutral-800 mt-12 md:mt-20">
+            <section className="py-20 px-6  mx-auto text-center border-t-0 md:border-t dark:border-neutral-800 mt-12 md:mt-20">
                 <h2 className="text-3xl font-semibold mb-4">Why Join Us?</h2>
                 <p className="text-neutral-700 dark:text-neutral-400 text-lg">
                     Joining us isn’t just about publishing stories — it’s about
