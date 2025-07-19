@@ -19,7 +19,7 @@ export default function AvailablePositionCard({ data }) {
                 size="sm"
                 asChild
             >
-                <Link href={`/join/${data.id}?title=${data.title}`}>Apply</Link>
+                <Link href={`/join/${data.id}`}>Apply</Link>
             </Button>
         </div>
     );

@@ -50,7 +50,7 @@ export default function Navbar() {
                     <Link
                         className={cn(
                             "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
-                            pathname === "/join" && "text-primary"
+                            pathname.startsWith("/join") && "text-primary"
                         )}
                         href="/join"
                     >

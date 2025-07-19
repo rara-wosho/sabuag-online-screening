@@ -11,12 +11,14 @@ export default function FeedbackCard({ feedbackData }) {
                     </div>
                 </div>
                 <div>
-                    <p>{feedbackData.feedback_author}</p>
-                    <p className="text-xs dark:text-neutral-400 mb-4">
+                    <p className="tracking-wide">
+                        {feedbackData.feedback_author}
+                    </p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-4">
                         {dateFormatter(feedbackData.created_at)}
                     </p>
 
-                    <p className="dark:text-neutral-400 italic">
+                    <p className="dark:text-neutral-400 italic text-neutral-600">
                         {feedbackData.feedback_message}
                     </p>
                 </div>

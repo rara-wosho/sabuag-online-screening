@@ -190,7 +190,7 @@ export default async function JoinUsPage() {
             </section>
 
             {/* feedback form  */}
-            <section id="feedback" className="py-20 px-6 mx-auto">
+            <section id="feedback" className="py-20 mx-auto">
                 <FeedbackSection />
             </section>
         </main>

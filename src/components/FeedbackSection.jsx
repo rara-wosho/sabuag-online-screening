@@ -6,7 +6,10 @@ import { createClient } from "@/utils/supabase/server";
 export default async function FeedbackSection() {
     const db = await createClient();
 
-    const { data, error } = await db.from("feedbacks").select();
+    const { data, error } = await db
+        .from("feedbacks")
+        .select()
+        .order("created_at", { ascending: false });
 
     return (
         <div className="w-full flex flex-col items-center">
@@ -38,7 +41,12 @@ export default async function FeedbackSection() {
                 <p className="font-semibold text-lg text-primary">
                     - Israel De Vera
                 </p>
-                <p className="text-xs dark:text-neutral-400">Developer</p>
+                <p className="text-xs dark:text-neutral-400">
+                    Developer{" "}
+                    <span className="border-s ms-2 border-neutral-700 dark:border-neutral-600 ps-2">
+                        Capstone leader
+                    </span>
+                </p>
             </div>
 
             <div

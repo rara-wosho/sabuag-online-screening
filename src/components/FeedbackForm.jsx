@@ -61,6 +61,22 @@ export default function FeedbackForm() {
                     Rate your experience
                 </p>
 
+                <div className="rounded-md p-4 border dark:border-neutral-800 mt-6">
+                    <p className="dark:text-neutral-300 text-neutral-600 mb-3 text-sm">
+                        Only the admin team can see this.
+                    </p>
+
+                    <p className="text-[13px] mb-3 dark:text-neutral-400">
+                        Feel free to leave your email, Facebook, or any contact
+                        info so we can get in touch about your feedback if
+                        needed. (Optional)
+                    </p>
+                    <Input
+                        required
+                        name="full_name"
+                        placeholder="Facebook, Instagram, or Email"
+                    />
+                </div>
                 <SubmitButton containerStyle="w-full mt-4" label="Submit" />
 
                 <p className="dark:text-neutral-400 text-xs text-center w-full mt-3">
