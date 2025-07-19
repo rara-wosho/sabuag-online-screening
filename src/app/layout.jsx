@@ -5,16 +5,16 @@ import Navbar from "@/components/Navbar";
 export const metadata = {
     title: {
         default: "Sabuag - Campus Publication",
-        template: "%s | Sabuag", // used when child page sets its own title
+        template: "%s | Sabuag",
     },
     description: "This is the global description",
 };
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className="dark">
+        <html lang="en" className="dark scroll-smooth">
             <body className={`antialiased`}>
-                {/* <div className="layout-bg fixed -right-20 -bottom-36 size-[500px] rounded-full bg-neutral-700/10 blur-3xl -z-10"></div> */}
+                {/* <div className="layout-bg fixed -bottom-[1100px] w-screen aspect-square -right-[700px] rounded-full bg-radial from-sky-300/15 to-65% to-transparent -z-10"></div> */}
                 <main className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto">
                     <Navbar />
                     <div className="max-w-[2200px] w-full px-3">{children}</div>
