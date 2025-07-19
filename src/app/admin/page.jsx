@@ -10,7 +10,6 @@ export default async function AdminPage() {
         .select()
         .order("created_at", { ascending: false });
 
-    console.log(data);
     return (
         <>
             <div className="flex items-center justify-between">
