@@ -50,22 +50,20 @@ export default async function FeedbackSection() {
             </div>
 
             <div
-                className="grid grid-cols-1 gap-10 md:grid-cols-2 w-full mt-20
+                className="grid grid-cols-1 gap-x-10 gap-y-16 md:grid-cols-2 w-full mt-20
             "
             >
                 <FeedbackForm />
 
-                <div className="flex flex-col">
-                    <p className="font-semibold text-sm dark:text-neutral-400 mb-2">
-                        All feedbacks
-                    </p>
+                <div className="flex flex-col px-3">
+                    <p className="text-xl font-semibold mb-6">Feedbacks</p>
 
                     {data.length > 0 && (
                         <div className="grid grid-cols-1 gap-3">
                             {data.map((fb) => (
                                 <div
                                     key={fb.id}
-                                    className="pb-6 mb-4 dark:border-neutral-800 border-b"
+                                    className="md:pb-6 pb-4 mb-2 md:mb-4 dark:border-neutral-800/70 border-b"
                                 >
                                     <FeedbackCard feedbackData={fb} />
                                 </div>

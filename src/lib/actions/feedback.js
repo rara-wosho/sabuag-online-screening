@@ -6,10 +6,8 @@ import { revalidatePath } from "next/cache";
 export async function submitFeedback(formData) {
     const db = await createClient();
 
-    const rate = 1;
-
     const { error } = await db.from("feedbacks").insert({
-        rate,
+        rate: formData.rate,
         feedback_message: formData.feedback_message,
         feedback_author: formData.feedback_author,
     });
