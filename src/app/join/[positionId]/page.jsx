@@ -1,8 +1,15 @@
 import ApplicationForm from "@/components/ApplicationForm";
 import ApplicationGuide from "@/components/ApplicationGuide";
+import BreadCrumbs from "@/components/BreadCrumbs";
 import { createClient } from "@/utils/supabase/server";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
+const links = [
+    { href: "/", label: "Home" },
+    { href: "/join", label: "Join" },
+    { href: "", label: "Application Form" },
+];
 export default async function Page({ params }) {
     const { positionId } = await params;
 
@@ -19,10 +26,9 @@ export default async function Page({ params }) {
         notFound();
     }
 
-    console.log("position data", data);
-
     return (
-        <div className="pt-16 w-full max-w-[1200px] mx-auto">
+        <div className="pt-[4.8rem] w-full max-w-[1200px] mx-auto">
+            <BreadCrumbs links={links} />
             {!data && (
                 <div className="flex flex-col items-center">
                     <h2 className="text-xl pt-16 text-center">
@@ -51,7 +57,10 @@ export default async function Page({ params }) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
                         <ApplicationGuide />
-                        <ApplicationForm />
+                        <ApplicationForm
+                            positionId={positionId}
+                            position_name={data.title}
+                        />
                     </div>
                 </div>
             )}
