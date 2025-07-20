@@ -1,0 +1,82 @@
+"use client";
+
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { ChevronsUpDown, LoaderCircle } from "lucide-react";
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import { cn } from "@/lib/utils";
+
+export default function ToggleApplicationStatus({ applicationId, status }) {
+    const [label, setLabel] = useState(status);
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (status) => {
+        setLoading(true);
+
+        try {
+            const res = await fetch("/api/application-status", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ status, applicationId }),
+            });
+
+            const data = await res.json();
+
+            console.log("from handle submit", data);
+
+            if (data.success) {
+                setLabel(data.status);
+                setOpen(false);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+        setLoading(false);
+    };
+
+    return (
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+                <button
+                    className={cn(
+                        "rounded text-sm px-2 py-1 flex items-center gap-1",
+                        label === "Pending"
+                            ? "text-white bg-yellow-400 dark:bg-yellow-500/80"
+                            : "text-white bg-emerald-700"
+                    )}
+                >
+                    {loading && (
+                        <div className="animate-spin">
+                            <LoaderCircle size={14} />
+                        </div>
+                    )}
+                    Status : {label}
+                    <ChevronsUpDown size={14} />
+                </button>
+            </PopoverTrigger>
+            <PopoverContent className="p-2">
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton
+                            onClick={() => handleSubmit("Pending")}
+                        >
+                            Pending
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton onClick={() => handleSubmit("Done")}>
+                            Done
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </PopoverContent>
+        </Popover>
+    );
+}

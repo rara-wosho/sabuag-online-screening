@@ -1,4 +1,5 @@
 import BreadCrumbs from "@/components/BreadCrumbs";
+import ToggleApplicationStatus from "@/components/ToggleApplicationStatus";
 import { dateFormatter } from "@/utils/date-formatter";
 import { createClient } from "@/utils/supabase/server";
 
@@ -21,9 +22,16 @@ export default async function ApplicationDetails({ params }) {
     return (
         <div>
             <BreadCrumbs containerStyle="mb-2" links={links} />
-            <h1 className="text-xl md:text-2xl mb-2 text-neutral-900 dark:text-neutral-300">
-                {data.fullname}
-            </h1>
+            <div className="flex items-center mb-2 justify-between">
+                <h1 className="text-xl md:text-2xl text-neutral-900 dark:text-neutral-300">
+                    {data.fullname}
+                </h1>
+
+                <ToggleApplicationStatus
+                    applicationId={data.id}
+                    status={data.status}
+                />
+            </div>
             <div className="flex items-end border-b pb-3 dark:border-b-neutral-900">
                 <h1 className="text-neutral-600 dark:text-neutral-400">
                     {data.position_name}
