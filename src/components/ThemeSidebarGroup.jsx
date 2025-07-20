@@ -1,8 +1,9 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Moon, Star, Sun } from "lucide-react";
 import {
     SidebarGroup,
+    SidebarGroupAction,
     SidebarGroupContent,
     SidebarGroupLabel,
     SidebarMenu,
@@ -11,6 +12,7 @@ import {
 } from "./ui/sidebar";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 export default function ThemeSidebarGroup() {
     const [dark, setDark] = useLocalStorage(
@@ -29,6 +31,7 @@ export default function ThemeSidebarGroup() {
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Theme</SidebarGroupLabel>
+
             <SidebarGroupContent>
                 <SidebarMenu className="dark:text-neutral-400">
                     <SidebarMenuItem>
@@ -36,6 +39,10 @@ export default function ThemeSidebarGroup() {
                             onClick={() => setDark(false)}
                             tooltip="Light mode"
                             asChild
+                            className={cn(
+                                dark && "opacity-45",
+                                "cursor-pointer"
+                            )}
                         >
                             <div>
                                 <Sun />
@@ -48,6 +55,10 @@ export default function ThemeSidebarGroup() {
                             onClick={() => setDark(true)}
                             tooltip="Dark mode"
                             asChild
+                            className={cn(
+                                !dark && "opacity-45",
+                                "cursor-pointer"
+                            )}
                         >
                             <div>
                                 <Moon />

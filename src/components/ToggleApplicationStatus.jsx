@@ -53,7 +53,7 @@ export default function ToggleApplicationStatus({ applicationId, status }) {
             <PopoverTrigger asChild>
                 <button
                     className={cn(
-                        "rounded text-sm px-2 py-1 flex items-center gap-1",
+                        "rounded text-sm px-2 py-1 flex items-center gap-1 cursor-pointer",
                         label === "Pending"
                             ? "text-white bg-yellow-400 dark:bg-yellow-500/80"
                             : "text-white bg-emerald-700"
@@ -73,6 +73,20 @@ export default function ToggleApplicationStatus({ applicationId, status }) {
                 <SidebarGroup>
                     <SidebarGroupLabel>Update Status</SidebarGroupLabel>
                     <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                onClick={() => handleSubmit("Accepted")}
+                            >
+                                Accept
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                onClick={() => handleSubmit("Rejected")}
+                            >
+                                Reject
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
                         <SidebarMenuItem>
                             <SidebarMenuButton
                                 onClick={() => handleSubmit("Pending")}
