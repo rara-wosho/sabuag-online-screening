@@ -1,11 +1,6 @@
 import { dateFormatter } from "@/utils/date-formatter";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
 import Link from "next/link";
 
 export default function ApplicationCard({ applicantData }) {
@@ -15,20 +10,14 @@ export default function ApplicationCard({ applicantData }) {
             className="bg-sidebar dark:bg-card border-neutral-100 shadow dark:border-neutral-800 cursor-pointer rounded-md border p-3"
         >
             <div className="dark:text-neutral-200 text-neutral-800 font-semibold mb-3 w-[94%] relative">
-                <p>{applicantData.position_name}</p>
-                <div className="rounded-full flex items-center justify-center absolute -right-4 top-1">
-                    <Tooltip>
-                        <TooltipTrigger>
-                            <div className="size-2 rounded-full bg-amber-600/80"></div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            <p>Pending</p>
-                        </TooltipContent>
-                    </Tooltip>
-                </div>
+                <p className="text-sm dark:text-neutral-300 md:text-lg">
+                    {applicantData.fullname}
+                </p>
             </div>
-            <p>{applicantData.fullname}</p>
-            <small className="text-xs">
+            <p className="text-sm md:text-[16px]">
+                {applicantData.position_name}
+            </p>
+            <small className="text-xs dark:text-neutral-400 text-neutral-500">
                 {dateFormatter(applicantData.created_at)}
             </small>
 

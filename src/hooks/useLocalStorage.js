@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 
 const useLocalStorage = (key, initialValue) => {
-    const [value, setValue] = useState(() => {
-        const item = window.localStorage.getItem(key);
-
-        return item ? JSON.parse(item) : initialValue;
-    });
+    const [value, setValue] = useState(initialValue);
+    const [isInitialized, setIsInitialized] = useState(false);
 
     useEffect(() => {
-        window.localStorage.setItem(key, JSON.stringify(value));
-    }, [value]);
+        // This code runs only in the browser
+        const item = window.localStorage.getItem(key);
+        setValue(item ? JSON.parse(item) : initialValue);
+        setIsInitialized(true);
+    }, []);
+
+    useEffect(() => {
+        if (isInitialized) {
+            window.localStorage.setItem(key, JSON.stringify(value));
+        }
+    }, [key, value, isInitialized]);
 
     return [value, setValue];
 };

@@ -71,13 +71,18 @@ export default async function ApplicationDetails({ params }) {
                         https://drive.google.com/file/d/13wMqGVtyVc37qTw8egpi2NbR60qOTnLs/view?usp=drive_link
                     </a>
                 </div>
-                <p className="dark:text-neutral-400 mb-3 text-xs">
-                    Sample output
-                </p>
 
-                <p className="text-neutral-700/90 dark:text-neutral-300/70">
-                    {data.output}
-                </p>
+                {data.output && (
+                    <>
+                        <p className="dark:text-neutral-400 mb-3 text-xs">
+                            Sample output
+                        </p>
+
+                        <p className="text-neutral-700/90 dark:text-neutral-300/70">
+                            {data.output}
+                        </p>
+                    </>
+                )}
             </div>
         </div>
     );

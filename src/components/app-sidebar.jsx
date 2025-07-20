@@ -1,17 +1,4 @@
-import {
-    Calendar,
-    Home,
-    Inbox,
-    Search,
-    Settings,
-    UsersRound,
-    HardHat,
-    Bell,
-    Sun,
-    Moon,
-    LogOut,
-    Mail,
-} from "lucide-react";
+import { Settings, UsersRound, Bell, LogOut, Mail } from "lucide-react";
 
 import {
     Sidebar,
@@ -29,6 +16,7 @@ import {
 import SidebarMenuClient from "./SidebarMenuClient";
 import Image from "next/image";
 import Link from "next/link";
+import ThemeSidebarGroup from "./ThemeSidebarGroup";
 
 export function AppSidebar() {
     return (
@@ -73,29 +61,9 @@ export function AppSidebar() {
                         <SidebarMenuClient />
                     </SidebarGroupContent>
                 </SidebarGroup>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Theme</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenu className="dark:text-neutral-400">
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <div>
-                                        <Sun />
-                                        <span>Light Mode</span>
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <div>
-                                        <Moon />
-                                        <span>Dark Mode</span>
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
+
+                <ThemeSidebarGroup />
+
                 <SidebarGroup>
                     <SidebarGroupLabel>Upcoming Features</SidebarGroupLabel>
                     <SidebarGroupContent>

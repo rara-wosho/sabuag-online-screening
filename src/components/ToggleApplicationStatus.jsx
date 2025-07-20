@@ -5,10 +5,17 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
+
 import { useState } from "react";
 import { ChevronsUpDown, LoaderCircle } from "lucide-react";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import {
+    SidebarGroup,
+    SidebarGroupLabel,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+} from "./ui/sidebar";
+
 import { cn } from "@/lib/utils";
 
 export default function ToggleApplicationStatus({ applicationId, status }) {
@@ -57,25 +64,31 @@ export default function ToggleApplicationStatus({ applicationId, status }) {
                             <LoaderCircle size={14} />
                         </div>
                     )}
-                    Status : {label}
+                    <span className="hidden md:inline-flex">Status :</span>{" "}
+                    {label}
                     <ChevronsUpDown size={14} />
                 </button>
             </PopoverTrigger>
-            <PopoverContent className="p-2">
-                <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton
-                            onClick={() => handleSubmit("Pending")}
-                        >
-                            Pending
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton onClick={() => handleSubmit("Done")}>
-                            Done
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
+            <PopoverContent className="p-0">
+                <SidebarGroup>
+                    <SidebarGroupLabel>Update Status</SidebarGroupLabel>
+                    <SidebarMenu>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                onClick={() => handleSubmit("Pending")}
+                            >
+                                Pending
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                        <SidebarMenuItem>
+                            <SidebarMenuButton
+                                onClick={() => handleSubmit("Done")}
+                            >
+                                Done
+                            </SidebarMenuButton>
+                        </SidebarMenuItem>
+                    </SidebarMenu>
+                </SidebarGroup>
             </PopoverContent>
         </Popover>
     );

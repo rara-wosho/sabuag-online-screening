@@ -97,7 +97,6 @@ export default function PositionTab({ id, title, description, is_open }) {
                                 placeholder="Description"
                                 defaultValue={description}
                                 name="description"
-                                required
                             />
                         </div>
                         <div className="mb-1 mt-4 flex flex-col items-start">
@@ -153,9 +152,9 @@ export default function PositionTab({ id, title, description, is_open }) {
                         "border rounded-md p-3 dark:bg-card flex flex-col"
                     )}
                 >
-                    <DialogTrigger className="w-full group cursor-pointer">
-                        <div className="flex items-center mb-1">
-                            <h1 className="font font-semibold group-hover:underline">
+                    <DialogTrigger className="w-full cursor-pointer flex flex-col items-start">
+                        <div className="flex items-center mb-1 w-full">
+                            <h1 className="font font-semibold tracking-widest">
                                 {title}
                             </h1>
                             {is_open && (
@@ -168,18 +167,23 @@ export default function PositionTab({ id, title, description, is_open }) {
                                 <Pen size={14} />
                             </div>
                         </div>
+
+                        <p className="text-[14px] text-neutral-500 dark:text-neutral-400 text-start">
+                            {!description ? (
+                                <span className="italic">
+                                    No description provided.
+                                </span>
+                            ) : (
+                                description
+                            )}
+                        </p>
                     </DialogTrigger>
 
-                    <p className="text-[14px] text-neutral-500 dark:text-neutral-400">
-                        {!description ? (
-                            <span className="italic">
-                                No description provided.
-                            </span>
-                        ) : (
-                            description
-                        )}
-                    </p>
-                    {is_open && <ApplicantCount id={id} />}
+                    {is_open && (
+                        <div className="inline-flex mt-auto">
+                            <ApplicantCount id={id} />
+                        </div>
+                    )}
                 </div>
             </Dialog>
         </>
