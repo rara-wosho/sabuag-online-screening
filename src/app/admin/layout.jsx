@@ -14,10 +14,9 @@ export default async function Layout({ children }) {
         <SidebarProvider>
             <AppSidebar />
             <div className="w-full ">
-                {/* last commit attempt, making this header fixed to top  */}
                 <main className="min-h-screen relative">
                     {/* layout header  */}
-                    <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5">
+                    <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5 z-50">
                         <SidebarTrigger />
                         <div className="flex items-center  gap-2 border-s ps-3 ms-2">
                             <Image

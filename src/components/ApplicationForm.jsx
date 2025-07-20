@@ -7,6 +7,7 @@ import SubmitButton from "./ui/SubmitButton";
 import { submitApplication } from "@/lib/actions/application-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import FormLabel from "./FormLabel";
 
 export default function ApplicationForm({ positionId, position_name }) {
     const router = useRouter();
@@ -15,8 +16,21 @@ export default function ApplicationForm({ positionId, position_name }) {
         const fullname = formData.get("full-name").toString();
         const email = formData.get("email").toString();
         const facebook = formData.get("facebook").toString();
-        const output = formData.get("output").toString();
-        const output_link = formData.get("output-link").toString();
+        const output = formData.get("output").toString() || "";
+        const output_link = formData.get("output-link").toString() || "";
+
+        console.log("full name : ", fullname);
+
+        if (!output_link.startsWith("https://") && output_link.length > 0) {
+            toast.error("That is not a valid link.");
+
+            return;
+        }
+
+        if (output === "" && output_link === "") {
+            toast.error("Please provide your output.");
+            return;
+        }
 
         const data = {
             fullname,
@@ -59,11 +73,17 @@ export default function ApplicationForm({ positionId, position_name }) {
                 Please complete the form and upload a sample of your work. We’re
                 excited to see what you’ve got!
             </p>
-            <form action={handleSubmit} className="py-4">
+            <form
+                onSubmit={async (e) => {
+                    e.preventDefault();
+
+                    const formData = new FormData(e.currentTarget);
+                    await handleSubmit(formData);
+                }}
+                className="py-4"
+            >
                 <div className="mb-3">
-                    <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
-                        Full Name
-                    </p>
+                    <FormLabel label="Full Name" required />
                     <Input
                         required
                         name="full-name"
@@ -72,13 +92,12 @@ export default function ApplicationForm({ positionId, position_name }) {
                 </div>
 
                 <div className="mb-3">
-                    <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
-                        Email
-                    </p>
+                    <FormLabel label="Email" required />
                     <Input
                         required
                         name="email"
                         placeholder="Enter your email"
+                        type="email"
                     />
                 </div>
 
@@ -97,7 +116,6 @@ export default function ApplicationForm({ positionId, position_name }) {
                         Output Link (for photo/video applicants)
                     </p>
                     <Input
-                        required
                         name="output-link"
                         placeholder="Paste your Google Drive link here."
                     />
@@ -106,10 +124,12 @@ export default function ApplicationForm({ positionId, position_name }) {
                     <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
                         Text Output
                     </p>
-                    <Textarea
+                    <textarea
                         name="output"
-                        placeholder="You can paste your text output here, if there is."
-                    />
+                        className="w-full active:outline-0 focus:outline-0 py-2"
+                        placeholder="Type or paste your output here"
+                        rows={10}
+                    ></textarea>
                 </div>
 
                 <SubmitButton label="Apply Now" containerStyle="mt-8 w-full" />

@@ -8,16 +8,18 @@ import { submitFeedback } from "@/lib/actions/feedback";
 import { Frown, Laugh, Meh, Smile } from "lucide-react";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
+import FormLabel from "./FormLabel";
 
 export default function FeedbackForm() {
     const [rate, setRate] = useState("1");
 
     const handleSubmit = useCallback(async (formData) => {
-        const feedback_message = formData.get("feedback_message");
-        const feedback_author = formData.get("full_name");
+        const feedback_message = formData.get("feedback_message").toString();
+        const feedback_author = formData.get("full_name").toString();
+        const contact = formData.get("contact").toString();
         const rate = formData.get("rate").toString();
 
-        const data = { feedback_message, feedback_author, rate };
+        const data = { feedback_message, feedback_author, rate, contact };
 
         const res = await submitFeedback(data);
 
@@ -45,17 +47,16 @@ export default function FeedbackForm() {
                     Complete the form details below and we'll follow up with you
                     soon to discuss your feedback.
                 </p>
-                <p className="dark:text-neutral-300 text-neutral-600 mb-2 text-sm">
-                    Full Name
-                </p>
-                <Input
-                    required
-                    name="full_name"
-                    placeholder="Enter your full name..."
-                />
-                <p className="dark:text-neutral-300 text-neutral-600 mb-2 text-sm mt-4">
-                    Feedback
-                </p>
+                <div className="mb-3">
+                    <FormLabel label="Full Name" required />
+                    <Input
+                        required
+                        name="full_name"
+                        placeholder="Enter your full name..."
+                    />
+                </div>
+
+                <FormLabel label="Feedback" required />
                 <Textarea
                     required
                     row="10"
