@@ -1,6 +1,5 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -8,7 +7,6 @@ import { useEffect, useState } from "react";
 export default function ApplicantCount({ id }) {
     const [loading, setLoading] = useState(true);
     const [count, setCount] = useState(0);
-    console.log("position id : ", id);
 
     const fetchCount = async () => {
         const supabase = createClient();

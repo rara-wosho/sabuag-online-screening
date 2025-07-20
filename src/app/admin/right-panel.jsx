@@ -20,7 +20,7 @@ export default async function RightPanel() {
         .eq("is_open", true);
 
     return (
-        <div className="w-[220px] border-s dark:border-neutral-900 lg:px-4 hidden xl:block">
+        <div className="w-[230px] border-s dark:border-neutral-900 lg:px-4 hidden xl:block">
             <h5 className="text-[12px] font-semibold mb-3">Shortcuts</h5>
 
             {data && (
