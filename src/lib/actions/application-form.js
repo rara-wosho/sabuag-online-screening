@@ -1,7 +1,6 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
 
 export async function submitApplication(formData) {
     const db = await createClient();
@@ -14,6 +13,9 @@ export async function submitApplication(formData) {
         output_link: formData.output_link,
         position_id: formData.positionId,
         position_name: formData.position_name,
+        position_name: formData.position_name,
+        about_self: formData.about_self,
+        status: formData.status,
     });
 
     if (error) {

@@ -1,15 +1,12 @@
 import ApplicationForm from "@/components/ApplicationForm";
 import ApplicationGuide from "@/components/ApplicationGuide";
 import BreadCrumbs from "@/components/BreadCrumbs";
+import BackButton from "@/components/ui/BackButton";
 import { createClient } from "@/utils/supabase/server";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-const links = [
-    { href: "/", label: "Home" },
-    { href: "/join", label: "Join" },
-    { href: "", label: "Application Form" },
-];
 export default async function Page({ params }) {
     const { positionId } = await params;
 
@@ -28,7 +25,11 @@ export default async function Page({ params }) {
 
     return (
         <div className="pt-[4.8rem] w-full max-w-[1200px] mx-auto">
-            <BreadCrumbs links={links} />
+            <div className="flex items-center">
+                <BackButton containerStyle="duration-200 transition-colors hover:text-accent-foreground text-[13px] flex items-center gap-1">
+                    <ChevronLeft size={16} /> <span>Back</span>
+                </BackButton>
+            </div>
             {!data && (
                 <div className="flex flex-col items-center">
                     <h2 className="text-xl pt-16 text-center">

@@ -18,6 +18,7 @@ export default function ApplicationForm({ positionId, position_name }) {
         const facebook = formData.get("facebook").toString();
         const output = formData.get("output").toString() || "";
         const output_link = formData.get("output-link").toString() || "";
+        const about_self = formData.get("about-self").toString() || "";
 
         console.log("full name : ", fullname);
 
@@ -36,10 +37,12 @@ export default function ApplicationForm({ positionId, position_name }) {
             fullname,
             email,
             facebook,
+            status: "Pending",
             output,
             output_link,
             positionId,
             position_name,
+            about_self,
         };
 
         const { success } = await submitApplication(data);
@@ -101,13 +104,23 @@ export default function ApplicationForm({ positionId, position_name }) {
                     />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-3">
                     <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
                         Facebook (Optional)
                     </p>
                     <Input
                         name="facebook"
                         placeholder="Enter your facebook account"
+                    />
+                </div>
+                <div className="mb-4">
+                    <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
+                        Tell us something about yourself (Optional)
+                    </p>
+                    <Textarea
+                        name="about-self"
+                        placeholder="Type it here"
+                        className="min-h-20"
                     />
                 </div>
 
