@@ -1,6 +1,8 @@
 import ApplicationCard from "@/components/ui/applicationCard";
+import BackButton from "@/components/ui/BackButton";
 import PrimaryLabel from "@/components/ui/PrimaryLabel";
 import { createClient } from "@/utils/supabase/server";
+import { ChevronLeft } from "lucide-react";
 
 export default async function Page({ params }) {
     await new Promise((res) => setTimeout(res, 5000));
@@ -26,6 +28,11 @@ export default async function Page({ params }) {
 
     return (
         <div>
+            <div className="flex items-center mb-4">
+                <BackButton containerStyle="text-sm flex items-center gap-1">
+                    <ChevronLeft size={18} /> <span>Back</span>
+                </BackButton>
+            </div>
             <div className="mb-4 pb-4 border-b dark:border-neutral-900">
                 <h1 className="text-3xl  mb-1 font-semibold">
                     {position.title}
