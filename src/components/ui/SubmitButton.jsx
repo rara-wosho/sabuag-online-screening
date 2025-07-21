@@ -10,7 +10,7 @@ const SubmitButton = ({ label, containerStyle }) => {
         <button
             className={cn(
                 containerStyle,
-                " bg-primary flex items-center justify-center py-1 px-4 text-white rounded cursor-pointer"
+                "bg-primary flex items-center justify-center py-1 px-4 text-white rounded cursor-pointer"
             )}
             type="submit"
         >

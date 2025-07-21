@@ -1,6 +1,6 @@
 "use client";
 
-import { HardHat, Contact } from "lucide-react";
+import { HardHat, Contact, Home } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
 import Link from "next/link";
@@ -11,11 +11,15 @@ export default function SidebarMenuClient() {
     const main = [
         {
             href: "/admin",
+            icon: <Home />,
+            label: "Home",
+            isActiveLink: pathName === "/admin",
+        },
+        {
+            href: "/admin/applications",
             icon: <Contact />,
             label: "Applications",
-            isActiveLink:
-                pathName.startsWith("/admin/applications") ||
-                pathName === "/admin",
+            isActiveLink: pathName.startsWith("/admin/applications"),
         },
         {
             href: "/admin/positions",

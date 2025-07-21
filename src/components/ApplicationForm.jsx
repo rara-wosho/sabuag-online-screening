@@ -55,7 +55,7 @@ export default function ApplicationForm({ positionId, position_name }) {
         }
     };
     return (
-        <div className="p-3 md:p-4 rounded-lg dark:bg-card border dark:border-neutral-800 shadow-md bg-white">
+        <div className="p-0 md:p-4 rounded-lg dark:bg-transparent dark:md:bg-card border-0 md:border dark:border-neutral-800 shadow-md bg-transparent md:bg-white">
             <div className="flex flex-col border-b items-center mb-4">
                 <Image
                     className="mb-4"
@@ -124,12 +124,11 @@ export default function ApplicationForm({ positionId, position_name }) {
                     <p className="dark:text-neutral-300 text-neutral-600 mb-1 text-sm">
                         Text Output
                     </p>
-                    <textarea
+                    <Textarea
                         name="output"
-                        className="w-full active:outline-0 focus:outline-0 py-2"
+                        className="min-h-72"
                         placeholder="Type or paste your output here"
-                        rows={10}
-                    ></textarea>
+                    />
                 </div>
 
                 <SubmitButton label="Apply Now" containerStyle="mt-8 w-full" />

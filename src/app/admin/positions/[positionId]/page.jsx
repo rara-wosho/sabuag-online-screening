@@ -3,6 +3,7 @@ import PrimaryLabel from "@/components/ui/PrimaryLabel";
 import { createClient } from "@/utils/supabase/server";
 
 export default async function Page({ params }) {
+    await new Promise((res) => setTimeout(res, 5000));
     const { positionId } = await params;
 
     const supabase = await createClient();

@@ -55,8 +55,10 @@ export default async function Page({ params }) {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
-                        <ApplicationGuide />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12">
+                        <div className="md:mb-0 mb-4 md:border-b-0 border-b pb-4 md:pb-0">
+                            <ApplicationGuide />
+                        </div>
                         <ApplicationForm
                             positionId={positionId}
                             position_name={data.title}

@@ -11,6 +11,7 @@ import SubmitButton from "@/components/ui/SubmitButton";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { createClient } from "@/utils/supabase/server";
+import { ChevronLeft } from "lucide-react";
 import { redirect } from "next/navigation";
 
 export default function NewPosition() {
@@ -34,8 +35,13 @@ export default function NewPosition() {
         redirect("/admin/positions");
     }
     return (
-        <div className="flex justify-center">
-            <form action={createPosition} className="w-full max-w-[550px]">
+        <div className="flex flex-col items-center">
+            <div className="w-full mb-3">
+                <BackButton containerStyle="flex items-center gap-1 duration-200 transition-colors hover:text-accent-foreground">
+                    <ChevronLeft size={18} /> Back
+                </BackButton>
+            </div>
+            <form action={createPosition} className="w-full max-w-[500px]">
                 <h1 className="text-xl mb-3 font-bold">New Position</h1>
 
                 <div className="mb-3">
@@ -45,7 +51,11 @@ export default function NewPosition() {
 
                 <div className="mb-6">
                     <p className="text-sm mb-2">Description</p>
-                    <Textarea name="description" placeholder="Description" />
+                    <Textarea
+                        name="description"
+                        placeholder="Description"
+                        className="min-h-32"
+                    />
                 </div>
                 <div className="mb-3">
                     <Select name="acceptApplication" defaultValue="yes">
@@ -60,13 +70,10 @@ export default function NewPosition() {
                     </Select>
                 </div>
 
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-2 gap-y-3.5 flex-col-reverse">
-                    <BackButton
-                        label="Back"
-                        containerStyle="rounded border border-neutral-300 dark:border-neutral-600 px-4 py-2 cursor-pointer"
-                    />
-                    <SubmitButton label="Create Position" />
-                </div>
+                <SubmitButton
+                    label="Create Position"
+                    containerStyle="mt-8 w-full"
+                />
             </form>
         </div>
     );

@@ -36,7 +36,7 @@ export default async function Layout({ children }) {
                     </div>
 
                     {/* layout body  */}
-                    <div className="py-4 flex">
+                    <div className="py-3 flex">
                         <div className="w-full px-3 md:px-4">{children}</div>
                         <RightPanel />
                     </div>

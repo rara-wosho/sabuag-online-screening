@@ -1,7 +1,9 @@
 import BreadCrumbs from "@/components/BreadCrumbs";
 import ToggleApplicationStatus from "@/components/ToggleApplicationStatus";
+import BackButton from "@/components/ui/BackButton";
 import { dateFormatter } from "@/utils/date-formatter";
 import { createClient } from "@/utils/supabase/server";
+import { ChevronLeft } from "lucide-react";
 
 const links = [
     { href: "", label: "Home" },
@@ -21,17 +23,19 @@ export default async function ApplicationDetails({ params }) {
 
     return (
         <div>
-            <BreadCrumbs containerStyle="mb-2" links={links} />
             <div className="flex items-center mb-2 justify-between">
-                <h1 className="text-xl md:text-2xl text-neutral-900 dark:text-neutral-300">
-                    {data.fullname}
-                </h1>
+                <BackButton containerStyle="text-sm flex items-center gap-1 hover:text-accent-foreground duration-200 transition-colors">
+                    <ChevronLeft size={16} /> Back
+                </BackButton>
 
                 <ToggleApplicationStatus
                     applicationId={data.id}
                     status={data.status}
                 />
             </div>
+            <h1 className="text-xl mb-2 md:text-2xl text-neutral-900 dark:text-neutral-300">
+                {data.fullname}
+            </h1>
             <div className="flex items-end border-b pb-3 dark:border-b-neutral-900">
                 <h1 className="text-neutral-600 dark:text-neutral-400">
                     {data.position_name}

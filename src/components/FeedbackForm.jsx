@@ -59,7 +59,7 @@ export default function FeedbackForm() {
                 <FormLabel label="Feedback" required />
                 <Textarea
                     required
-                    row="10"
+                    className="min-h-28"
                     name="feedback_message"
                     placeholder="Enter your message here..."
                 />
