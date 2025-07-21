@@ -11,13 +11,13 @@ export default function BreadCrumbs({ links, containerStyle }) {
             )}
         >
             {links.map((link, index) => (
-                <div key={index} className="flex items-center">
+                <div key={index} className="flex items-center text-neutral-500">
                     <Link
                         href={link.href}
                         className={cn(
                             "flex items-center gap-2.5 pe-1.5",
                             index === links.length - 1 &&
-                                "dark:text-neutral-300",
+                                "dark:text-neutral-300 text-neutral-800",
                             link.href === "" && "pointer-events-none"
                         )}
                     >

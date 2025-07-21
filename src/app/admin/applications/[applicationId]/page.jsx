@@ -3,11 +3,10 @@ import ToggleApplicationStatus from "@/components/ToggleApplicationStatus";
 import BackButton from "@/components/ui/BackButton";
 import { dateFormatter } from "@/utils/date-formatter";
 import { createClient } from "@/utils/supabase/server";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Facebook, Mail } from "lucide-react";
 
 const links = [
-    { href: "", label: "Home" },
-    { href: "/admin", label: "Applications" },
+    { href: "/admin/applications", label: "Applications" },
     { href: "", label: "Details" },
 ];
 export default async function ApplicationDetails({ params }) {
@@ -23,70 +22,93 @@ export default async function ApplicationDetails({ params }) {
 
     return (
         <div>
-            <div className="flex items-center mb-2 justify-between">
-                <BackButton containerStyle="text-sm flex items-center gap-1 hover:text-accent-foreground duration-200 transition-colors">
-                    <ChevronLeft size={16} /> Back
-                </BackButton>
+            <div className="grid grid-cols-1 gap-3 max-w-2xl mx-auto">
+                <div className="left p-3 bg-card rounded-lg shadow border">
+                    <div className="flex items-center mb-4 gap-x-2 pb-4 pt-2 border-b dark:border-neutral-800">
+                        <BackButton containerStyle="text-sm flex items-center justify-center rounded-full hover:bg-accent hover:text-accent-foreground p-1.5 duration-200 transition-colors border">
+                            <ChevronLeft size={18} />
+                        </BackButton>
+                        <div className="hidden md:flex items-center">
+                            <BreadCrumbs links={links} />
+                        </div>
 
-                <ToggleApplicationStatus
-                    applicationId={data.id}
-                    status={data.status}
-                />
-            </div>
-            <h1 className="text-xl mb-2 md:text-2xl text-neutral-900 dark:text-neutral-300">
-                {data.fullname}
-            </h1>
-            <div className="flex items-end border-b pb-3 dark:border-b-neutral-900">
-                <h1 className="text-neutral-600 dark:text-neutral-400">
-                    {data.position_name}
-                </h1>
+                        <div className="ms-auto">
+                            <ToggleApplicationStatus
+                                applicationId={data.id}
+                                status={data.status}
+                            />
+                        </div>
+                    </div>
+                    <h1 className="text-xl mb-1 md:text-2xl text-neutral-900 dark:text-neutral-300">
+                        {data.fullname}
+                    </h1>
+                    <div className="flex items-end pb-3 mb-1">
+                        <h1 className="text-neutral-600 dark:text-neutral-400">
+                            {data.position_name}
+                        </h1>
 
-                <p className="text-sm ms-auto dark:text-neutral-400 text-neutral-600">
-                    {dateFormatter(data.created_at)}
-                </p>
-            </div>
+                        <p className="text-sm  ms-auto dark:text-neutral-400 text-neutral-600">
+                            {dateFormatter(data.created_at)}
+                        </p>
+                    </div>
 
-            <div className="py-3 mb-2 border-b dark:border-b-neutral-900 text-neutral-600 dark:text-neutral-400">
-                <p className="dark:text-neutral-400 mb-2 text-xs">Contacts</p>
-
-                <p className="mb-1">Email : {data.email}</p>
-                <p>
-                    Facebook :{" "}
-                    {data.facebook ? (
-                        data.facebook
-                    ) : (
-                        <span className="opacity-50">N/A</span>
+                    {data.about_self && (
+                        <div className="mb-3 pb-3 border-b">
+                            <p className="text-neutral-600 dark:text-neutral-300/90 text-sm">
+                                {data.about_self}
+                            </p>
+                        </div>
                     )}
-                </p>
-            </div>
 
-            <div className="py-3 mb-3">
-                <p className="dark:text-neutral-400 mb-3 text-xs">
-                    Output Link
-                </p>
+                    <div className="text-neutral-600 dark:text-neutral-400">
+                        {/* <p className="dark:text-neutral-400 mb-2 text-xs">
+                            Contacts
+                        </p> */}
 
-                <div className="text-[13px] mb-8 inline-flex rounded items-center bg-accent/50 px-2">
-                    <a
-                        href={data.output_link}
-                        target="_blank"
-                        className="text-accent-foreground  py-1.5 rounded wrap-anywhere"
-                    >
-                        {/* {data.output_link} */}
-                        https://drive.google.com/file/d/13wMqGVtyVc37qTw8egpi2NbR60qOTnLs/view?usp=drive_link
-                    </a>
+                        <p className="mb-3 gap-2 flex items-center bg-accent dark:bg-background p-2 rounded">
+                            <Mail size={16} /> {data.email}
+                        </p>
+                        <p className="mb-1 gap-2 flex items-center bg-accent dark:bg-background p-2 rounded">
+                            <Facebook size={16} />
+                            {data.facebook ? (
+                                data.facebook
+                            ) : (
+                                <span className="opacity-50">N/A</span>
+                            )}
+                        </p>
+                    </div>
                 </div>
 
-                {data.output && (
-                    <>
+                <div className="right border shadow p-3 bg-card rounded-lg">
+                    <div className="py-3 mb-3">
                         <p className="dark:text-neutral-400 mb-3 text-xs">
-                            Sample output
+                            Output Link
                         </p>
 
-                        <p className="text-neutral-700/90 dark:text-neutral-300/70">
-                            {data.output}
-                        </p>
-                    </>
-                )}
+                        <div className="text-[13px] mb-8 inline-flex rounded items-center bg-accent/50 px-2">
+                            <a
+                                href={data.output_link}
+                                target="_blank"
+                                className="text-accent-foreground  py-1.5 rounded wrap-anywhere"
+                            >
+                                {/* {data.output_link} */}
+                                https://drive.google.com/file/d/13wMqGVtyVc37qTw8egpi2NbR60qOTnLs/view?usp=drive_link
+                            </a>
+                        </div>
+
+                        {data.output && (
+                            <>
+                                <p className="dark:text-neutral-400 mb-3 text-xs">
+                                    Sample output
+                                </p>
+
+                                <p className="text-neutral-700/90 dark:text-neutral-300/80">
+                                    {data.output}
+                                </p>
+                            </>
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
