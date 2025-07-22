@@ -22,7 +22,7 @@ export default async function JoinUsPage() {
 
     return (
         <main className="min-h-screen w-full max-w-[1200px] mx-auto">
-            <section className="pb-16 pt-28 px-6 text-center flex flex-col items-center">
+            <section className="pb-16 pt-14 px-6 text-center flex flex-col items-center">
                 <div className="md:flex items-center mb-5 hidden">
                     <Image
                         src="/official-sabuag.png"

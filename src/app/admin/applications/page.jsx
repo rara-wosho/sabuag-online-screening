@@ -18,10 +18,6 @@ export default async function AdminPage() {
     return (
         <>
             <div className="mb-8">
-                <div className="flex items-center justify-between">
-                    <PrimaryLabel>Applications</PrimaryLabel>
-                </div>
-
                 <ApplicationsTable data={data} />
             </div>
         </>

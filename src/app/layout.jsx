@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { cn } from "@/lib/utils";
+import NextTopLoader from "nextjs-toploader";
 
 export const metadata = {
     title: {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en" className={cn("dark scroll-smooth", poppins.className)}>
             <body className={`antialiased`}>
+                <NextTopLoader showSpinner={false} color="#8967d8" />
                 <main className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto">
                     <Navbar />
                     <div className="max-w-[2200px] w-full">{children}</div>

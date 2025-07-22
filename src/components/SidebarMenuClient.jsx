@@ -1,12 +1,18 @@
 "use client";
 
 import { HardHat, Contact, Home } from "lucide-react";
-import { usePathname } from "next/navigation";
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
+import {
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+    useSidebar,
+} from "./ui/sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function SidebarMenuClient() {
     const pathName = usePathname();
+    const { setOpenMobile } = useSidebar();
 
     const main = [
         {
@@ -38,7 +44,10 @@ export default function SidebarMenuClient() {
                         asChild
                         isActive={item.isActiveLink}
                     >
-                        <Link href={item.href}>
+                        <Link
+                            href={item.href}
+                            onNavigate={() => setOpenMobile(false)}
+                        >
                             {item.icon}
                             <span>{item.label}</span>
                         </Link>

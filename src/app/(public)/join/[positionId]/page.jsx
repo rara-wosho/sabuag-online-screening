@@ -24,7 +24,7 @@ export default async function Page({ params }) {
     }
 
     return (
-        <div className="pt-[4.8rem] w-full max-w-[1200px] mx-auto">
+        <div className="pt-4 w-full max-w-[1200px] mx-auto">
             <div className="flex items-center">
                 <BackButton containerStyle="duration-200 transition-colors hover:text-accent-foreground text-[13px] flex items-center gap-1">
                     <ChevronLeft size={16} /> <span>Back</span>
