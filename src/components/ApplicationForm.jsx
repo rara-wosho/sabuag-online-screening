@@ -8,6 +8,7 @@ import { submitApplication } from "@/lib/actions/application-form";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import FormLabel from "./FormLabel";
+import Link from "next/link";
 
 export default function ApplicationForm({ positionId, position_name }) {
     const router = useRouter();
@@ -139,12 +140,22 @@ export default function ApplicationForm({ positionId, position_name }) {
                     </p>
                     <Textarea
                         name="output"
-                        className="min-h-72"
+                        className="min-h-56"
                         placeholder="Type or paste your output here"
                     />
                 </div>
 
                 <SubmitButton label="Apply Now" containerStyle="mt-8 w-full" />
+
+                <p className="dark:text-neutral-400 text-xs text-center w-full py-4">
+                    By submitting, you agree to our{" "}
+                    <Link
+                        href="/privacy-policy"
+                        className="text-accent-foreground"
+                    >
+                        privacy policy.
+                    </Link>
+                </p>
             </form>
         </div>
     );

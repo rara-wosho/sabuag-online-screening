@@ -105,7 +105,7 @@ export default async function ApplicationDetails({ params }) {
                                     Sample output
                                 </p>
 
-                                <p className="text-neutral-700/90 dark:text-neutral-300/80">
+                                <p className="text-neutral-700/90 whitespace-pre-wrap dark:text-neutral-300/80">
                                     {data.output}
                                 </p>
                             </>

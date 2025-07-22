@@ -52,7 +52,9 @@ export default async function Page({ params }) {
                     <div className="mb-8 border-b">
                         <p className="text-2xl font-semibold">{data.title}</p>
                         <p className="dark:text-neutral-400 py-2 mb-3">
-                            {data.description}
+                            {data.description
+                                ? data.description
+                                : "No description provided."}
                         </p>
                     </div>
 

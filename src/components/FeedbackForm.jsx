@@ -9,6 +9,7 @@ import { Frown, Laugh, Meh, Smile } from "lucide-react";
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 import FormLabel from "./FormLabel";
+import Link from "next/link";
 
 export default function FeedbackForm() {
     const [rate, setRate] = useState("1");
@@ -153,9 +154,14 @@ export default function FeedbackForm() {
                     />
                 </div>
                 <SubmitButton containerStyle="w-full mt-4" label="Submit" />
-
                 <p className="dark:text-neutral-400 text-xs text-center w-full py-4">
-                    By submitting, you agree to our privacy and policy.
+                    By submitting, you agree to our{" "}
+                    <Link
+                        href="/privacy-policy"
+                        className="text-accent-foreground"
+                    >
+                        privacy policy.
+                    </Link>
                 </p>
             </form>
         </div>
