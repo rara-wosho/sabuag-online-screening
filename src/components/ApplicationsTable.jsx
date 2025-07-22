@@ -3,18 +3,11 @@
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
 
 import {
     Select,
@@ -25,7 +18,7 @@ import {
 } from "@/components/ui/select";
 
 import { dateFormatter } from "@/utils/date-formatter";
-import { ChevronsUpDown, CircleCheck, Loader, X } from "lucide-react";
+import { CircleCheck, Loader, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -58,7 +51,7 @@ export default function ApplicationsTable({ data }) {
                     <TableHead>Date</TableHead>
                     <TableHead className="flex items-center justify-end">
                         <Select onValueChange={handleCategoryChange}>
-                            <SelectTrigger className="bg-transparent dark:bg-transparent dark:hover:bg-transparent hover:bg-transparent border-0 p-0 pe-1 cursor-pointer hover:text-accent-foreground">
+                            <SelectTrigger className="bg-transparent dark:bg-transparent dark:hover:bg-transparent hover:bg-transparent border-0 p-0 pe-1 cursor-pointer hover:text-accent-foreground active:ring-0 focus:ring-0 dark:active:ring-0 dark:focus:ring-0">
                                 <SelectValue placeholder="Status" />
                             </SelectTrigger>
                             <SelectContent>
@@ -80,7 +73,7 @@ export default function ApplicationsTable({ data }) {
                 {filteredData.map((data) => (
                     <TableRow
                         key={data.id}
-                        className="text-neutral-700 dark:text-neutral-300/80"
+                        className="text-neutral-700 dark:text-neutral-300/80 cursor-pointer"
                     >
                         <TableCell className="font-medium dark:text-neutral-300">
                             <Link

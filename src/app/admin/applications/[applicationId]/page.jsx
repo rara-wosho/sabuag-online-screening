@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/server";
 import { ChevronLeft, Facebook, Mail } from "lucide-react";
 
 const links = [
-    { href: "/admin/applications", label: "Applications" },
+    { href: "", label: "Applications" },
     { href: "", label: "Details" },
 ];
 export default async function ApplicationDetails({ params }) {
@@ -85,15 +85,18 @@ export default async function ApplicationDetails({ params }) {
                             Output Link
                         </p>
 
-                        <div className="text-[13px] mb-8 inline-flex rounded items-center bg-accent/50 px-2">
-                            <a
-                                href={data.output_link}
-                                target="_blank"
-                                className="text-accent-foreground  py-1.5 rounded wrap-anywhere"
-                            >
-                                {/* {data.output_link} */}
-                                https://drive.google.com/file/d/13wMqGVtyVc37qTw8egpi2NbR60qOTnLs/view?usp=drive_link
-                            </a>
+                        <div className="text-[13px] mb-8 flex rounded items-center bg-accent/50 px-2">
+                            {data.output_link ? (
+                                <a
+                                    href={data.output_link}
+                                    target="_blank"
+                                    className="text-accent-foreground  py-1.5 rounded wrap-anywhere w-full"
+                                >
+                                    {data.output_link}
+                                </a>
+                            ) : (
+                                <p className="opacity-50 py-1.5">N/A</p>
+                            )}
                         </div>
 
                         {data.output && (

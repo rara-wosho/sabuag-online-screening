@@ -53,10 +53,13 @@ export default function ToggleApplicationStatus({ applicationId, status }) {
             <PopoverTrigger asChild>
                 <button
                     className={cn(
-                        "rounded text-sm px-2 py-1 flex items-center gap-1 cursor-pointer",
-                        label === "Pending"
-                            ? "text-white bg-yellow-400 dark:bg-yellow-500/80"
-                            : "text-white bg-emerald-700"
+                        "rounded text-sm px-2 py-1 flex items-center gap-1 cursor-pointer text-white",
+                        label === "Pending" &&
+                            "border text-accent-foreground bg-accent border-accent-foreground",
+                        label === "Done" &&
+                            "border text-emerald-600 dark:text-emerald-500 border-emerald-500 dark:border-emerald-700",
+                        label === "Rejected" && "bg-red-500 dark:bg-red-700/60",
+                        label === "Accepted" && "bg-emerald-700"
                     )}
                 >
                     {loading && (
