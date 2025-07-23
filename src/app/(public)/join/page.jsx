@@ -21,8 +21,8 @@ export default async function JoinUsPage() {
     }
 
     return (
-        <main className="min-h-screen w-full max-w-[1200px] mx-auto">
-            <section className="pb-16 pt-14 px-6 text-center flex flex-col items-center">
+        <main className="min-h-screen w-full mx-auto">
+            <section className="pb-16 pt-14 text-center flex flex-col items-center">
                 <div className="md:flex items-center mb-5 hidden">
                     <Image
                         src="/official-sabuag.png"
@@ -65,7 +65,7 @@ export default async function JoinUsPage() {
                                 className="text-sm"
                                 asChild
                             >
-                                <a href="#feedback">Feedback</a>
+                                <Link href="#feedback">Feedback</Link>
                             </Button>
                         </div>
                     </>
@@ -124,7 +124,7 @@ export default async function JoinUsPage() {
                     </>
                 )}
             </section>
-            <section className="py-20 px-6  mx-auto text-center border-t-0 md:border-t dark:border-neutral-800 mt-12 md:mt-20">
+            <section className="py-20 mx-auto text-center border-t-0 md:border-t dark:border-neutral-800 mt-12 md:mt-20">
                 <h2 className="text-3xl font-semibold mb-4">Why Join Us?</h2>
                 <p className="text-neutral-700 dark:text-neutral-400 text-lg">
                     Joining us isn’t just about publishing stories — it’s about
@@ -134,7 +134,7 @@ export default async function JoinUsPage() {
                 </p>
             </section>
 
-            <section className="pb-12 px-6">
+            <section className="pb-12">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 text-center">
                     <div>
                         <User

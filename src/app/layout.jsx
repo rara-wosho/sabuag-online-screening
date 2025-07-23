@@ -29,7 +29,6 @@ export default function RootLayout({ children }) {
             <body className={`antialiased`}>
                 <NextTopLoader showSpinner={false} color="#8967d8" />
                 <main className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto">
-                    <Navbar />
                     <div className="max-w-[2200px] w-full">{children}</div>
                 </main>
                 <Toaster position="top-center" richColors />

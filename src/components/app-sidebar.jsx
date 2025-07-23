@@ -17,6 +17,7 @@ import SidebarMenuClient from "./SidebarMenuClient";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeSidebarGroup from "./ThemeSidebarGroup";
+import { logout } from "@/lib/actions/auth";
 
 export function AppSidebar() {
     return (
@@ -95,6 +96,7 @@ export function AppSidebar() {
                             <div className="py-4 border-t mt-2">
                                 <SidebarMenuItem className="text-destructive">
                                     <SidebarMenuButton
+                                        onClick={logout}
                                         asChild
                                         className="hover:bg-red-400/10 duration-200 transition-colors hover:text-red-400"
                                     >

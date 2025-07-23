@@ -42,9 +42,10 @@ export async function updateSession(request) {
     if (
         !user &&
         !request.nextUrl.pathname.startsWith("/sign-up") &&
-        !request.nextUrl.pathname.startsWith("/login") &&
+        request.nextUrl.pathname !== "/" &&
+        request.nextUrl.pathname !== "/about" &&
+        request.nextUrl.pathname !== "/login" &&
         !request.nextUrl.pathname.startsWith("/feedback") &&
-        !request.nextUrl.pathname.startsWith("/about") &&
         !request.nextUrl.pathname.startsWith("/join")
     ) {
         // no user, potentially respond by redirecting the user to the login page

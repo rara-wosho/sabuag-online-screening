@@ -121,7 +121,7 @@ export default function ApplicationForm({ positionId, position_name }) {
                     <Textarea
                         name="about-self"
                         placeholder="Type it here"
-                        className="min-h-20"
+                        className="min-h-14"
                     />
                 </div>
 
@@ -140,7 +140,7 @@ export default function ApplicationForm({ positionId, position_name }) {
                     </p>
                     <Textarea
                         name="output"
-                        className="min-h-56"
+                        className="min-h-40"
                         placeholder="Type or paste your output here"
                     />
                 </div>
