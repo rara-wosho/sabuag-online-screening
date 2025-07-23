@@ -53,15 +53,19 @@ export default async function JoinUsPage() {
                         </p>
 
                         <div className="flex items-center gap-2 mt-6">
-                            <Link
-                                href="/about"
-                                className="py-1.5 px-4 cursor-pointer hover:opacity-90 tracking-wide bg-neutral-200 rounded text-neutral-900 "
-                            >
-                                Learn more
-                            </Link>
+                            <Button size="sm" asChild>
+                                <Link href="mailto:sabuag@gmail.edu.ph">
+                                    Send an Email
+                                </Link>
+                            </Button>
 
-                            <Button variant="outline" asChild>
-                                <a href="#feedback">Submit feedback</a>
+                            <Button
+                                size="sm"
+                                variant="outline"
+                                className="text-sm"
+                                asChild
+                            >
+                                <a href="#feedback">Feedback</a>
                             </Button>
                         </div>
                     </>

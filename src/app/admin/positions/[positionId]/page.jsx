@@ -5,7 +5,6 @@ import { createClient } from "@/utils/supabase/server";
 import { ChevronLeft } from "lucide-react";
 
 export default async function Page({ params }) {
-    await new Promise((res) => setTimeout(res, 5000));
     const { positionId } = await params;
 
     const supabase = await createClient();
