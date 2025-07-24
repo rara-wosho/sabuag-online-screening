@@ -5,17 +5,22 @@ import Navlinks from "./Navlinks";
 
 export default async function Navbar() {
     const supabase = await createClient();
-    const { data, error } = await supabase.auth.getUser();
-
-    if (data) {
-        console.log("user data", data);
-    }
+    const {
+        data: { user },
+        error,
+    } = await supabase.auth.getUser();
 
     if (error) {
         throw new Error(
             "We cannot fetch the data. Please make sure that you have a stable internet connection and try again."
         );
     }
+
+    const { data: userData, error: userDataError } = await supabase
+        .from("users")
+        .select()
+        .single()
+        .eq("id", user.id);
 
     return (
         <div className="flex items-center justify-center border-b border-b-neutral-300 dark:border-neutral-800 fixed top-0 left-0 w-full backdrop-blur-xl  bg-background/30 px-3 z-50">
@@ -27,13 +32,13 @@ export default async function Navbar() {
                     <Image
                         src="/official-sabuag.png"
                         width={25}
-                        height={25}
+                        height={31}
                         alt="sabuag logo"
                     />
                     <span className="hidden md:flex">Sabuag</span>
                 </Link>
 
-                <Navlinks user={data} />
+                <Navlinks userData={userData} />
             </nav>
         </div>
     );

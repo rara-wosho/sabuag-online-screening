@@ -98,7 +98,7 @@ export function AppSidebar() {
                                     <SidebarMenuButton
                                         onClick={logout}
                                         asChild
-                                        className="hover:bg-red-400/10 duration-200 transition-colors hover:text-red-400"
+                                        className="hover:bg-red-400/10 duration-200 cursor-pointer transition-colors hover:text-red-400"
                                     >
                                         <div>
                                             <LogOut />
