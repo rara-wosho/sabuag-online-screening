@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function Error({ error, reset }) {
+export default function Error({ error }) {
     const router = useRouter();
     return (
         <div className="min-h-[70vh] w-full items-center justify-center flex flex-col">
@@ -21,8 +21,8 @@ export default function Error({ error, reset }) {
             </p>
 
             <div className="flex items-center gap-3 mt-4">
-                <Button onClick={() => router.back()} variant="outline">
-                    Back
+                <Button onClick={() => router.refresh()} variant="outline">
+                    Try again
                 </Button>
             </div>
         </div>

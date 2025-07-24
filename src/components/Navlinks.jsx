@@ -24,7 +24,7 @@ const Navlinks = ({ user }) => {
             </button>
 
             {(!isMobile || open) && (
-                <div className="animate-show flex flex-col md:flex-row bg-card md:bg-transparent rounded-md p-4 md:items-center gap-x-3 md:gap-x-6 gap-y-3 absolute md:static right-8 top-0">
+                <div className="animate-show flex flex-col md:flex-row bg-card md:bg-transparent rounded-md p-4 md:p-0 md:items-center gap-x-3 md:gap-x-6 gap-y-3 md:gap-y-0 absolute md:static right-8 top-0">
                     <Link
                         className={cn(
                             "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",

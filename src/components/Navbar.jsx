@@ -5,10 +5,16 @@ import Navlinks from "./Navlinks";
 
 export default async function Navbar() {
     const supabase = await createClient();
-    const { data } = await supabase.auth.getUser();
+    const { data, error } = await supabase.auth.getUser();
 
     if (data) {
         console.log("user data", data);
+    }
+
+    if (error) {
+        throw new Error(
+            "We cannot fetch the data. Please make sure that you have a stable internet connection and try again."
+        );
     }
 
     return (
