@@ -27,22 +27,22 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <SidebarMenuButton variant="outline" asChild>
                             <Link
-                                href="/profile"
-                                className="py-5 flex items-center"
+                                href="/"
+                                className="py-5 flex items-center dark:hover:text-neutral-300 bg-transparent hover:bg-transparent active:bg-transparent"
                             >
                                 <Image
                                     alt="logo"
                                     src="/official-sabuag.png"
-                                    width={30}
+                                    width={25}
                                     height={30}
                                 />
-                                <div className="flex flex-col">
-                                    <span className="font-bold tracking-widest">
-                                        SABUAG
-                                    </span>
-                                    <span className="dark:text-neutral-400 text-xs">
+                                <div className="flex flex-col truncate w-full ms-1">
+                                    <p className="font-bold uppercase">
+                                        Sabuag
+                                    </p>
+                                    <p className="font-medium text-xs dark:text-neutral-400">
                                         Campus Publication
-                                    </span>
+                                    </p>
                                 </div>
                                 <div className="md:hidden ms-auto">
                                     <SidebarTrigger />

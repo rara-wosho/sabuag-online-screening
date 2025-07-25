@@ -21,7 +21,7 @@ export const ToggleThemeButton = () => {
                 setDark(!dark);
             }}
         >
-            {dark ? <Moon /> : <Sun />}
+            {dark ? <Moon size={20} /> : <Sun size={20} />}
         </button>
     );
 };
