@@ -37,7 +37,7 @@ export default async function AdminLayoutHeader() {
                 </div>
                 <Link
                     href={`/user/${data.id}`}
-                    className="flex items-center ms-1 justify-center rounded-full bg-card ps-2 pe-3 gap-2 py-1"
+                    className="flex items-center justify-center"
                 >
                     <Image
                         src="/default-pic.jpg"
@@ -46,7 +46,7 @@ export default async function AdminLayoutHeader() {
                         alt="avatar"
                         className="rounded-full"
                     />
-                    <p className="text-xs hidden md:flex">
+                    <p className="text-xs hidden md:flex px-2">
                         {data?.firstname} {data.lastname}
                     </p>
                 </Link>
