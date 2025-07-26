@@ -8,6 +8,7 @@ import { Bell } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
+import { toast } from "sonner";
 
 export default function AdminLayoutHeader({ currentUserId }) {
     const [userData, setUserData] = useState({});
@@ -25,14 +26,14 @@ export default function AdminLayoutHeader({ currentUserId }) {
                     .eq("id", currentUserId);
 
                 if (error) {
-                    throw new Error(
+                    toast.error(
                         "Please make sure that you have a stable internet connection."
                     );
                 }
-
+                console.log(data);
                 setUserData(data);
             } catch (err) {
-                console.log(err.message);
+                console.error("Admin layout error : ", err.message);
             } finally {
                 setLoading(false);
             }
@@ -45,7 +46,7 @@ export default function AdminLayoutHeader({ currentUserId }) {
         <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5 z-50">
             <SidebarTrigger />
 
-            {loading && (
+            {loading ? (
                 <div className="flex items-center justify-between w-full ms-2">
                     <Skeleton className="h-5 rounded w-32" />
                     <div className="ms-auto flex gap-2">
@@ -55,9 +56,7 @@ export default function AdminLayoutHeader({ currentUserId }) {
                         <Skeleton className="h-5 rounded w-16" />
                     </div>
                 </div>
-            )}
-
-            {!loading && (
+            ) : (
                 <>
                     <div className="md:flex items-center  gap-2 border-s ps-3 ms-2 hidden">
                         <p className="font-medium">
@@ -75,7 +74,7 @@ export default function AdminLayoutHeader({ currentUserId }) {
                             <ToggleThemeButton className="hover:text-accent-foreground" />
                         </div>
                         <Link
-                            href={`/user/${userData.id}`}
+                            href={`/user/${userData?.id}`}
                             className="flex items-center justify-center"
                         >
                             <Image
@@ -86,7 +85,7 @@ export default function AdminLayoutHeader({ currentUserId }) {
                                 className="rounded-full"
                             />
                             <p className="text-xs hidden md:flex px-2">
-                                {userData?.firstname} {userData.lastname}
+                                {userData?.firstname} {userData?.lastname}
                             </p>
                         </Link>
                     </div>
