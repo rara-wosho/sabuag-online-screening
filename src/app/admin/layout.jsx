@@ -3,7 +3,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import RightPanel from "./right-panel";
 import AdminLayoutHeader from "@/components/AdminLayoutHeader";
 
-export default async function Layout({ children }) {
+export default function Layout({ children }) {
     return (
         <SidebarProvider>
             <AppSidebar />
