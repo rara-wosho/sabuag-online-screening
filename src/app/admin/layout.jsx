@@ -3,13 +3,13 @@ import { AppSidebar } from "@/components/app-sidebar";
 import RightPanel from "./right-panel";
 import AdminLayoutHeader from "@/components/AdminLayoutHeader";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
     return (
         <SidebarProvider>
             <AppSidebar />
             <div className="w-full ">
                 <main className="min-h-screen relative">
-                    {/* <AdminLayoutHeader /> */}
+                    <AdminLayoutHeader />
 
                     {/* layout body  */}
                     <div className="py-3 flex">
