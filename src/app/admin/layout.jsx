@@ -10,7 +10,7 @@ export default function Layout({ children }) {
             <div className="w-full ">
                 <main className="min-h-screen relative">
                     {/* layout header  */}
-                    <AdminLayoutHeader />
+                    {/* <AdminLayoutHeader /> */}
 
                     {/* layout body  */}
                     <div className="py-3 flex">
