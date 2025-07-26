@@ -13,7 +13,7 @@ export default function NotFound() {
 
             <p className="text-center font-semibold text-3xl mb-3">Whoops!</p>
             <p className="dark:text-neutral-400 text-center">
-                We could not find the page you were looking for.
+                We could not find this user.
             </p>
 
             <BackButton containerStyle="border rounded py-1.5 px-8 cursor-pointer mt-4 text-sm">

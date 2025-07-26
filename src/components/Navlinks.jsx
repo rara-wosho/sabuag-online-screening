@@ -74,7 +74,7 @@ const Navlinks = ({ userData }) => {
                                     userData.role === "superadmin" ||
                                     userData.role === "admin"
                                         ? "/admin"
-                                        : "/user/profile"
+                                        : `/user/${userData.id}`
                                 }
                             >
                                 {userData.role === "superadmin" ||

@@ -71,7 +71,10 @@ export default function PositionTab({ id, title, description, is_open }) {
     return (
         <>
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-                <DialogContent className="bg-card">
+                <DialogContent
+                    onOpenAutoFocus={(event) => event.preventDefault()}
+                    className="bg-card"
+                >
                     <DialogHeader>
                         <>
                             <DialogTitle className="text-start">
@@ -97,6 +100,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                                 placeholder="Description"
                                 defaultValue={description}
                                 name="description"
+                                className="min-h-20 whitespace-break-spaces max-w-full"
                             />
                         </div>
                         <div className="mb-1 mt-4 flex flex-col items-start">

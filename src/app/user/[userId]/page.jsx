@@ -12,13 +12,15 @@ export default async function ProfilePage({ params }) {
         .single()
         .eq("id", userId);
 
+    if (error || data.id == null) {
+        notFound();
+    }
+
     const {
         data: { user },
     } = await db.auth.getUser();
 
-    if (user.id !== data.id) {
-        notFound();
-    }
+    const isOwner = data.id === user.id;
 
-    return <div>Profile page</div>;
+    return <div>Profile page {isOwner ? "owner" : "not owner"}</div>;
 }

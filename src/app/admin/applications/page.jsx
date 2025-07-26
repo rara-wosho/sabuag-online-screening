@@ -1,5 +1,4 @@
 import { createClient } from "@/utils/supabase/server";
-
 import ApplicationsTable from "@/components/ApplicationsTable";
 
 export default async function AdminPage() {
@@ -7,7 +6,7 @@ export default async function AdminPage() {
 
     const { data, error } = await db
         .from("applicants")
-        .select()
+        .select("*")
         .order("created_at", { ascending: false });
 
     if (error) {

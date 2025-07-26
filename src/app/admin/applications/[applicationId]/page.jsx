@@ -54,7 +54,7 @@ export default async function ApplicationDetails({ params }) {
 
                     {data.about_self && (
                         <div className="mb-3 pb-3 border-b">
-                            <p className="text-neutral-600 dark:text-neutral-300/90 text-sm">
+                            <p className="text-neutral-600 whitespace-pre-wrap dark:text-neutral-300/90 text-sm">
                                 {data.about_self}
                             </p>
                         </div>
@@ -69,7 +69,7 @@ export default async function ApplicationDetails({ params }) {
                             <Mail size={16} /> {data.email}
                         </p>
                         <p className="mb-1 gap-2 flex items-center bg-accent dark:bg-background p-2 rounded">
-                            <Facebook size={16} />
+                            FB:
                             {data.facebook ? (
                                 data.facebook
                             ) : (
