@@ -1,4 +1,3 @@
-import React from "react";
 import { SidebarTrigger } from "./ui/sidebar";
 import Image from "next/image";
 import { ToggleThemeButton } from "./ui/ToggleThemeButton";
@@ -8,23 +7,36 @@ import Link from "next/link";
 
 export default async function AdminLayoutHeader() {
     const supabase = await createClient();
+    let userData = {};
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
+    try {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
 
-    const { data, error } = await supabase
-        .from("users")
-        .select("id, firstname, lastname")
-        .single()
-        .eq("id", user.id);
+        const { data, error } = await supabase
+            .from("users")
+            .select("id, firstname, lastname")
+            .single()
+            .eq("id", user.id);
+
+        if (error) {
+            throw new Error(
+                "Please make sure that you have a stable internet connection."
+            );
+        }
+
+        userData = data;
+    } catch (err) {
+        console.log(err.message);
+    }
 
     return (
         <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5 z-50">
             <SidebarTrigger />
             <div className="md:flex items-center  gap-2 border-s ps-3 ms-2 hidden">
                 <p className="font-medium">
-                    Welcome back, {data?.firstname} 👋
+                    Welcome back, {userData?.firstname} 👋
                 </p>
             </div>
             <div className="ms-auto flex items-center gap-3 md:pe-2">
@@ -35,7 +47,7 @@ export default async function AdminLayoutHeader() {
                     <ToggleThemeButton className="hover:text-accent-foreground" />
                 </div>
                 <Link
-                    href={`/user/${data.id}`}
+                    href={`/user/${userData.id}`}
                     className="flex items-center justify-center"
                 >
                     <Image
@@ -46,7 +58,7 @@ export default async function AdminLayoutHeader() {
                         className="rounded-full"
                     />
                     <p className="text-xs hidden md:flex px-2">
-                        {data?.firstname} {data.lastname}
+                        {userData?.firstname} {userData.lastname}
                     </p>
                 </Link>
             </div>
