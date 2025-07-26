@@ -9,7 +9,6 @@ export default function Layout({ children }) {
             <AppSidebar />
             <div className="w-full ">
                 <main className="min-h-screen relative">
-                    {/* layout header  */}
                     {/* <AdminLayoutHeader /> */}
 
                     {/* layout body  */}

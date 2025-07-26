@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ToggleThemeButton } from "./ui/ToggleThemeButton";
 import { createClient } from "@/utils/supabase/server";
 import { Bell } from "lucide-react";
-import { notFound } from "next/navigation";
 import Link from "next/link";
 
 export default async function AdminLayoutHeader() {
