@@ -2,14 +2,27 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import RightPanel from "./right-panel";
 import AdminLayoutHeader from "@/components/AdminLayoutHeader";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+    const db = await createClient();
+
+    const {
+        data: { user },
+        error,
+    } = await db.auth.getUser();
+
+    if (error) {
+        throw new Error(
+            "Please make sure that you have a stable internet connection."
+        );
+    }
     return (
         <SidebarProvider>
             <AppSidebar />
             <div className="w-full ">
                 <main className="min-h-screen relative">
-                    <AdminLayoutHeader />
+                    <AdminLayoutHeader currentUserId={user.id} />
 
                     {/* layout body  */}
                     <div className="py-3 flex">

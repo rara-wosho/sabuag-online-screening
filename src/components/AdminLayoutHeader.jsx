@@ -9,8 +9,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Skeleton } from "./ui/skeleton";
 
-export default function AdminLayoutHeader() {
-    const [userData, setUserData] = useState(null);
+export default function AdminLayoutHeader({ currentUserId }) {
+    const [userData, setUserData] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,15 +18,11 @@ export default function AdminLayoutHeader() {
             const supabase = createClient();
 
             try {
-                const {
-                    data: { user },
-                } = await supabase.auth.getUser();
-
                 const { data, error } = await supabase
                     .from("users")
                     .select("id, firstname, lastname")
                     .single()
-                    .eq("id", user.id);
+                    .eq("id", currentUserId);
 
                 if (error) {
                     throw new Error(
