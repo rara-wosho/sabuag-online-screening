@@ -66,7 +66,15 @@ const Navlinks = ({ currentUser }) => {
                     </Link>
 
                     <ToggleThemeButton />
-                    {currentUser?.id !== null ? (
+                    {currentUser === null ? (
+                        <Button
+                            asChild
+                            className="rounded text-sm ms-2"
+                            size="sm"
+                        >
+                            <Link href="/login">Sign In</Link>
+                        </Button>
+                    ) : (
                         <Button size="sm" asChild>
                             <Link
                                 onClick={() => toggleOpen(false)}
@@ -82,14 +90,6 @@ const Navlinks = ({ currentUser }) => {
                                     ? "Dashboard"
                                     : "Profile"}
                             </Link>
-                        </Button>
-                    ) : (
-                        <Button
-                            asChild
-                            className="rounded text-sm ms-2"
-                            size="sm"
-                        >
-                            <Link href="/login">Sign In</Link>
                         </Button>
                     )}
 
