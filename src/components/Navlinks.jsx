@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const Navlinks = ({ user }) => {
+const Navlinks = () => {
     const isMobile = useIsMobile();
 
     const [hasMounted, setHasMounted] = useState(false);
@@ -93,24 +93,9 @@ const Navlinks = ({ user }) => {
                         </Button>
                         )} */}
 
-                    {user.id !== null && (
-                        <Button
-                            asChild
-                            className="rounded text-sm ms-2"
-                            size="sm"
-                        >
-                            <Link href={`/user/${user.id}`}>Profile</Link>
-                        </Button>
-                    )}
-                    {user.id === null && (
-                        <Button
-                            asChild
-                            className="rounded text-sm ms-2"
-                            size="sm"
-                        >
-                            <Link href={`/login`}>Sign In</Link>
-                        </Button>
-                    )}
+                    <Button asChild className="rounded text-sm ms-2" size="sm">
+                        <Link href={`/login`}>Sign In</Link>
+                    </Button>
                 </div>
             )}
         </div>
