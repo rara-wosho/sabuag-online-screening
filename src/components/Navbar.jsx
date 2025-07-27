@@ -3,6 +3,7 @@ import Link from "next/link";
 import Navlinks from "./Navlinks";
 
 export default function Navbar({ currentUser }) {
+    if (!currentUser) return null;
     return (
         <div className="flex items-center justify-center border-b border-b-neutral-300 dark:border-neutral-800 fixed top-0 left-0 w-full backdrop-blur-xl  bg-background/30 px-3 z-50">
             <nav className="py-3 w-full max-w-[1200px] flex items-center">

@@ -66,7 +66,7 @@ const Navlinks = ({ currentUser }) => {
                     </Link>
 
                     <ToggleThemeButton />
-                    {currentUser.id !== null ? (
+                    {currentUser?.id !== null ? (
                         <Button size="sm" asChild>
                             <Link
                                 onClick={() => toggleOpen(false)}
