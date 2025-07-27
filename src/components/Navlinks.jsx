@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const Navlinks = ({ userData }) => {
+const Navlinks = ({ session }) => {
     const isMobile = useIsMobile();
 
     const [hasMounted, setHasMounted] = useState(false);
@@ -66,7 +66,7 @@ const Navlinks = ({ userData }) => {
                     </Link>
 
                     <ToggleThemeButton />
-                    {userData.role !== null ? (
+                    {/* {userData.id !== null ? (
                         <Button size="sm" asChild>
                             <Link
                                 onClick={() => toggleOpen(false)}
@@ -90,6 +90,25 @@ const Navlinks = ({ userData }) => {
                             size="sm"
                         >
                             <Link href="/login">Sign In</Link>
+                        </Button>
+                        )} */}
+
+                    {session.id !== null && (
+                        <Button
+                            asChild
+                            className="rounded text-sm ms-2"
+                            size="sm"
+                        >
+                            <Link href={`/user/${session.id}`}>Profile</Link>
+                        </Button>
+                    )}
+                    {session.id === null && (
+                        <Button
+                            asChild
+                            className="rounded text-sm ms-2"
+                            size="sm"
+                        >
+                            <Link href={`/login`}>Sign In</Link>
                         </Button>
                     )}
                 </div>
