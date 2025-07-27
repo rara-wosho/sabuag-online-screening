@@ -21,7 +21,7 @@ export default async function Layout({ children }) {
     }
 
     return (
-        <div className="">
+        <div>
             <Navbar currentUser={currentUser} />
             {children}
             <footer className="p-8 border-t">Footer</footer>
