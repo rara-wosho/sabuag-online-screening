@@ -2,14 +2,38 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import RightPanel from "./right-panel";
 import AdminLayoutHeader from "@/components/AdminLayoutHeader";
+import { createClient } from "@/utils/supabase/server";
+import { notFound } from "next/navigation";
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+    const supabase = await createClient();
+
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
+    let currentUser = null;
+
+    if (user?.id) {
+        const { data, error } = await supabase
+            .from("users")
+            .select("id, firstname, lastname, role")
+            .eq("id", user.id)
+            .single();
+
+        if (!error) currentUser = data;
+
+        if (currentUser?.role === "user") {
+            notFound();
+        }
+    }
+
     return (
         <SidebarProvider>
             <AppSidebar />
             <div className="w-full ">
                 <main className="min-h-screen relative">
-                    <AdminLayoutHeader />
+                    <AdminLayoutHeader currentUser={currentUser} />
 
                     {/* layout body  */}
                     <div className="py-3 flex">

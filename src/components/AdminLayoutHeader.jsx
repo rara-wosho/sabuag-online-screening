@@ -1,14 +1,18 @@
+import Link from "next/link";
 import { SidebarTrigger } from "./ui/sidebar";
 import { ToggleThemeButton } from "./ui/ToggleThemeButton";
 import { Bell } from "lucide-react";
+import Image from "next/image";
 
-export default async function AdminLayoutHeader() {
+export default function AdminLayoutHeader({ currentUser }) {
     return (
         <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5 z-50">
             <SidebarTrigger />
             <>
                 <div className="md:flex items-center  gap-2 border-s ps-3 ms-2 hidden">
-                    <p className="font-medium">Welcome back, Admin 👋</p>
+                    <p className="font-medium">
+                        Welcome back, {currentUser?.firstname} 👋
+                    </p>
                 </div>
                 <div className="ms-auto flex items-center gap-3 md:pe-2">
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
@@ -20,8 +24,8 @@ export default async function AdminLayoutHeader() {
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
                         <ToggleThemeButton className="hover:text-accent-foreground" />
                     </div>
-                    {/* <Link
-                        href={`/user/${data?.id}`}
+                    <Link
+                        href={`/user/${currentUser?.id}`}
                         className="flex items-center justify-center"
                     >
                         <Image
@@ -32,9 +36,9 @@ export default async function AdminLayoutHeader() {
                             className="rounded-full"
                         />
                         <p className="text-xs hidden md:flex px-2">
-                            {data?.firstname} {data?.lastname}
+                            {currentUser?.firstname} {currentUser?.lastname}
                         </p>
-                    </Link> */}
+                    </Link>
                 </div>
             </>
         </div>
