@@ -9,7 +9,7 @@ import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const Navlinks = () => {
+const Navlinks = ({ currentUser }) => {
     const isMobile = useIsMobile();
 
     const [hasMounted, setHasMounted] = useState(false);
@@ -66,19 +66,19 @@ const Navlinks = () => {
                     </Link>
 
                     <ToggleThemeButton />
-                    {/* {userData.id !== null ? (
+                    {currentUser.id !== null ? (
                         <Button size="sm" asChild>
                             <Link
                                 onClick={() => toggleOpen(false)}
                                 href={
-                                    userData?.role === "superadmin" ||
-                                    userData?.role === "admin"
+                                    currentUser?.role === "superadmin" ||
+                                    currentUser?.role === "admin"
                                         ? "/admin"
-                                        : `/user/${userData?.id}`
+                                        : `/user/${currentUser?.id}`
                                 }
                             >
-                                {userData?.role === "superadmin" ||
-                                userData?.role === "admin"
+                                {currentUser?.role === "superadmin" ||
+                                currentUser?.role === "admin"
                                     ? "Dashboard"
                                     : "Profile"}
                             </Link>
@@ -91,11 +91,11 @@ const Navlinks = () => {
                         >
                             <Link href="/login">Sign In</Link>
                         </Button>
-                        )} */}
+                    )}
 
-                    <Button asChild className="rounded text-sm ms-2" size="sm">
+                    {/* <Button asChild className="rounded text-sm ms-2" size="sm">
                         <Link href={`/login`}>Sign In</Link>
-                    </Button>
+                    </Button> */}
                 </div>
             )}
         </div>
