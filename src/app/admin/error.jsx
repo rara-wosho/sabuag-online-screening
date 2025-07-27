@@ -16,8 +16,8 @@ export default function Error({ error }) {
                 className="opacity-50"
             />
             <h2>Something went wrong!</h2>
-            <p className="py-2 text-neutral-600 dark:text-neutral-400">
-                {error.message}
+            <p className="py-2 text-center text-neutral-600 dark:text-neutral-400">
+                Please make sure that you have a stable internet connection.
             </p>
 
             <div className="flex items-center gap-3 mt-4">

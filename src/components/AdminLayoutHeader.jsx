@@ -6,18 +6,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
 import { notFound } from "next/navigation";
 
-export default async function AdminLayoutHeader({ currentUserId }) {
-    const supabase = await createClient();
-
-    const { data, error } = await supabase
-        .from("users")
-        .select("id, firstname, lastname")
-        .single()
-        .eq("id", currentUserId);
-
-    if (data.firstname === null) {
-        notFound();
-    }
+export default async function AdminLayoutHeader() {
     // const [userData, setUserData] = useState({});
     // const [loading, setLoading] = useState(true);
 
@@ -54,9 +43,7 @@ export default async function AdminLayoutHeader({ currentUserId }) {
             <SidebarTrigger />
             <>
                 <div className="md:flex items-center  gap-2 border-s ps-3 ms-2 hidden">
-                    <p className="font-medium">
-                        Welcome back, {data?.firstname} 👋
-                    </p>
+                    <p className="font-medium">Welcome back, Admin 👋</p>
                 </div>
                 <div className="ms-auto flex items-center gap-3 md:pe-2">
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
@@ -68,7 +55,7 @@ export default async function AdminLayoutHeader({ currentUserId }) {
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
                         <ToggleThemeButton className="hover:text-accent-foreground" />
                     </div>
-                    <Link
+                    {/* <Link
                         href={`/user/${data?.id}`}
                         className="flex items-center justify-center"
                     >
@@ -82,7 +69,7 @@ export default async function AdminLayoutHeader({ currentUserId }) {
                         <p className="text-xs hidden md:flex px-2">
                             {data?.firstname} {data?.lastname}
                         </p>
-                    </Link>
+                    </Link> */}
                 </div>
             </>
         </div>
