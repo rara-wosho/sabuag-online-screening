@@ -1,3 +1,9 @@
+import HeroSection from "@/components/Sections/HeroSection";
+
 export default function RootPage() {
-    return <div>root page</div>;
+    return (
+        <div>
+            <HeroSection />
+        </div>
+    );
 }

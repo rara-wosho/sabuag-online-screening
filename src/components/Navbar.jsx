@@ -16,7 +16,7 @@ export default function Navbar({ currentUser }) {
                         height={31}
                         alt="sabuag logo"
                     />
-                    <span className="hidden md:flex">Sabuag</span>
+                    <span className="inline-flex">Sabuag</span>
                 </Link>
 
                 <Navlinks currentUser={currentUser} />

@@ -12,8 +12,6 @@ export default async function ResultsPage({ searchParams }) {
         .select("*")
         .ilike("fullname", `%${search}%`);
 
-    console.log("result : ", results);
-
     return (
         <div className="mt-6">
             <div className="flex items-center mb-3">
@@ -22,7 +20,8 @@ export default async function ResultsPage({ searchParams }) {
                     <span className="text-sm">Back</span>
                 </BackButton>
                 <p className="ms-auto text-sm text-neutral-600 dark:text-neutral-400">
-                    Showing results for '{search}'
+                    Showing {results.length} result{results.length > 1 && "s"}{" "}
+                    for '{search}'
                 </p>
             </div>
             <ApplicationsTable data={results} search={search} />

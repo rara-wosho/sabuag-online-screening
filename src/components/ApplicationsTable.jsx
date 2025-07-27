@@ -164,8 +164,10 @@ export default function ApplicationsTable({ data, search }) {
                                     {data.fullname}
                                 </Link>
                             </TableCell>
-                            <TableCell>{data.position_name}</TableCell>
-                            <TableCell>
+                            <TableCell className="dark:text-neutral-400/90">
+                                {data.position_name}
+                            </TableCell>
+                            <TableCell className="dark:text-neutral-400/90">
                                 {dateFormatter(data.created_at)}
                             </TableCell>
                             <TableCell className="text-right">

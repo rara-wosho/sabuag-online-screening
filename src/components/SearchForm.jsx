@@ -25,7 +25,7 @@ export default function SearchForm() {
                 name="search"
                 type="search"
                 placeholder="Search applicant"
-                className="w-full"
+                className="w-full text-sm"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />

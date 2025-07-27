@@ -54,16 +54,33 @@ const Navlinks = ({ currentUser }) => {
                     >
                         About
                     </Link>
-                    <Link
-                        className={cn(
-                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
-                            pathname.startsWith("/join") && "text-primary"
-                        )}
-                        onClick={() => toggleOpen(false)}
-                        href="/join"
-                    >
-                        Join
-                    </Link>
+
+                    {currentUser?.role === "user" && (
+                        <Link
+                            className={cn(
+                                "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                                pathname.startsWith("/join") && "text-primary"
+                            )}
+                            onClick={() => toggleOpen(false)}
+                            href="/join"
+                        >
+                            Join
+                        </Link>
+                    )}
+                    {(currentUser?.role === "admin" ||
+                        currentUser?.role === "superadmin") && (
+                        <Link
+                            className={cn(
+                                "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                                pathname.startsWith("/feedbacks") &&
+                                    "text-primary"
+                            )}
+                            onClick={() => toggleOpen(false)}
+                            href="/feedbacks"
+                        >
+                            Feedbacks
+                        </Link>
+                    )}
 
                     <ToggleThemeButton />
                     {currentUser === null ? (
@@ -72,7 +89,7 @@ const Navlinks = ({ currentUser }) => {
                             className="rounded text-sm ms-2"
                             size="sm"
                         >
-                            <Link href="/login">Sign In</Link>
+                            <Link href="/login">Members Login</Link>
                         </Button>
                     ) : (
                         <Button size="sm" asChild>
