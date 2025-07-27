@@ -16,12 +16,13 @@ export default async function Navbar() {
         );
     }
 
-    const { data: userData, error: userDataError } = await supabase
+    const { data: userData } = await supabase
         .from("users")
-        .select()
-        .single()
-        .eq("id", user.id);
+        .select("id, role")
+        .eq("id", user.id)
+        .single();
 
+    console.log("User data: ", userData);
     return (
         <div className="flex items-center justify-center border-b border-b-neutral-300 dark:border-neutral-800 fixed top-0 left-0 w-full backdrop-blur-xl  bg-background/30 px-3 z-50">
             <nav className="py-3 w-full max-w-[1200px] flex items-center">

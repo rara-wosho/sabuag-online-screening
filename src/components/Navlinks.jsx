@@ -66,19 +66,19 @@ const Navlinks = ({ userData }) => {
                     </Link>
 
                     <ToggleThemeButton />
-                    {userData ? (
+                    {userData.role !== null ? (
                         <Button size="sm" asChild>
                             <Link
                                 onClick={() => toggleOpen(false)}
                                 href={
-                                    userData.role === "superadmin" ||
-                                    userData.role === "admin"
+                                    userData?.role === "superadmin" ||
+                                    userData?.role === "admin"
                                         ? "/admin"
-                                        : `/user/${userData.id}`
+                                        : `/user/${userData?.id}`
                                 }
                             >
-                                {userData.role === "superadmin" ||
-                                userData.role === "admin"
+                                {userData?.role === "superadmin" ||
+                                userData?.role === "admin"
                                     ? "Dashboard"
                                     : "Profile"}
                             </Link>
