@@ -24,7 +24,9 @@ export default async function Layout({ children }) {
         <div>
             <Navbar currentUser={currentUser} />
             {children}
-            <footer className="p-8 border-t">Footer</footer>
+            <footer className="p-8 border-t dark:border-t-neutral-800/70">
+                Footer
+            </footer>
         </div>
     );
 }
