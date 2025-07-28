@@ -55,32 +55,26 @@ const Navlinks = ({ currentUser }) => {
                         About
                     </Link>
 
-                    {currentUser?.role === "user" && (
-                        <Link
-                            className={cn(
-                                "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
-                                pathname.startsWith("/join") && "text-primary"
-                            )}
-                            onClick={() => toggleOpen(false)}
-                            href="/join"
-                        >
-                            Join
-                        </Link>
-                    )}
-                    {(currentUser?.role === "admin" ||
-                        currentUser?.role === "superadmin") && (
-                        <Link
-                            className={cn(
-                                "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
-                                pathname.startsWith("/feedbacks") &&
-                                    "text-primary"
-                            )}
-                            onClick={() => toggleOpen(false)}
-                            href="/feedbacks"
-                        >
-                            Feedbacks
-                        </Link>
-                    )}
+                    <Link
+                        className={cn(
+                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                            pathname.startsWith("/join") && "text-primary"
+                        )}
+                        onClick={() => toggleOpen(false)}
+                        href="/join"
+                    >
+                        Join
+                    </Link>
+                    <Link
+                        className={cn(
+                            "text-sm md:font-semibold md:tracking-widest tracking-wider hover:text-primary duration-200 transition-colors",
+                            pathname.startsWith("/feedbacks") && "text-primary"
+                        )}
+                        onClick={() => toggleOpen(false)}
+                        href="/feedbacks"
+                    >
+                        Feedback
+                    </Link>
 
                     <ToggleThemeButton />
                     {currentUser === null ? (
