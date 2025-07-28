@@ -13,12 +13,16 @@ import { cn } from "@/lib/utils";
 
 const faqs = [
     {
+        question: "Is this an official school organization?",
+        answer: "Yes! We are the official campus publication of USTP Panaon, recognized by the school and advised by a faculty member. We represent the voice of the students.",
+    },
+    {
         question: "Do I need prior experience to join?",
         answer: "Not at all! Whether you were part of a high school publication or you're just starting to explore journalism, design, or photography — we welcome all skill levels. We offer training and mentorship for every member.",
     },
     {
         question: "What roles can I apply for?",
-        answer: "We open different roles depending on the semester's needs. These can include News Writer, Feature Writer, Editorial Cartoonist, Layout Artist, Photographer, Video Editor, and more. Check the Join Us page for available positions.",
+        answer: "We open different roles depending on the semester's needs. These can include Writer, Editorial Cartoonist, Layout Artist, Photographer, Video Editor, and more. Check the Join Us page for available positions.",
     },
     {
         question: "What happens after I submit my application?",
@@ -26,23 +30,7 @@ const faqs = [
     },
     {
         question: "How often do you accept new members?",
-        answer: "We typically recruit at the start of each semester, but it depends on team needs. If no roles are currently open, you can still join our waitlist or follow us on social media for updates.",
-    },
-    {
-        question: "What kind of outputs do you publish?",
-        answer: "We publish both print and digital issues, including news reports, feature stories, opinion pieces, photo essays, editorial cartoons, and multimedia content like videos and reels.",
-    },
-    {
-        question: "Is this an official school organization?",
-        answer: "Yes! We are the official campus publication of [Your School/College Name], recognized by the school and advised by a faculty member. We represent the voice of the students.",
-    },
-    {
-        question: "What’s the time commitment like?",
-        answer: "It depends on the role and the issue cycle. On average, members commit a few hours per week for meetings, content creation, or events. We always work around your class schedule.",
-    },
-    {
-        question: "Can I apply for more than one position?",
-        answer: "Yes! You can indicate multiple roles you're interested in. We'll consider where you best fit based on your skills and sample outputs.",
+        answer: "We typically recruit at the start of each semester, but it depends on team needs.",
     },
     {
         question: "How do I submit a photo or video sample?",
@@ -58,7 +46,7 @@ const FaqSection = () => {
     const [active, setActive] = useState(1);
 
     return (
-        <div className="w-full max-w-[1200px] mx-auto py-[10rem] flex flex-col items-center justify-center mb-20">
+        <div className="w-full max-w-[1200px] mx-auto py-[6rem] flex flex-col items-center justify-center px-3 lg:px-0">
             <h1 className="text-center font-semibold text-4xl mb-2">
                 Frequently Asked Questions
             </h1>
@@ -76,7 +64,7 @@ const FaqSection = () => {
                 .
             </p>
 
-            <div className="mt-8 w-full max-w-[800px] flex flex-col gap-4">
+            <div className="mt-8 w-full max-w-[900px] flex flex-col gap-3">
                 {faqs.map((faq, index) => (
                     <Collapsible
                         key={index}
@@ -89,7 +77,9 @@ const FaqSection = () => {
                         className="w-full bg-slate-100 dark:bg-card rounded-lg p-4"
                     >
                         <CollapsibleTrigger className="w-full text-start cursor-pointer flex items-center justify-between">
-                            <p>{faq.question}</p>
+                            <p className="md:text-lg font-medium">
+                                {faq.question}
+                            </p>
                             <div
                                 className={cn(
                                     active === index + 1
@@ -102,7 +92,7 @@ const FaqSection = () => {
                             </div>
                         </CollapsibleTrigger>
                         <CollapsibleContent className="pt-2 border-t mt-3">
-                            <p className="text-neutral-700 dark:text-neutral-300/70">
+                            <p className="text-slate-600 dark:text-slate-300/70">
                                 {faq.answer}
                             </p>
                         </CollapsibleContent>
