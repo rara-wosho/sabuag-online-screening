@@ -8,7 +8,7 @@ export default function RootPage() {
     return (
         <div>
             <HeroSection />
-            {/* <MeetTheTeam /> */}
+            <MeetTheTeam />
             <FaqSection />
             <InviteSection />
             {/* <GoalSection />  */}
