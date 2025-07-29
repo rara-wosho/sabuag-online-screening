@@ -1,7 +1,9 @@
+import FeedbackSection from "@/components/FeedbackSection";
+
 export default function FeedbackPage() {
-    return (
-        <div>
-            <h1>Feedbacks</h1>
-        </div>
-    );
+  return (
+    <div className="pt-[4rem]">
+      <FeedbackSection />
+    </div>
+  );
 }
