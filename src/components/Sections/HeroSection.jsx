@@ -19,7 +19,7 @@ export default function HeroSection() {
                 its greatest fault.
             </p>
 
-            <div className="grid grid-cols-2 md:border mb-6 dark:border-neutral-800 rounded-lg md:p-2 gap-x-2 w-full max-w-[400px] mt-8">
+            <div className="grid grid-cols-2 md:border mb-6 dark:border-neutral-800 rounded-lg md:p-2 gap-x-2 w-full max-w-[400px] mt-8 px-4 md:px-0">
                 <Button asChild className="text-sm cursor-pointer">
                     <Link href="/join" className="flex items-center gap-2">
                         Join the Team <UsersRound />

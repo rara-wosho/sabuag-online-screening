@@ -46,7 +46,7 @@ const FaqSection = () => {
     const [active, setActive] = useState(1);
 
     return (
-        <div className="w-full max-w-[1200px] mx-auto py-[6rem] flex flex-col items-center justify-center px-3 lg:px-0">
+        <div className="w-full max-w-[1200px] mx-auto my-[5rem] flex flex-col items-center justify-center px-3 lg:px-0">
             <h1 className="text-center font-semibold text-4xl mb-2">
                 Frequently Asked Questions
             </h1>
