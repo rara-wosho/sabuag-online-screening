@@ -1,45 +1,48 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const MeetTheTeam = () => {
     return (
-        <div className="w-full p-8 relative overflow-hidden isolate">
-            {/* <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[15rem] -z-10 -top-[30rem]"></div>
-            <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[10rem] -z-10 -top-[30rem]"></div>
-            <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[5rem] -z-10 -top-[30rem]"></div>
-            <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[25rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[20rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[15rem] -z-10 -bottom-[10rem]"></div> */}
-
-            <div className="mx-auto w-full max-w-[900px] py-[4rem]">
+        <div className="w-full p-8 relative">
+            <div className="mx-auto w-full max-w-[900px]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="left">
                         <h1 className="text-4xl font-semibold mb-3">
-                            Meet the{" "}
-                            <span className="text-accent-foreground">Team</span>
+                            Meet the people <br />
+                            behind the{" "}
+                            <span className="text-accent-foreground">
+                                Publication
+                            </span>
                         </h1>
-                        <p className="dark:text-slate-300/80">
-                            We’re a team of writers, designers, and storytellers
-                            — We are a group of students who share the same
-                            passion for storytelling, creativity, and campus
-                            life. Our team is made up of writers, artists,
-                            photographers, and designers working together to
-                            bring stories to light.
+                        <p className="dark:text-slate-300/80 py-1">
+                            Our publication is powered by a diverse team of
+                            students who bring their skills and creativity
+                            together. Each member contributes a unique voice
+                            that makes our work possible.
                         </p>
 
-                        <Button size="sm" className="mt-4">
-                            About Us
+                        <Button asChild size="sm" className="mt-4">
+                            <Link href="/about">
+                                <p className="flex items-center gap-1.5">
+                                    About Us <ArrowRight />
+                                </p>
+                            </Link>
                         </Button>
                     </div>
 
-                    <div className="right">
+                    <div className="right relative isolate">
                         <div className="flex flex-col items-center justify-center">
-                            <div className="img-wrapper h-52 w-full relative">
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -top-[1rem] -right-[1rem] -rotate-2 bg-accent/35 rounded-md"></div>
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -bottom-[1rem] -left-[1rem] -rotate-4 bg-accent/35 rounded-md"></div>
+                            <div className="img-wrapper h-56 w-full relative rotate-4 duration-200 hover:rotate-0">
                                 <Image
                                     alt="team photo"
                                     src="/sabuag-team.jpeg"
                                     fill={true}
-                                    objectFit="cover"
+                                    sizes="(max-width: 768px)"
+                                    className="object-cover rounded-md"
                                 />
                             </div>
                         </div>
