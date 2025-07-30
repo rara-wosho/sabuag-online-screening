@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function HeroSection() {
     return (
-        <div className="min-h-screen bg-[url('/sabuag-team.jpeg')] bg-cover bg-center w-full mx-auto flex flex-col items-center justify-center px-3 lg:px-0 overflow-hidden relative isolate after:absolute after:bg-gradient-to-b after:from-background/80 dark:after:from-background/90 after:to-background after:inset-0 after:-z-10">
+        <div className="min-h-screen w-full mx-auto flex flex-col items-center justify-center px-3 lg:px-0 overflow-hidden relative isolate pt-[3rem">
             <p className="z-10 text-4xl md:text-5xl mb-4 max-w-4xl font-semibold tracking-wider text-center text-neutral-800 dark:text-neutral-200 relative">
-                <span className="mb-3 py-1.5 px-2.5 border border-accent-foreground bg-accent/50 dark:bg-accent rounded-full text-xs text-accent-foreground absolute -top-13 left-1/2 -translate-x-1/2 inline-flex items-center gap-2">
+                <span className="mb-3 py-1.5 px-2.5 border border-accent-foreground bg-accent/50 dark:bg-accent rounded-full text-xs text-accent-foreground absolute -top-13 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 whitespace-nowrap">
                     Campus Publication <BookOpenText size={12} />
                 </span>
                 Sustainable and Achievable Broadcasting with Unbiased and

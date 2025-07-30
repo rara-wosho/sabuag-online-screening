@@ -7,7 +7,7 @@ export default function Error({ error, reset }) {
     }, [error]);
 
     return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center">
+        <div className="w-full min-h-[80vh] flex flex-col items-center justify-center">
             <h2>Something went wrong!!</h2>
             {error.message}
             <button onClick={reset}>Try again</button>

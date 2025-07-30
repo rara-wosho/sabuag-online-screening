@@ -4,13 +4,12 @@ import { Button } from "../ui/button";
 const MeetTheTeam = () => {
     return (
         <div className="w-full p-8 relative overflow-hidden isolate">
-            {/* <div className="absolute rounded-[100%] w-[110%] h-[50rem] -top-[40rem] left-1/2 -translate-x-1/2 bg-accent -z-10 "></div> */}
-            <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[15rem] -z-10 -top-[30rem]"></div>
+            {/* <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[15rem] -z-10 -top-[30rem]"></div>
             <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[10rem] -z-10 -top-[30rem]"></div>
             <div className="w-[40rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -left-[5rem] -z-10 -top-[30rem]"></div>
             <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[25rem] -z-10 -bottom-[10rem]"></div>
             <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[20rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[15rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square bg-accent/35 dark:bg-accent/10 rotate-45 absolute -right-[15rem] -z-10 -bottom-[10rem]"></div> */}
 
             <div className="mx-auto w-full max-w-[900px] py-[4rem]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function InviteSection() {
     return (
-        <div className="w-full mx-auto  flex flex-col items-center justify-center py-12 rounded-lg px-3 mb-[6rem]">
+        <div className="w-full mx-auto  flex flex-col items-center justify-center py-12 rounded-lg px-6 md:px-3 lg:px-0 mb-[6rem]">
             <h1 className="text-4xl font-semibold mb-3 text-center">
                 Want To Be Part of the{" "}
                 <span className="text-accent-foreground">Team?</span>
