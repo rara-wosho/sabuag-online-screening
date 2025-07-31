@@ -73,7 +73,7 @@ export async function deleteUser(userId) {
     return { success: true };
 }
 
-export async function logout() {
+export async function logout(path) {
     const supabase = await createClient();
     const { error } = await supabase.auth.signOut({ scope: "local" });
 
@@ -82,6 +82,6 @@ export async function logout() {
         throw new Error("Logout failed");
     }
 
-    revalidatePath("/", "layout");
+    revalidatePath(path, "layout");
     redirect("/login");
 }

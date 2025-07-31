@@ -1,3 +1,5 @@
+"use client";
+
 import { Settings, UsersRound, Bell, LogOut, Mail } from "lucide-react";
 
 import {
@@ -96,7 +98,7 @@ export function AppSidebar() {
                             <div className="py-4 border-t mt-2">
                                 <SidebarMenuItem className="text-destructive">
                                     <SidebarMenuButton
-                                        onClick={logout}
+                                        onClick={() => logout("/admin")}
                                         asChild
                                         className="hover:bg-red-400/10 duration-200 cursor-pointer transition-colors hover:text-red-400"
                                     >

@@ -57,7 +57,7 @@ export default async function FeedbackSection() {
                     <p className="text-xl font-semibold mb-6">All Feedbacks</p>
 
                     {data.length > 0 && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                             {data.map((fb) => (
                                 <FeedbackCard key={fb.id} feedbackData={fb} />
                             ))}
