@@ -7,7 +7,7 @@ const MeetTheTeam = () => {
     return (
         <div className="w-full p-8 relative">
             <div className="mx-auto w-full max-w-[900px]">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10">
                     <div className="left">
                         <h1 className="text-4xl font-semibold mb-3">
                             Meet the people <br />
