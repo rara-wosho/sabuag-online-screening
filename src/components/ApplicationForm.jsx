@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import FormLabel from "./FormLabel";
 import Link from "next/link";
+import { sendNotificationEmail } from "@/lib/actions/email";
 
 export default function ApplicationForm({ positionId, position_name }) {
     const router = useRouter();
@@ -54,6 +55,14 @@ export default function ApplicationForm({ positionId, position_name }) {
             toast.message("Thanks  for applying!", {
                 description: "We’ll review your work and get back to you soon.",
             });
+
+            // send email notification to the admins when a new application is submitted
+            const { error: emailError } = await sendNotificationEmail(
+                data.fullname
+            );
+            if (emailError) {
+                console.error("Email notification failed:", emailError.message);
+            }
 
             router.replace("/join");
         }

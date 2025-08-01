@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Bell } from "lucide-react";
 import Image from "next/image";
-import { ModeToggle } from "./ui/theme-toggler";
+import { ThemeToggler } from "./ui/theme-toggler";
 
 export default function AdminLayoutHeader({ currentUser }) {
     return (
@@ -22,7 +22,7 @@ export default function AdminLayoutHeader({ currentUser }) {
                         />
                     </div>
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
-                        <ModeToggle />
+                        <ThemeToggler />
                     </div>
                     <Link
                         href={`/user/${currentUser?.id}`}

@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { ModeToggle } from "./ui/theme-toggler";
+import { ThemeToggler } from "./ui/theme-toggler";
 
 const Navlinks = ({ currentUser }) => {
     const isMobile = useIsMobile();
@@ -76,7 +76,7 @@ const Navlinks = ({ currentUser }) => {
                         Feedback
                     </Link>
 
-                    <ModeToggle />
+                    <ThemeToggler />
                     {currentUser === null ? (
                         <Button
                             asChild

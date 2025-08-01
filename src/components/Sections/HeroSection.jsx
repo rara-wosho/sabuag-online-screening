@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function HeroSection() {
     return (
         <div className="min-h-screen w-full mx-auto flex flex-col items-center justify-center px-3 lg:px-0 overflow-hidden relative isolate pt-[3rem]">
-            <p className="z-10 text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl font-bold tracking-wider text-center gradient-text relative">
+            <p className="z-10 text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl font-bold tracking-wider text-center inline-block bg-gradient-to-br from-neutral-500 dark:from-neutral-400 via-neutral-800 dark:via-neutral-200 via-50% dark:to-neutral-600 to-neutral-500 bg-clip-text text-transparent relative">
                 {/* badge  */}
                 <span className="mb-3 py-1.5 px-3  bg-accent/50 dark:bg-accent rounded-full text-xs text-accent-foreground absolute -top-13 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 whitespace-nowrap shadow font-semibold">
                     Sabuag Publication <BookOpenText size={12} />
