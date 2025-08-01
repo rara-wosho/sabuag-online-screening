@@ -27,12 +27,12 @@ export default async function Layout({ children }) {
 
     return (
         <div className="relative isolate">
-            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[25rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[20rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-5 bg-accent dark:bg-accent rotate-45 fixed -left-[15rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[20rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[15rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-5 bg-accent dark:bg-accent rotate-45 fixed -right-[10rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -left-[25rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -left-[20rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[15rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -right-[20rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -right-[15rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[10rem] -z-10 -bottom-[10rem]"></div>
 
             <Navbar currentUser={currentUser} />
             {children}

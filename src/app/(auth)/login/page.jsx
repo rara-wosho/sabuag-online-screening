@@ -44,21 +44,24 @@ export default function Page() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-3 relative isolate">
-            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[25rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[20rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-5 bg-accent dark:bg-accent rotate-45 fixed -left-[15rem] -z-10 -top-[6rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[20rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[15rem] -z-10 -bottom-[10rem]"></div>
-            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-5 bg-accent dark:bg-accent rotate-45 fixed -right-[10rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -left-[25rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -left-[20rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -left-[15rem] -z-10 -top-[6rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-90 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -right-[20rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-15 bg-accent dark:bg-accent rotate-45 fixed -right-[15rem] -z-10 -bottom-[10rem]"></div>
+            <div className="w-[30rem] aspect-square opacity-40 dark:opacity-10 bg-accent dark:bg-accent rotate-45 fixed -right-[10rem] -z-10 -bottom-[10rem]"></div>
 
             {/* main content  */}
-            <div className="wrapper flex flex-col items-center justify-center w-full bg-neutral-100 shadow dark:bg-card/30 border dark:border-neutral-800 max-w-[25rem] p-0 md:p-3 rounded-lg">
-                <div className="bg-card w-full rounded-sm p-3 md:p-4">
+            <div className="wrapper flex flex-col items-center justify-center w-full bg-neutral-50 md:bg-neutral-100 shadow dark:bg-card/30 backdrop-blur-xl border dark:border-neutral-800 max-w-[25rem] p-0 md:p-3 rounded-lg">
+                <div className="bg-card w-full rounded-sm p-4 relative">
+                    <div className="w-[100%] absolute top-0 left-1/2 -translate-x-1/2 h-[90%] bg-radial-[at_50%_13%] from-sky-500/0 dark:from-sky-900/30 via-20% via-blue-400/5 to-transparent to-70% "></div>
+
                     <div className="img-wrapper w-16 mx-auto mb-2 aspect-square relative">
                         <Image
                             src="/official-sabuag.png"
                             alt="Official Sabuag"
                             fill
+                            sizes="4rem"
                             className="object-contain"
                         />
                     </div>

@@ -16,14 +16,14 @@ export default async function AboutPage() {
                         sizes="13rem"
                     />
                 </div>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-widest mb-2">
+                <h1 className="text-3xl md:text-5xl gradient-text lg:text-6xl font-bold tracking-widest mb-2">
                     SABUAG
                 </h1>
                 <p className="text-sm md:text-lg text-center text-neutral-700 dark:text-neutral-300/60">
                     Campus Publication - USTP Panaon
                 </p>
 
-                <h4 className="text-center font-semibold  text-lg md:text-3xl max-w-3xl pt-6 pb-8 border-b mb-8">
+                <h4 className="text-center font-semibold gradient-text text-lg md:text-3xl max-w-3xl pt-6 pb-8 border-b mb-8">
                     Sustainable and Achievable Broadcasting with Unbiased And
                     Attainable Goals
                 </h4>
