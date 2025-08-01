@@ -18,7 +18,6 @@ import {
 import SidebarMenuClient from "./SidebarMenuClient";
 import Image from "next/image";
 import Link from "next/link";
-import ThemeSidebarGroup from "./ThemeSidebarGroup";
 import { logout } from "@/lib/actions/auth";
 
 export function AppSidebar() {
@@ -59,8 +58,6 @@ export function AppSidebar() {
                         <SidebarMenuClient />
                     </SidebarGroupContent>
                 </SidebarGroup>
-
-                <ThemeSidebarGroup />
 
                 <SidebarGroup>
                     <SidebarGroupLabel>Upcoming Features</SidebarGroupLabel>

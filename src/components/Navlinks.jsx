@@ -1,13 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ToggleThemeButton } from "./ui/ToggleThemeButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { Menu } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ModeToggle } from "./ui/theme-toggler";
 
 const Navlinks = ({ currentUser }) => {
     const isMobile = useIsMobile();
@@ -76,7 +76,7 @@ const Navlinks = ({ currentUser }) => {
                         Feedback
                     </Link>
 
-                    <ToggleThemeButton />
+                    <ModeToggle />
                     {currentUser === null ? (
                         <Button
                             asChild
