@@ -5,11 +5,9 @@ import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function login(formData) {
+// server function
+export async function login({ email, password }) {
     const supabase = await createClient();
-
-    const email = formData.get("email")?.toString();
-    const password = formData.get("password")?.toString();
 
     if (!email || !password) {
         throw new Error("Email and password are required");
@@ -21,13 +19,11 @@ export async function login(formData) {
     });
 
     if (error) {
-        console.error("Login error:", error.message);
         throw new Error("Invalid login credentials");
     }
 
-    console.log("user sign in successfully");
     revalidatePath("/", "layout");
-    redirect("/");
+    return { success: true };
 }
 
 export async function createUser(formData) {

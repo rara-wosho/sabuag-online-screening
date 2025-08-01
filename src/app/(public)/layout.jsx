@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export default async function Layout({ children }) {
     const supabase = await createClient();
@@ -18,6 +19,10 @@ export default async function Layout({ children }) {
             .single();
 
         if (!error) currentUser = data;
+
+        // if (data.role !== "user") {
+        //     redirect("/admin");
+        // }
     }
 
     return (

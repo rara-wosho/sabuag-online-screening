@@ -3,17 +3,17 @@ import Image from "next/image";
 
 export default async function AboutPage() {
     return (
-        <div className="flex flex-col items-center justify-center pt-[8rem]">
+        <div className="flex flex-col items-center justify-center pt-[6rem] md:pt-[8rem]">
             <div className="wrapper relative pt-[8rem] px-6 pb-14 w-full bg-white dark:bg-background border dark:border-neutral-800/50 rounded-xl mb-[4rem] flex flex-col items-center justify-center">
-                <div className="w-[90%] absolute top-0 left-1/2 -translate-x-1/2 h-[90%] bg-radial-[at_50%_0%] from-sky-500/20 dark:from-sky-900/50 via-20% via-blue-400/5 to-transparent to-70% "></div>
+                <div className="w-[100%] md:w-[90%] absolute top-0 left-1/2 -translate-x-1/2 h-[90%] bg-radial-[at_50%_0%] from-sky-500/20 dark:from-sky-900/50 via-20% via-blue-400/5 to-transparent to-70% "></div>
 
-                <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-52 aspect-square">
+                <div className="absolute -top-16 md:-top-24 left-1/2 -translate-x-1/2 w-40 md:w-52 aspect-square">
                     <Image
                         alt="sabuag-logo"
                         src="/official-sabuag.png"
                         fill
                         className="object-contain"
-                        sizes="(min-width: 600px) 16rem, 12rem"
+                        sizes="13rem"
                     />
                 </div>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-widest mb-2">
@@ -60,13 +60,14 @@ export default async function AboutPage() {
                     </p>
                 </div>
 
-                <div className="right">
+                <div className="right h-full flex flex-col justify-center">
                     <div className="img-wrapper relative w-full aspect-[16/7] rounded-md overflow-hidden shadow-lg">
                         <Image
                             src="/sabuag-team.jpeg"
                             fill={true}
                             className="object-cover"
                             alt="image"
+                            sizes="w-full"
                         />
                     </div>
                 </div>

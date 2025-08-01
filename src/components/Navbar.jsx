@@ -10,12 +10,15 @@ export default function Navbar({ currentUser }) {
                     href="/"
                     className="flex items-center gap-2 font-semibold uppercase"
                 >
-                    <Image
-                        src="/official-sabuag.png"
-                        width={25}
-                        height={31}
-                        alt="sabuag logo"
-                    />
+                    <div className="relative w-8 aspect-square">
+                        <Image
+                            src="/official-sabuag.png"
+                            fill
+                            className="object-contain"
+                            alt="sabuag logo"
+                            sizes="32px"
+                        />
+                    </div>
                     <span className="inline-flex">Sabuag</span>
                 </Link>
 

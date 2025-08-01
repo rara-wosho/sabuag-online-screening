@@ -26,32 +26,27 @@ export function AppSidebar() {
         <Sidebar collapsible="icon">
             <SidebarHeader className="border-b dark:border-neutral-800 py-2">
                 <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton variant="outline" asChild>
-                            <Link
-                                href="/"
-                                className="py-5 flex items-center dark:hover:text-neutral-300 bg-transparent hover:bg-transparent active:bg-transparent"
-                            >
-                                <Image
-                                    alt="logo"
-                                    src="/official-sabuag.png"
-                                    width={25}
-                                    height={30}
-                                />
-                                <div className="flex flex-col truncate w-full ms-1">
-                                    <p className="font-bold uppercase">
-                                        Sabuag
-                                    </p>
-                                    <p className="font-medium text-xs dark:text-neutral-400">
-                                        Campus Publication
-                                    </p>
-                                </div>
-                                <div className="md:hidden ms-auto">
-                                    <SidebarTrigger />
-                                    <span></span>
-                                </div>
-                            </Link>
+                    <SidebarMenuItem className="flex items-center justify-between">
+                        <SidebarMenuButton
+                            variant="outline"
+                            className="active:bg-transparent py-5 flex items-center dark:hover:text-neutral-300 bg-transparent hover:bg-transparent"
+                        >
+                            <Image
+                                alt="logo"
+                                src="/official-sabuag.png"
+                                width={25}
+                                height={30}
+                            />
+                            <div className="flex flex-col truncate w-full ms-1">
+                                <p className="font-bold uppercase">Sabuag</p>
+                                <p className="font-medium text-xs dark:text-neutral-400">
+                                    Campus Publication
+                                </p>
+                            </div>
                         </SidebarMenuButton>
+                        <div className="md:hidden ms-auto">
+                            <SidebarTrigger />
+                        </div>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

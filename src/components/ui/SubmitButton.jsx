@@ -14,9 +14,10 @@ const SubmitButton = ({ label, containerStyle, size, variant }) => {
             variant={variant}
             className={cn(
                 containerStyle,
-                "bg-primary flex items-center gap-2 justify-center py-1 px-4 text-white rounded cursor-pointer"
+                "bg-primary flex items-center gap-2 justify-center py-1 px-4 text-white rounded cursor-pointer disabled:opacity-50"
             )}
             type="submit"
+            disabled={pending}
         >
             {label}
             {pending && <Loader size={14} className="animate-spin" />}
