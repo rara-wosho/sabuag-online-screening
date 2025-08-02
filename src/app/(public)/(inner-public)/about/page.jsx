@@ -5,7 +5,7 @@ export default async function AboutPage() {
     return (
         <div className="flex flex-col items-center justify-center pt-[6rem] md:pt-[8rem]">
             <div className="wrapper relative pt-[8rem] px-6 pb-14 w-full bg-white dark:bg-background border dark:border-neutral-800/50 rounded-xl mb-[4rem] flex flex-col items-center justify-center">
-                <div className="w-[100%] md:w-[90%] absolute top-0 left-1/2 -translate-x-1/2 h-[90%] bg-radial-[at_50%_0%] from-sky-500/20 dark:from-sky-900/50 via-20% via-blue-400/5 to-transparent to-70% "></div>
+                <div className="w-[100%] md:w-[90%] absolute top-0 left-1/2 -translate-x-1/2 h-[90%] bg-radial-[at_50%_0%] from-sky-500/10 dark:from-sky-900/50 via-20% via-blue-400/5 to-transparent to-70% "></div>
 
                 <div className="absolute -top-16 md:-top-24 left-1/2 -translate-x-1/2 w-40 md:w-52 aspect-square">
                     <Image
@@ -16,14 +16,14 @@ export default async function AboutPage() {
                         sizes="13rem"
                     />
                 </div>
-                <h1 className="text-3xl md:text-5xl inline-block bg-gradient-to-br from-neutral-500 dark:from-neutral-400 via-neutral-800 dark:via-neutral-200 via-50% dark:to-neutral-600 to-neutral-500 bg-clip-text text-transparent lg:text-6xl font-bold tracking-widest mb-2">
+                <h1 className="text-3xl md:text-5xl text-neutral-700 dark:text-neutral-200 lg:text-6xl font-bold tracking-widest mb-2">
                     SABUAG
                 </h1>
                 <p className="text-sm md:text-lg text-center text-neutral-700 dark:text-neutral-300/60">
                     Campus Publication - USTP Panaon
                 </p>
 
-                <h4 className="text-center font-semibold text-neutral-700 dark:text-neutral-300/90 text-lg md:text-3xl max-w-3xl pt-6 pb-8 border-b mb-8">
+                <h4 className="text-center font-semibold text-neutral-700 dark:text-neutral-300 text-lg md:text-3xl max-w-3xl pt-6 pb-8 border-b mb-8">
                     Sustainable and Achievable Broadcasting with Unbiased And
                     Attainable Goals
                 </h4>

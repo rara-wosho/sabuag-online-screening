@@ -34,9 +34,9 @@ const MeetTheTeam = () => {
 
                     <div className="right relative isolate">
                         <div className="flex flex-col items-center justify-center">
-                            <div className="img-wrapper h-44 w-full -z-10 absolute -top-[1rem] -right-[1rem] -rotate-2 shadow-lg bg-accent/60 dark:bg-accent/35 rounded-md"></div>
-                            <div className="img-wrapper h-44 w-full -z-10 absolute -bottom-[1rem] -left-[1rem] -rotate-4 shadow-lg bg-accent/60 dark:bg-accent/35 rounded-md"></div>
-                            <div className="img-wrapper h-56 w-full relative rotate-4 duration-200 hover:rotate-0">
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -top-[1rem] -right-[1rem] -rotate-2 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -bottom-[1rem] -left-[1rem] -rotate-4 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
+                            <div className="img-wrapper h-56 w-full relative rotate-2 md:rotate-4 duration-200 hover:rotate-0">
                                 <Image
                                     alt="team photo"
                                     src="/sabuag-team.jpeg"
