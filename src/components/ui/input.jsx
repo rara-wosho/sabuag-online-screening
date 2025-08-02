@@ -14,7 +14,7 @@ function Input({ className, type, ...props }) {
     const isPassword = type === "password";
 
     return (
-        <div className="relative">
+        <div className="relative w-full">
             <input
                 type={isPassword && showPassword ? "text" : type}
                 data-slot="input"

@@ -25,11 +25,11 @@ export default function SearchForm() {
                 name="search"
                 type="search"
                 placeholder="Search applicant"
-                className="w-full text-sm"
+                className="text-sm"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
-            <SubmitButton size="sm" label="Search" />
+            <SubmitButton label="Search" />
         </Form>
     );
 }

@@ -24,27 +24,14 @@ import {
 import SubmitButton from "./SubmitButton";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
-import { deletePosition, updatePosition } from "@/lib/actions/positions";
+import { updatePosition } from "@/lib/actions/positions";
 import { toast } from "sonner";
 import { useState } from "react";
 import ApplicantCount from "@/app/admin/positions/applicant-count";
+import DeleteAlert from "../alert-delete";
 
 export default function PositionTab({ id, title, description, is_open }) {
     const [openDialog, setOpenDialog] = useState(false);
-    const [deleteLoading, setDeleteLoading] = useState(false);
-
-    const handleDeletePosition = async (id) => {
-        setDeleteLoading(true);
-        const res = await deletePosition(id);
-
-        if (res?.failed) {
-            toast.error(res.message || "Unable to delete position.");
-            return;
-        }
-
-        toast.success("Deleted successfully");
-        setDeleteLoading(false);
-    };
 
     async function handleUpdate(formData) {
         const this_id = formData.get("id");
@@ -137,17 +124,8 @@ export default function PositionTab({ id, title, description, is_open }) {
                             <SubmitButton label="Update Details" />
                         </div>
                     </form>
-
-                    <div className="pt-4 mt-3 border-t">
-                        <button
-                            onClick={() => handleDeletePosition(id)}
-                            className="dark:text-red-400/80 text-red-600 cursor-pointer flex justify-center items-center gap-2 text-sm"
-                            disabled={deleteLoading}
-                        >
-                            <Trash size={14} />
-                            {deleteLoading ? "Removing..." : "Remove position"}
-                        </button>
-                    </div>
+                    {/* delete confirmation alert for removing position */}
+                    <DeleteAlert id={id} title={title} />
                 </DialogContent>
 
                 {/* MAIN BODY  */}
@@ -172,7 +150,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                             </div>
                         </div>
 
-                        <p className="text-[14px] text-neutral-500 dark:text-neutral-400 text-start">
+                        <p className="text-[14px] text-neutral-700 dark:text-neutral-400 text-start">
                             {!description ? (
                                 <span className="italic">
                                     No description provided.
