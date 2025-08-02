@@ -12,17 +12,18 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import Form from "next/form";
 
 export default function Page() {
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mb-20">
             <div className="w-full mb-3">
                 <BackButton containerStyle="flex items-center gap-1 duration-200 transition-colors hover:text-accent-foreground">
                     <ChevronLeft size={18} /> Back
                 </BackButton>
             </div>
-            <form action={createUserWithAdmin} className="w-full max-w-[500px]">
-                <h1 className="text-xl mb-3 font-bold">Create New User</h1>
+            <Form action={createUserWithAdmin} className="w-full max-w-[500px]">
+                <h1 className="text-xl mb-3 font-bold">Add New Member</h1>
 
                 <div className="mb-3">
                     <FormLabel required label="First Name" />
@@ -82,11 +83,8 @@ export default function Page() {
                     />
                 </div>
 
-                <SubmitButton
-                    label="Create User"
-                    containerStyle="mt-8 w-full"
-                />
-            </form>
+                <SubmitButton label="Add Now" containerStyle="mt-8 w-full" />
+            </Form>
         </div>
     );
 }

@@ -3,7 +3,6 @@
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
@@ -24,10 +23,6 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import PrimaryLabel from "./ui/PrimaryLabel";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import SubmitButton from "./ui/SubmitButton";
-import Form from "next/form";
 
 export default function ApplicationsTable({ data, search }) {
     const [category, setCategory] = useState("All");
@@ -78,29 +73,6 @@ export default function ApplicationsTable({ data, search }) {
                     <p className="bg-accent text-accent-foreground text-sm text-center ms-2 mb-4 px-2 rounded">
                         {filteredData.length}
                     </p>
-                    {/* <p className="text-neutral-600 dark:text-neutral-400 mb-3 text-xs md:text-sm">
-                    {filteredData.length}{" "}
-                    {category !== "All" || positionCategory !== "All"
-                        ? "Results"
-                        : "Applicants"}
-                </p> */}
-                    {/* <div className="flex items-center mb-2 justify-end ms-auto">
-                    <Button
-                        variant="destructive"
-                        size="sm"
-                        disabled={
-                            category !== "All" || positionCategory !== "All"
-                        }
-                        className="flex items-center gap-1 disabled:opacity-50 disabled:cursor-not-allowed"
-                        onClick={() => {
-                            setCategory("All");
-                            setPositionCategory("All");
-                        }}
-                    >
-                        <X size={14} />
-                        Reset filter
-                    </Button>
-                </div> */}
                 </div>
             )}
 

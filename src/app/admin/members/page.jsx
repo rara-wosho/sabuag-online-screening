@@ -1,19 +1,15 @@
-import { Button } from "@/components/ui/button";
+import MembersTable from "@/components/MembersTable";
 import { createClient } from "@/utils/supabase/server";
-import Link from "next/link";
 
 export default async function Page() {
     const supabase = await createClient();
-    const { data: users, error } = await supabase.from("users").select();
+    const { data: users, error } = await supabase
+        .from("users")
+        .select()
+        .order("lastname", { ascending: true });
     return (
-        <div>
-            Manage Members
-            <Button asChild>
-                <Link href="/admin/members/create-user">create New User</Link>
-            </Button>
-            {users.map((user) => (
-                <p>{user.firstname}</p>
-            ))}
+        <div className="py-2">
+            <MembersTable members={users} />
         </div>
     );
 }
