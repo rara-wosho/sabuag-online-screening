@@ -34,9 +34,9 @@ function Input({ className, type, ...props }) {
                     className="absolute inset-y-0 right-0 flex items-center pr-3 text-muted-foreground hover:text-foreground"
                 >
                     {!showPassword ? (
-                        <EyeOffIcon size={18} />
+                        <EyeOffIcon size={20} />
                     ) : (
-                        <EyeIcon size={18} />
+                        <EyeIcon size={20} />
                     )}
                 </button>
             )}

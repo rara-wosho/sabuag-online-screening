@@ -26,7 +26,7 @@ export async function login({ email, password }) {
     return { success: true };
 }
 
-// registering a new user
+// registration logic for users
 export async function createUser(formData) {
     const supabase = await createClient();
 
@@ -58,7 +58,8 @@ export async function createUserWithAdmin(formData) {
     const middlename = formData.get("middlename")?.toString().trim() || "";
     const lastname = formData.get("lastname")?.toString().trim() || null;
     const email = formData.get("email")?.toString().trim() || null;
-    const password = formData.get("password")?.toString() || "s@buagpassword";
+    const role = formData.get("role")?.toString().trim() || "user";
+    const password = formData.get("password")?.toString() || "s@buagpassword"; // default password if admin did not put password
 
     if (!firstname) throw new Error("Firstname is required.");
     if (!lastname) throw new Error("Lastname is required.");
@@ -69,7 +70,7 @@ export async function createUserWithAdmin(formData) {
         email,
         password,
         email_confirm: true,
-        user_metadata: { name: `${firstname} ${lastname}` },
+        user_metadata: { firstname, lastname, role },
     });
 
     if (error || !data?.user) {
@@ -86,6 +87,7 @@ export async function createUserWithAdmin(formData) {
         middlename,
         lastname,
         email,
+        role,
     });
 
     if (userError) {
@@ -96,7 +98,8 @@ export async function createUserWithAdmin(formData) {
         throw new Error("Failed to insert user info into database.");
     }
 
-    return { success: true, userId };
+    revalidatePath("/admin/members", "page");
+    redirect("/admin/members");
 }
 
 // deleting a user from auth table
@@ -129,4 +132,33 @@ export async function logout(path) {
 
     revalidatePath(path, "layout");
     redirect("/login");
+}
+
+// update user role in user table and in user metadata
+export async function updateUserRole(userId, newRole) {
+    // 1. Update in your users table (source of truth)
+    const { error: userError } = await supabaseAdmin
+        .from("users")
+        .update({ role: newRole })
+        .eq("id", userId);
+
+    if (userError) {
+        console.error("DB update error:", userError.message);
+        throw new Error("Failed to update role in users table.");
+    }
+
+    // 2. Update metadata in auth for convenience
+    const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(
+        userId,
+        {
+            user_metadata: { role: newRole },
+        }
+    );
+
+    if (authError) {
+        console.error("Auth metadata update error:", authError.message);
+        // not fatal, role is still correct in DB
+    }
+
+    return { success: true };
 }
