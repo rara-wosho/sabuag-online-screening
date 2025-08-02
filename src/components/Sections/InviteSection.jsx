@@ -25,26 +25,22 @@ export default function InviteSection() {
             </p>
 
             <div className="grid grid-cols-2 mt-6 gap-3">
-                <div className="border bg-white dark:bg-transparent shadow rounded-md p-4">
+                <Button asChild variant="outline">
                     <Link
                         href="https://www.facebook.com/sabuagpublication"
                         target="_blank"
-                        className="text-sm text-neutral-800 dark:text-neutral-200 hover:text-accent-foreground transition-colors flex items-center justify-between"
+                        className="w-full"
                     >
                         Facebook
-                        <ArrowUpRight className="ms-8 text-primary" size={20} />
+                        <ArrowUpRight size={20} />
                     </Link>
-                </div>
-                <div className="border bg-white dark:bg-transparent shadow rounded-md p-4">
-                    <Link
-                        href="mailto:"
-                        target="_blank"
-                        className="text-sm text-neutral-800 dark:text-neutral-200 hover:text-accent-foreground transition-colors flex items-center justify-between"
-                    >
+                </Button>
+                <Button asChild variant="outline">
+                    <Link href="mailto:" target="_blank" className="w-full">
                         Gmail
-                        <ArrowUpRight className="ms-8 text-primary" size={20} />
+                        <ArrowUpRight size={20} />
                     </Link>
-                </div>
+                </Button>
             </div>
         </div>
     );

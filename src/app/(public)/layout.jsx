@@ -37,7 +37,12 @@ export default async function Layout({ children }) {
             <Navbar currentUser={currentUser} />
             {children}
             <footer className="p-8 border-t dark:border-t-neutral-800/70 backdrop-blur-xl">
-                Footer
+                <div className="w-full max-w-[1200px] p-3 lg:p-0 mx-auto flex flex-col">
+                    Footer
+                    <div className="py-4 border-t dark:border-neutral-800/90 mt-4">
+                        2025
+                    </div>
+                </div>
             </footer>
         </div>
     );

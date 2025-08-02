@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const MeetTheTeam = () => {
     return (
-        <div className="w-full p-8 relative">
+        <div className="w-full p-4 relative">
             <div className="mx-auto w-full max-w-[900px]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10">
                     <div className="left">
@@ -32,10 +32,10 @@ const MeetTheTeam = () => {
                         </Button>
                     </div>
 
-                    <div className="right relative isolate">
+                    <div className="right relative isolate p-2">
                         <div className="flex flex-col items-center justify-center">
-                            <div className="img-wrapper h-44 w-full -z-10 absolute -top-[1rem] -right-[1rem] -rotate-2 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
-                            <div className="img-wrapper h-44 w-full -z-10 absolute -bottom-[1rem] -left-[1rem] -rotate-4 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -top-[.5rem] -right-[1rem] -rotate-2 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
+                            <div className="img-wrapper h-44 w-full -z-10 absolute -bottom-[.5rem] -left-[1rem] -rotate-4 shadow-lg bg-accent opacity-60 dark:bg-accent dark:opacity-35 rounded-md"></div>
                             <div className="img-wrapper h-56 w-full relative rotate-2 md:rotate-4 duration-200 hover:rotate-0">
                                 <Image
                                     alt="team photo"
