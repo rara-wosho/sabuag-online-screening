@@ -11,7 +11,7 @@ export default function HeroSection() {
             <span className="mb-3 py-1.5 px-3  bg-accent/50 dark:bg-accent rounded-full text-xs text-accent-foreground inline-flex items-center gap-2 whitespace-nowrap shadow font-semibold">
                 Sabuag Publication <BookOpenText size={12} />
             </span>
-            {/* <p
+            <p
                 className={cn(
                     "block lg:hidden z-10 text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl font-bold tracking-wider text-center  relative",
                     "text-neutral-800/90 dark:text-neutral-300"
@@ -19,11 +19,11 @@ export default function HeroSection() {
             >
                 Sustainable and Achievable Broadcasting with Unbiased and
                 Attainable Goals
-            </p> */}
+            </p>
             <p
                 className={cn(
                     "lz-10 text-4xl md:text-5xl lg:text-6xl mb-4 max-w-4xl font-bold tracking-wider text-center  relative",
-                    "text-gradient"
+                    "hidden lg:block text-gradient"
                 )}
             >
                 Sustainable and Achievable Broadcasting with Unbiased and

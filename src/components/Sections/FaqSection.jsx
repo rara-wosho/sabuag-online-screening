@@ -74,7 +74,7 @@ const FaqSection = () => {
                                 prev === index + 1 ? 0 : index + 1
                             )
                         }
-                        className="w-full bg-slate-100 dark:bg-gradient-to-r dark:from-card dark:to-neutral-950 border dark:border-neutral-900 rounded-md p-4"
+                        className="w-full bg-slate-100 dark:bg-card dark:lg:bg-gradient-to-r dark:lg:from-card dark:lg:to-neutral-950 border-transparent shadow border dark:lg:border-neutral-900 rounded-md p-4"
                     >
                         <CollapsibleTrigger className="w-full text-start cursor-pointer flex items-center justify-between">
                             <p className="md:text-lg font-medium">

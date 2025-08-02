@@ -181,7 +181,7 @@
 
 @layer utilities {
     .text-gradient {
-        @apply bg-clip-text text-transparent inline-block bg-gradient-to-br from-neutral-500 dark:from-neutral-400 via-neutral-800 dark:via-neutral-200 via-50% dark:to-neutral-600 to-neutral-500;
+        @apply bg-clip-text text-transparent bg-gradient-to-br from-neutral-500 dark:from-neutral-400 via-neutral-800 dark:via-neutral-200 via-50% dark:to-neutral-600 to-neutral-500;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
