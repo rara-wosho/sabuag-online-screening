@@ -1,6 +1,6 @@
 "use client";
 
-import { HardHat, Contact, Home } from "lucide-react";
+import { HardHat, Contact, Home, Users } from "lucide-react";
 import {
     SidebarMenu,
     SidebarMenuButton,
@@ -32,6 +32,12 @@ export default function SidebarMenuClient() {
             icon: <HardHat />,
             label: "Positions",
             isActiveLink: pathName.startsWith("/admin/positions"),
+        },
+        {
+            href: "/admin/members",
+            icon: <Users />,
+            label: "Manage Members",
+            isActiveLink: pathName.startsWith("/admin/members"),
         },
     ];
 

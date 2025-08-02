@@ -66,14 +66,6 @@ export function AppSidebar() {
                             <SidebarMenuItem>
                                 <SidebarMenuButton asChild>
                                     <div>
-                                        <UsersRound />
-                                        <span>Manage Members</span>
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <div>
                                         <Bell />
                                         <span>Notifications</span>
                                     </div>

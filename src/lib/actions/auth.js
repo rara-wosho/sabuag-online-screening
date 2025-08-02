@@ -26,6 +26,7 @@ export async function login({ email, password }) {
     return { success: true };
 }
 
+// registering a new user
 export async function createUser(formData) {
     const supabase = await createClient();
 
@@ -51,6 +52,54 @@ export async function createUser(formData) {
     redirect("/profile");
 }
 
+// create user with admin function
+export async function createUserWithAdmin(formData) {
+    const firstname = formData.get("firstname")?.toString().trim() || null;
+    const middlename = formData.get("middlename")?.toString().trim() || "";
+    const lastname = formData.get("lastname")?.toString().trim() || null;
+    const email = formData.get("email")?.toString().trim() || null;
+    const password = formData.get("password")?.toString() || "s@buagpassword";
+
+    if (!firstname) throw new Error("Firstname is required.");
+    if (!lastname) throw new Error("Lastname is required.");
+    if (!email) throw new Error("Email is required.");
+
+    // 1. Create user in auth
+    const { data, error } = await supabaseAdmin.auth.admin.createUser({
+        email,
+        password,
+        email_confirm: true,
+        user_metadata: { name: `${firstname} ${lastname}` },
+    });
+
+    if (error || !data?.user) {
+        console.error("Auth create error:", error?.message);
+        throw new Error("Something went wrong while creating user in auth.");
+    }
+
+    const userId = data.user.id;
+
+    // 2. Insert into users table
+    const { error: userError } = await supabaseAdmin.from("users").insert({
+        id: userId,
+        firstname,
+        middlename,
+        lastname,
+        email,
+    });
+
+    if (userError) {
+        console.error("DB insert error:", userError.message);
+        // rollback: delete auth user to keep things consistent
+        await supabaseAdmin.auth.admin.deleteUser(userId);
+
+        throw new Error("Failed to insert user info into database.");
+    }
+
+    return { success: true, userId };
+}
+
+// deleting a user from auth table
 export async function deleteUser(userId) {
     if (!userId) {
         throw new Error("User ID is required");
@@ -63,8 +112,8 @@ export async function deleteUser(userId) {
         throw new Error("Failed to delete user");
     }
 
-    // Optionally delete from profiles table
-    // await supabaseAdmin.from("profiles").delete().eq("id", userId);
+    //delete from users table
+    await supabaseAdmin.from("users").delete().eq("id", userId);
 
     return { success: true };
 }
