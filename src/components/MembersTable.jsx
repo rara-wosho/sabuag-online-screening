@@ -11,10 +11,27 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover";
+
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 import PrimaryLabel from "./ui/PrimaryLabel";
 import { dateFormatter } from "@/utils/date-formatter";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Ellipsis } from "lucide-react";
+import FormLabel from "./FormLabel";
 
 export default function MembersTable({ members, search }) {
     return (
@@ -47,13 +64,23 @@ export default function MembersTable({ members, search }) {
                         <TableHead>Course</TableHead>
                         <TableHead>Joined</TableHead>
                         <TableHead className="text-right">Status</TableHead>
+                        <TableHead className="text-right"> </TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
                     {members.map((user) => (
                         <TableRow key={user.id}>
                             <TableCell className="font-medium">
-                                {user.lastname}, {user.firstname}
+                                <Button
+                                    asChild
+                                    variant="link"
+                                    className="p-0 text-neutral-800 dark:text-neutral-300 h-7"
+                                >
+                                    <Link href="#">
+                                        {user.lastname}, {user.firstname}
+                                        {user.role === "superadmin" && " 👑"}
+                                    </Link>
+                                </Button>
                             </TableCell>
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
                                 {user?.position ? (
@@ -76,9 +103,7 @@ export default function MembersTable({ members, search }) {
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
                                 {user.email}
                             </TableCell>
-                            <TableCell className="text-neutral-700 dark:text-neutral-300/90">
-                                {dateFormatter(user.created_at)}
-                            </TableCell>
+
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
                                 {user?.address ? (
                                     user?.address
@@ -97,6 +122,9 @@ export default function MembersTable({ members, search }) {
                                     </p>
                                 )}
                             </TableCell>
+                            <TableCell className="text-neutral-700 dark:text-neutral-300/90 text-xs">
+                                {dateFormatter(user.created_at)}
+                            </TableCell>
                             <TableCell className="text-right">
                                 <div className="flex items-center gap-2 justify-end">
                                     {user?.status === "active" ? (
@@ -112,6 +140,41 @@ export default function MembersTable({ members, search }) {
                                         </p>
                                     )}
                                 </div>
+                            </TableCell>
+                            <TableCell className="text-right">
+                                <Popover>
+                                    <PopoverTrigger>
+                                        <Button
+                                            variant="ghost"
+                                            size="icon"
+                                            className="h-7"
+                                        >
+                                            <Ellipsis />
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent className="flex flex-col w-fit">
+                                        <Select
+                                            disabled={
+                                                user.role === "superadmin"
+                                            }
+                                        >
+                                            <FormLabel label="Change Role" />
+                                            <SelectTrigger className="w-[180px] border dark:border-neutral-600 shadow-none bg-transparent">
+                                                <SelectValue
+                                                    placeholder={user.role}
+                                                />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem value="user">
+                                                    User
+                                                </SelectItem>
+                                                <SelectItem value="admin">
+                                                    Admin
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </PopoverContent>
+                                </Popover>
                             </TableCell>
                         </TableRow>
                     ))}
