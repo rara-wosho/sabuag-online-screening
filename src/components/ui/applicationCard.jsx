@@ -7,7 +7,7 @@ export default function ApplicationCard({ applicantData }) {
     return (
         <Link
             href={`/admin/applications/${applicantData.id}`}
-            className="bg-sidebar dark:bg-card border-neutral-100 shadow dark:border-neutral-800 cursor-pointer rounded-md border p-3"
+            className="bg-white dark:bg-card border-neutral-200 shadow-xs dark:border-neutral-800 cursor-pointer rounded-md border p-3"
         >
             <div className="dark:text-neutral-200 text-neutral-800 font-semibold mb-3 w-[94%] relative">
                 <p className="text-sm dark:text-neutral-300 md:text-lg">

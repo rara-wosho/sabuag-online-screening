@@ -5,22 +5,26 @@ import { Loader } from "lucide-react";
 import { useFormStatus } from "react-dom";
 import { Button } from "./button";
 
-const SubmitButton = ({ label, containerStyle, size, variant }) => {
+const SubmitButton = ({
+    label,
+    containerStyle,
+    size,
+    variant,
+    icon,
+    disabled,
+}) => {
     const { pending } = useFormStatus();
 
     return (
         <Button
             size={size}
             variant={variant}
-            className={cn(
-                containerStyle,
-                "bg-primary flex items-center gap-2 justify-center py-1 px-4 text-white rounded cursor-pointer disabled:opacity-50"
-            )}
+            className={cn(containerStyle, "rounded")}
             type="submit"
-            disabled={pending}
+            disabled={pending || disabled}
         >
             {label}
-            {pending && <Loader size={14} className="animate-spin" />}
+            {pending ? <Loader size={14} className="animate-spin" /> : icon}
         </Button>
     );
 };

@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import SubmitButton from "./ui/SubmitButton";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { Search } from "lucide-react";
 
 export default function SearchForm() {
     const searchParams = useSearchParams();
@@ -29,7 +30,13 @@ export default function SearchForm() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
-            <SubmitButton label="Search" />
+            <SubmitButton
+                containerStyle="cursor-pointer"
+                variant="white"
+                label="Search"
+                icon={<Search size={14} />}
+                disabled={searchValue === ""}
+            />
         </Form>
     );
 }

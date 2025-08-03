@@ -131,7 +131,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                 {/* MAIN BODY  */}
                 <div
                     className={cn(
-                        "border rounded-md p-3 dark:bg-card flex flex-col"
+                        "border border-neutral-200 dark:border-neutral-700/60 rounded-md p-3 bg-white dark:bg-card flex flex-col"
                     )}
                 >
                     <DialogTrigger className="w-full cursor-pointer flex flex-col items-start">

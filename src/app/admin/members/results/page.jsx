@@ -4,7 +4,9 @@ import { createClient } from "@/utils/supabase/server";
 import { ChevronLeft } from "lucide-react";
 
 export default async function ResultsPage({ searchParams }) {
-    const search = (await searchParams)?.search || "";
+    let rawSearch = (await searchParams)?.search || "";
+    rawSearch = rawSearch.replace(/[^a-zA-Z0-9\s-]/g, "");
+    const search = decodeURIComponent(rawSearch).trim();
     const db = await createClient();
 
     const { data: results, error } = await db
@@ -26,7 +28,9 @@ export default async function ResultsPage({ searchParams }) {
                     for '{search}'
                 </p>
             </div>
-            <MembersTable members={results} search={search} />
+            {results.length > 0 && (
+                <MembersTable members={results} search={search} />
+            )}
         </div>
     );
 }

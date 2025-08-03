@@ -24,7 +24,10 @@ export default async function ResultsPage({ searchParams }) {
                     for '{search}'
                 </p>
             </div>
-            <ApplicationsTable data={results} search={search} />
+
+            {results.length > 0 && (
+                <ApplicationsTable data={results} search={search} />
+            )}
         </div>
     );
 }

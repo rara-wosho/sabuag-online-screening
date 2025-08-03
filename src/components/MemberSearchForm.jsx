@@ -4,17 +4,24 @@ import Form from "next/form";
 import { Input } from "./ui/input";
 import SubmitButton from "./ui/SubmitButton";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Search } from "lucide-react";
 
 export default function MemberSearchForm() {
+    const pathname = usePathname();
     const searchParams = useSearchParams();
-    const search = searchParams.get("search") || "";
 
-    const [searchValue, setSearchValue] = useState(search);
+    const [searchValue, setSearchValue] = useState("");
 
     useEffect(() => {
+        let rawSearch = searchParams.get("search") || "";
+        rawSearch = rawSearch.replace(/[^a-zA-Z0-9\s-]/g, "");
+
+        const search = decodeURIComponent(rawSearch).trim();
         setSearchValue(search);
-    }, [search]);
+    }, [searchParams]);
+
+    if (pathname === "/admin/members/create-user") return null;
 
     return (
         <Form
@@ -29,7 +36,14 @@ export default function MemberSearchForm() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
             />
-            <SubmitButton variant="outline" label="Search" />
+            <SubmitButton
+                containerStyle="cursor-pointer"
+                variant="outline"
+                size="lg"
+                label="Search"
+                icon={<Search size={14} />}
+                disabled={searchValue === ""}
+            />
         </Form>
     );
 }

@@ -41,10 +41,11 @@ export default function MembersTable({ members, search }) {
                     <TableRow>
                         <TableHead>Name</TableHead>
                         <TableHead>Position</TableHead>
+                        <TableHead>Age</TableHead>
                         <TableHead>Email</TableHead>
-                        <TableHead>Joined</TableHead>
                         <TableHead>Address</TableHead>
                         <TableHead>Course</TableHead>
+                        <TableHead>Joined</TableHead>
                         <TableHead className="text-right">Status</TableHead>
                     </TableRow>
                 </TableHeader>
@@ -57,6 +58,15 @@ export default function MembersTable({ members, search }) {
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
                                 {user?.position ? (
                                     user?.position
+                                ) : (
+                                    <p className="text-neutral-400  dark:text-neutral-700">
+                                        -
+                                    </p>
+                                )}
+                            </TableCell>
+                            <TableCell className="text-neutral-700 dark:text-neutral-300/90">
+                                {user?.age ? (
+                                    user?.age
                                 ) : (
                                     <p className="text-neutral-400  dark:text-neutral-700">
                                         -
