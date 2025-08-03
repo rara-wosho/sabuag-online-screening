@@ -7,6 +7,9 @@ export default async function Page() {
         .from("users")
         .select()
         .order("lastname", { ascending: true });
+
+    if (error) throw new Error(error.message);
+
     return (
         <div className="py-2">
             <MembersTable members={users} />

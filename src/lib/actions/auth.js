@@ -135,16 +135,16 @@ export async function logout(path) {
 }
 
 // update user role in user table and in user metadata
-export async function updateUserRole(userId, newRole) {
+export async function updateUserRoleAndStatus(userId, newRole, newStatus) {
     // 1. Update in your users table (source of truth)
     const { error: userError } = await supabaseAdmin
         .from("users")
-        .update({ role: newRole })
+        .update({ role: newRole, status: newStatus })
         .eq("id", userId);
 
     if (userError) {
         console.error("DB update error:", userError.message);
-        throw new Error("Failed to update role in users table.");
+        return { success: false, error: "Failed to update user info." };
     }
 
     // 2. Update metadata in auth for convenience
@@ -160,5 +160,6 @@ export async function updateUserRole(userId, newRole) {
         // not fatal, role is still correct in DB
     }
 
-    return { success: true };
+    revalidatePath("/admin/members", "page");
+    return { success: true, error: null };
 }

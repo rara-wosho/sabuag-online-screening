@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import { useMemo, useState } from "react";
 
 import {
     Table,
@@ -12,15 +12,77 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 import PrimaryLabel from "./ui/PrimaryLabel";
 import { dateFormatter } from "@/utils/date-formatter";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import MemberTableAction from "./MemberTableAction";
+import { Checkbox } from "./ui/checkbox";
+import SubmitButton from "./ui/SubmitButton";
+import Form from "next/form";
 
 export default function MembersTable({ members, search }) {
+    const [selectedIds, setSelectedIds] = useState([]);
+
+    const nonSuperAdmins = useMemo(
+        () => members.filter((m) => m.role !== "superadmin"),
+        [members]
+    );
+
+    const handleSelect = (id) => {
+        if (selectedIds.includes(id)) {
+            setSelectedIds((prev) => prev.filter((p) => p !== id));
+        } else {
+            setSelectedIds((prev) => [...prev, id]);
+        }
+    };
+    const handleSelectAll = () => {
+        if (selectedIds.length === nonSuperAdmins.length) {
+            setSelectedIds([]);
+        } else {
+            setSelectedIds(nonSuperAdmins.map((m) => m.id));
+        }
+    };
+
     return (
-        <>
+        <div className="relative">
+            {selectedIds.length > 0 && (
+                <Form className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 md:grid-cols-3 gap-2.5 w-full max-w-lg bg-neutral-950">
+                    <Select name="role">
+                        <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">
+                            <SelectValue placeholder="Role" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="user">User</SelectItem>
+                            <SelectItem value="admin">Admin</SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <Select name="status">
+                        <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">
+                            <SelectValue placeholder="Status" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="active">Active</SelectItem>
+                            <SelectItem value="inactive">Inactive</SelectItem>
+                        </SelectContent>
+                    </Select>
+
+                    <SubmitButton
+                        type="button"
+                        containerStyle="col-span-2 md:col-span-1"
+                        label="Update"
+                    />
+                </Form>
+            )}
+
             {!search && (
                 <div className="flex items-center">
                     <PrimaryLabel>Members</PrimaryLabel>
@@ -41,7 +103,15 @@ export default function MembersTable({ members, search }) {
                 </TableCaption>
                 <TableHeader className="bg-white dark:bg-card">
                     <TableRow>
-                        <TableHead>Name</TableHead>
+                        <TableHead className="flex items-center gap-3">
+                            <Checkbox
+                                checked={
+                                    selectedIds.length === nonSuperAdmins.length
+                                }
+                                onCheckedChange={handleSelectAll}
+                            />
+                            Name
+                        </TableHead>
                         <TableHead>Position</TableHead>
                         <TableHead>Age</TableHead>
                         <TableHead>Email</TableHead>
@@ -61,10 +131,24 @@ export default function MembersTable({ members, search }) {
                                     variant="link"
                                     className="p-0 text-neutral-800 dark:text-neutral-300 h-7"
                                 >
-                                    <Link href="#">
-                                        {user.lastname}, {user.firstname}
-                                        {user.role === "superadmin" && " 👑"}
-                                    </Link>
+                                    <div className="flex items-center gap-3">
+                                        <Checkbox
+                                            disabled={
+                                                user.role === "superadmin"
+                                            }
+                                            checked={selectedIds.includes(
+                                                user.id
+                                            )}
+                                            onCheckedChange={() =>
+                                                handleSelect(user.id)
+                                            }
+                                        />
+                                        <Link href="#">
+                                            {user.lastname}, {user.firstname}
+                                            {user.role === "superadmin" &&
+                                                " 👑"}
+                                        </Link>
+                                    </div>
                                 </Button>
                             </TableCell>
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
@@ -133,6 +217,6 @@ export default function MembersTable({ members, search }) {
                     ))}
                 </TableBody>
             </Table>
-        </>
+        </div>
     );
 }

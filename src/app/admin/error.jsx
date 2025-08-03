@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import BackButton from "@/components/ui/BackButton";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -17,13 +17,11 @@ export default function Error({ error }) {
             />
             <h2>Something went wrong!</h2>
             <p className="py-2 text-center text-neutral-600 dark:text-neutral-400">
-                Please make sure that you have a stable internet connection.
+                {error.message}
             </p>
 
-            <div className="flex items-center gap-3 mt-4">
-                <Button onClick={() => router.refresh()} variant="outline">
-                    Try again
-                </Button>
+            <div className="flex items-center justify-center gap-3 mt-4">
+                <BackButton>Back</BackButton>
             </div>
         </div>
     );

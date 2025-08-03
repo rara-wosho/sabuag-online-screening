@@ -16,11 +16,35 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import { Button } from "./ui/button";
 import Form from "next/form";
 import SubmitButton from "./ui/SubmitButton";
+import { updateUserRoleAndStatus } from "@/lib/actions/auth";
+import { toast } from "sonner";
 
 export default function MemberTableAction({ user }) {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
+        const role = formData.get("role")?.toString() || "";
+        const status = formData.get("status")?.toString() || "";
+
+        const { success, error } = await updateUserRoleAndStatus(
+            user.id,
+            role,
+            status
+        );
+
+        if (error) {
+            toast.error(error);
+        }
+
+        if (success) {
+            toast.success("Successfully updated user role and status.");
+        }
+    };
+
     return (
         <Popover>
             <PopoverTrigger className="hover:text-accent-foreground hover:bg-accent px-1 rounded h-6 ms-2 text-neutral-700 dark:text-neutral-300 cursor-pointer">
@@ -30,12 +54,13 @@ export default function MemberTableAction({ user }) {
                 />
             </PopoverTrigger>
             <PopoverContent className=" w-fit p-3">
-                <Form className="flex flex-col">
+                <Form onSubmit={handleSubmit} className="flex flex-col">
                     <div className="mb-2 border-b pb-2">
                         {user?.firstname} {user?.lastname}
                     </div>
                     <div className="mb-3">
                         <Select
+                            name="role"
                             defaultValue={user.role}
                             disabled={user.role === "superadmin"}
                         >
@@ -56,6 +81,7 @@ export default function MemberTableAction({ user }) {
                     </div>
                     <div className="mb-3">
                         <Select
+                            name="status"
                             defaultValue={user.status}
                             disabled={user.role === "superadmin"}
                         >

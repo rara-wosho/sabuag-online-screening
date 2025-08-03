@@ -12,6 +12,7 @@ const SubmitButton = ({
     variant,
     icon,
     disabled,
+    type = "submit",
 }) => {
     const { pending } = useFormStatus();
 
@@ -20,7 +21,7 @@ const SubmitButton = ({
             size={size}
             variant={variant}
             className={cn(containerStyle, "rounded")}
-            type="submit"
+            type={type}
             disabled={pending || disabled}
         >
             {label}
