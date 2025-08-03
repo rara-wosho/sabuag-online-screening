@@ -28,9 +28,11 @@ import MemberTableAction from "./MemberTableAction";
 import { Checkbox } from "./ui/checkbox";
 import SubmitButton from "./ui/SubmitButton";
 import Form from "next/form";
+import ToggleAdditionalTableCol from "./ToggleAdditionalTableCol";
 
 export default function MembersTable({ members, search }) {
     const [selectedIds, setSelectedIds] = useState([]);
+    const [additionalCols, setAdditionCols] = useState([]);
 
     const nonSuperAdmins = useMemo(
         () => members.filter((m) => m.role !== "superadmin"),
@@ -55,7 +57,7 @@ export default function MembersTable({ members, search }) {
     return (
         <div className="relative">
             {selectedIds.length > 0 && (
-                <Form className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 md:grid-cols-3 gap-2.5 w-full max-w-lg bg-neutral-950">
+                <Form className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 md:grid-cols-3 gap-2.5 w-full max-w-lg bg-white shadow-lg dark:bg-neutral-950">
                     <Select name="role">
                         <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">
                             <SelectValue placeholder="Role" />
@@ -97,6 +99,11 @@ export default function MembersTable({ members, search }) {
                     </Button>
                 </div>
             )}
+
+            <ToggleAdditionalTableCol
+                additionalCols={additionalCols}
+                setAdditionCols={setAdditionCols}
+            />
             <Table>
                 <TableCaption className="md:hidden text-left">
                     Swipe left to view other details.
@@ -112,12 +119,20 @@ export default function MembersTable({ members, search }) {
                             />
                             Name
                         </TableHead>
+
                         <TableHead>Position</TableHead>
                         <TableHead>Age</TableHead>
                         <TableHead>Email</TableHead>
                         <TableHead>Address</TableHead>
-                        <TableHead>Course</TableHead>
-                        <TableHead>Joined</TableHead>
+                        {additionalCols.includes("course") && (
+                            <TableHead>Course</TableHead>
+                        )}
+                        {additionalCols.includes("year") && (
+                            <TableHead>Year</TableHead>
+                        )}
+                        {additionalCols.includes("joined") && (
+                            <TableHead>Joined</TableHead>
+                        )}
                         <TableHead className="text-right">Status</TableHead>
                         <TableHead className="text-right"> </TableHead>
                     </TableRow>
@@ -151,6 +166,7 @@ export default function MembersTable({ members, search }) {
                                     </div>
                                 </Button>
                             </TableCell>
+
                             <TableCell className="text-neutral-700 dark:text-neutral-300/90">
                                 {user?.position ? (
                                     user?.position
@@ -182,18 +198,34 @@ export default function MembersTable({ members, search }) {
                                     </p>
                                 )}
                             </TableCell>
-                            <TableCell className="text-neutral-700 dark:text-neutral-300/90">
-                                {user?.course ? (
-                                    user?.course
-                                ) : (
-                                    <p className="text-neutral-400  dark:text-neutral-700">
-                                        -
-                                    </p>
-                                )}
-                            </TableCell>
-                            <TableCell className="text-neutral-700 dark:text-neutral-300/90 text-xs">
-                                {dateFormatter(user.created_at)}
-                            </TableCell>
+                            {additionalCols.includes("course") && (
+                                <TableCell className="text-neutral-700 dark:text-neutral-300/90">
+                                    {user?.course ? (
+                                        user?.course
+                                    ) : (
+                                        <p className="text-neutral-400  dark:text-neutral-700">
+                                            -
+                                        </p>
+                                    )}
+                                </TableCell>
+                            )}
+                            {additionalCols.includes("year") && (
+                                <TableCell className="text-neutral-700 dark:text-neutral-300/90 text-xs">
+                                    {user?.year_section ? (
+                                        user?.year_section
+                                    ) : (
+                                        <p className="text-neutral-400  dark:text-neutral-700">
+                                            -
+                                        </p>
+                                    )}
+                                </TableCell>
+                            )}
+
+                            {additionalCols.includes("joined") && (
+                                <TableCell className="text-neutral-700 dark:text-neutral-300/90 text-xs">
+                                    {dateFormatter(user.created_at)}
+                                </TableCell>
+                            )}
                             <TableCell className="text-right">
                                 <div className="flex items-center gap-2 justify-end">
                                     {user?.status === "active" ? (
