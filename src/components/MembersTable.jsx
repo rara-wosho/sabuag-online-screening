@@ -12,26 +12,11 @@ import {
     TableRow,
 } from "@/components/ui/table";
 
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from "@/components/ui/popover";
-
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-
 import PrimaryLabel from "./ui/PrimaryLabel";
 import { dateFormatter } from "@/utils/date-formatter";
 import { Button } from "./ui/button";
 import Link from "next/link";
-import { Ellipsis } from "lucide-react";
-import FormLabel from "./FormLabel";
+import MemberTableAction from "./MemberTableAction";
 
 export default function MembersTable({ members, search }) {
     return (
@@ -142,39 +127,7 @@ export default function MembersTable({ members, search }) {
                                 </div>
                             </TableCell>
                             <TableCell className="text-right">
-                                <Popover>
-                                    <PopoverTrigger>
-                                        <Button
-                                            variant="ghost"
-                                            size="icon"
-                                            className="h-7"
-                                        >
-                                            <Ellipsis />
-                                        </Button>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="flex flex-col w-fit">
-                                        <Select
-                                            disabled={
-                                                user.role === "superadmin"
-                                            }
-                                        >
-                                            <FormLabel label="Change Role" />
-                                            <SelectTrigger className="w-[180px] border dark:border-neutral-600 shadow-none bg-transparent">
-                                                <SelectValue
-                                                    placeholder={user.role}
-                                                />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="user">
-                                                    User
-                                                </SelectItem>
-                                                <SelectItem value="admin">
-                                                    Admin
-                                                </SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </PopoverContent>
-                                </Popover>
+                                <MemberTableAction user={user} />
                             </TableCell>
                         </TableRow>
                     ))}
