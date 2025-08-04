@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Navlinks from "./Navlinks";
+import MobileNavlinks from "./MobileNavlinks";
 
 export default function Navbar({ currentUser }) {
     return (
@@ -23,6 +24,7 @@ export default function Navbar({ currentUser }) {
                 </Link>
 
                 <Navlinks currentUser={currentUser} />
+                <MobileNavlinks currentUser={currentUser} />
             </nav>
         </div>
     );

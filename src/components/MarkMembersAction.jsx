@@ -24,6 +24,7 @@ export default function MarkMembersAction({ selectedIds, setSelectedIds }) {
 
         if (status === "") {
             toast.error("Please select a status");
+            return;
         }
 
         const { success, error } = await updateUserStatus(selectedIds, status);
