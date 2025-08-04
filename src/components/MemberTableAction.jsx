@@ -20,8 +20,11 @@ import Form from "next/form";
 import SubmitButton from "./ui/SubmitButton";
 import { updateUserRoleAndStatus } from "@/lib/actions/auth";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export default function MemberTableAction({ user }) {
+    const [open, setOpen] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -42,11 +45,12 @@ export default function MemberTableAction({ user }) {
 
         if (success) {
             toast.success("Successfully updated user role and status.");
+            setOpen(false);
         }
     };
 
     return (
-        <Popover>
+        <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger className="hover:text-accent-foreground hover:bg-accent px-1 rounded h-6 ms-2 text-neutral-700 dark:text-neutral-300 cursor-pointer">
                 <Ellipsis
                     size={20}

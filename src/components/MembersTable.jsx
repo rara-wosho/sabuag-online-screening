@@ -29,6 +29,7 @@ import { Checkbox } from "./ui/checkbox";
 import SubmitButton from "./ui/SubmitButton";
 import Form from "next/form";
 import ToggleAdditionalTableCol from "./ToggleAdditionalTableCol";
+import MarkMembersAction from "./MarkMembersAction";
 
 export default function MembersTable({ members, search }) {
     const [selectedIds, setSelectedIds] = useState([]);
@@ -57,32 +58,10 @@ export default function MembersTable({ members, search }) {
     return (
         <div className="relative">
             {selectedIds.length > 0 && (
-                <Form className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 md:grid-cols-3 gap-2.5 w-full max-w-lg bg-white shadow-lg dark:bg-neutral-950">
-                    <Select name="role">
-                        <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">
-                            <SelectValue placeholder="Role" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="user">User</SelectItem>
-                            <SelectItem value="admin">Admin</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <Select name="status">
-                        <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">
-                            <SelectValue placeholder="Status" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="active">Active</SelectItem>
-                            <SelectItem value="inactive">Inactive</SelectItem>
-                        </SelectContent>
-                    </Select>
-
-                    <SubmitButton
-                        type="button"
-                        containerStyle="col-span-2 md:col-span-1"
-                        label="Update"
-                    />
-                </Form>
+                <MarkMembersAction
+                    selectedIds={selectedIds}
+                    setSelectedIds={setSelectedIds}
+                />
             )}
 
             {!search && (
