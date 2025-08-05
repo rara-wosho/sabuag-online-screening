@@ -8,8 +8,6 @@ import Link from "next/link";
 export default async function DashboardOverview() {
     const db = await createClient();
 
-    await new Promise((resolve) => setTimeout(resolve, 8000));
-
     const { data, error } = await db.from("applicants").select("status");
 
     if (error) {
@@ -31,7 +29,7 @@ export default async function DashboardOverview() {
                     </Link>
                 </Button>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
                 <OverviewCard status="Pending" data={pending} />
                 <OverviewCard status="Done" data={done} />
                 <OverviewCard status="Accepted" data={accepted} />

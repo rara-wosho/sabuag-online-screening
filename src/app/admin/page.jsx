@@ -18,7 +18,7 @@ export default function Page() {
 
 function OverviewSkeleton() {
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
             <Skeleton className="w-full h-16" />
             <Skeleton className="w-full h-16" />
             <Skeleton className="w-full h-16" />

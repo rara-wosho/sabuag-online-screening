@@ -76,7 +76,7 @@ export default function MembersTable({ members, search }) {
                 </div>
             )}
 
-            <Table>
+            <Table className="bg-white dark:bg-transparent">
                 <TableCaption className="md:hidden text-left">
                     Swipe left to view other details.
                 </TableCaption>

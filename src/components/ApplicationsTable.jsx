@@ -76,7 +76,7 @@ export default function ApplicationsTable({ data, search }) {
                 </div>
             )}
 
-            <Table className="mb-4">
+            <Table className="mb-4 bg-white dark:bg-transparent">
                 {/* <TableCaption>A list of recent applications.</TableCaption> */}
                 <TableHeader className="bg-card">
                     <TableRow>

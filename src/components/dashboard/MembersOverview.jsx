@@ -15,7 +15,6 @@ import {
 import Link from "next/link";
 
 export default async function MembersOverview() {
-    await new Promise((resolve) => setTimeout(resolve, 8000));
     const db = await createClient();
     const { data, error } = await db.from("users").select().limit(5);
 
@@ -23,7 +22,7 @@ export default async function MembersOverview() {
         throw new Error("We cannot fetch users' data.");
     }
     return (
-        <div className="mt-4 pt-4 border-t dark:border-t-neutral-800">
+        <div className="mt-2 pt-6 shadow-xs border-t dark:border-t-neutral-800">
             <div className="flex items-center">
                 <PrimaryLabel>Members</PrimaryLabel>
                 <Button variant="outline" size="sm" asChild>
@@ -33,7 +32,7 @@ export default async function MembersOverview() {
                 </Button>
             </div>
 
-            <Table>
+            <Table className="bg-white dark:bg-transparent">
                 <TableHeader className="bg-white dark:bg-card">
                     <TableRow>
                         <TableHead>Name</TableHead>
@@ -47,10 +46,14 @@ export default async function MembersOverview() {
                     {data.map((user) => (
                         <TableRow key={user?.id}>
                             <TableCell className="py-1">
-                                <Button variant="link" asChild className="p-0">
+                                <Button
+                                    variant="link"
+                                    asChild
+                                    className="p-0 text-neutral-800 dark:text-neutral-300"
+                                >
                                     <Link
                                         href={`/user/${user?.id}`}
-                                        className="p-0 text-neutral-800 dark:text-neutral-300"
+                                        className="p-0"
                                     >
                                         {user?.firstname} {user?.lastname}
                                     </Link>

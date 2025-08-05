@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/sidebar";
 import SidebarMenuClient from "./SidebarMenuClient";
 import Image from "next/image";
-import Link from "next/link";
 import { logout } from "@/lib/actions/auth";
 
 export function AppSidebar() {

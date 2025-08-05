@@ -1,5 +1,6 @@
 import PositionTab from "@/components/ui/PositionTab";
 import PrimaryLabel from "@/components/ui/PrimaryLabel";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
 

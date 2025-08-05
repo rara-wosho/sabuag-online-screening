@@ -41,7 +41,7 @@ export default function MarkMembersAction({ selectedIds, setSelectedIds }) {
     return (
         <Form
             onSubmit={handleBulkUpdate}
-            className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 gap-2.5 w-full max-w-lg bg-white shadow-lg dark:bg-neutral-950 z-40"
+            className="fixed bottom-0 md:bottom-[2rem] left-1/2 -translate-x-1/2 p-2 border md:rounded-lg grid grid-cols-2 gap-2.5 w-full max-w-lg bg-white shadow-lg dark:bg-neutral-950 z-40 animate-show"
         >
             <Select name="status">
                 <SelectTrigger className="border w-full dark:border-neutral-600 shadow-none bg-transparent">

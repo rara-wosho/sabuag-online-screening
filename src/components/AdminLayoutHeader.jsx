@@ -6,7 +6,7 @@ import { ThemeToggler } from "./ui/theme-toggler";
 
 export default function AdminLayoutHeader({ currentUser }) {
     return (
-        <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-background/50 backdrop-blur-2xl w-full md:pe-5 z-50">
+        <div className="flex items-center px-3 py-[15.3px] border-b dark:border-neutral-900 sticky top-0 left-0 bg-white dark:bg-background/20 backdrop-blur-2xl w-full md:pe-5 z-50">
             <SidebarTrigger />
             <>
                 <div className="md:flex items-center  gap-2 border-s ps-3 ms-2 hidden">
