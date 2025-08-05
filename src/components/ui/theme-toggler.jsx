@@ -10,43 +10,51 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
-export function ThemeToggler() {
+export function ThemeToggler({ className }) {
     const { setTheme } = useTheme();
+    const [open, setOpen] = React.useState(false);
+
+    const handleToggleTheme = (theme) => {
+        setTheme(theme);
+        setOpen(false);
+    };
 
     return (
-        <Popover>
+        <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
-                <Button
-                    variant="ghost"
-                    className="hover:text-primary hover:bg-transparent"
-                    size="icon"
+                <button
+                    className={cn(
+                        "text-neutral-700 dark:text-neutral-300",
+                        className
+                    )}
                 >
-                    <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-                    <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                    <Sun size={20} className="inline-block dark:hidden" />
+                    <Moon size={20} className="hidden dark:inline-block" />
                     <span className="sr-only">Toggle theme</span>
-                </Button>
+                </button>
             </PopoverTrigger>
             <PopoverContent className="p-2 w-40">
                 <div className="flex flex-col justify-start items-start">
                     <Button
                         className="w-full p-0"
                         variant="ghost"
-                        onClick={() => setTheme("light")}
+                        onClick={() => handleToggleTheme("light")}
                     >
                         <span className="w-full p-2 text-start">Light</span>
                     </Button>
                     <Button
                         className="w-full p-0"
                         variant="ghost"
-                        onClick={() => setTheme("dark")}
+                        onClick={() => handleToggleTheme("dark")}
                     >
                         <span className="w-full p-2 text-start">Dark</span>
                     </Button>
                     <Button
                         className="w-full p-0"
                         variant="ghost"
-                        onClick={() => setTheme("system")}
+                        onClick={() => handleToggleTheme("system")}
                     >
                         <span className="w-full p-2 text-start">System</span>
                     </Button>

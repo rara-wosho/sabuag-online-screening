@@ -1,4 +1,5 @@
 "use client";
+import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function SafariWarning() {
@@ -15,7 +16,7 @@ export default function SafariWarning() {
 
         if (isIOS && safariVersionMatch) {
             const version = parseInt(safariVersionMatch[1], 10);
-            if (version < 15) {
+            if (version < 16.4) {
                 setShowWarning(true);
                 localStorage.setItem("safariWarningSeen", "true");
             }
@@ -39,7 +40,7 @@ export default function SafariWarning() {
                 className="ms-auto text-yellow-900 hover:text-yellow-700 font-bold"
                 aria-label="Close"
             >
-                ×
+                <X />
             </button>
         </div>
     );
