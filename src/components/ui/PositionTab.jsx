@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Pen, Trash } from "lucide-react";
+import { Pen } from "lucide-react";
 
 import {
     Dialog,
@@ -29,6 +29,8 @@ import { toast } from "sonner";
 import { useState } from "react";
 import ApplicantCount from "@/app/admin/positions/applicant-count";
 import DeleteAlert from "../alert-delete";
+import { Button } from "./button";
+import { ScrollArea } from "./scroll-area";
 
 export default function PositionTab({ id, title, description, is_open }) {
     const [openDialog, setOpenDialog] = useState(false);
@@ -59,15 +61,13 @@ export default function PositionTab({ id, title, description, is_open }) {
         <>
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent
-                    onOpenAutoFocus={(event) => event.preventDefault()}
+                    // onOpenAutoFocus={(event) => event.preventDefault()}
                     className="bg-card"
                 >
                     <DialogHeader>
-                        <>
-                            <DialogTitle className="text-start">
-                                Details
-                            </DialogTitle>
-                        </>
+                        <DialogTitle className="text-start">
+                            Position Details
+                        </DialogTitle>
                     </DialogHeader>
                     <DialogDescription></DialogDescription>
                     <form action={handleUpdate}>
@@ -87,7 +87,7 @@ export default function PositionTab({ id, title, description, is_open }) {
                                 placeholder="Description"
                                 defaultValue={description}
                                 name="description"
-                                className="min-h-20 whitespace-break-spaces max-w-full"
+                                className="min-h-14 whitespace-break-spaces max-w-full"
                             />
                         </div>
                         <div className="mb-1 mt-4 flex flex-col items-start">
