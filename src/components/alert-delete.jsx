@@ -34,7 +34,7 @@ const DeleteAlert = ({ id, title }) => {
     };
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="dark:text-red-400/80 text-red-600 cursor-pointer justify-center flex items-center gap-2 text-sm bg-red-400/10 p-2 rounded mt-4">
+            <AlertDialogTrigger className="dark:text-red-400/80 text-red-600 cursor-pointer justify-center flex items-center gap-2 text-sm bg-red-400/10 p-2 rounded mt-2">
                 {deleteLoading ? (
                     <Loader className="animate-spin" size={15} />
                 ) : (

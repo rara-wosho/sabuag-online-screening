@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "@/components/theme-provider";
+import SafariWarning from "@/components/SafariWarning";
 
 export const metadata = {
     title: {
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
                     <main className="root-layout-wrapper text-neutral-700 dark:text-neutral-300 flex justify-center mask-auto">
                         <div className="max-w-[2200px] w-full">{children}</div>
                     </main>
+                    <SafariWarning />
                     <Toaster position="top-center" richColors />
                 </ThemeProvider>
             </body>

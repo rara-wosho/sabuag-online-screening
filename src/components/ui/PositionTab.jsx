@@ -62,7 +62,7 @@ export default function PositionTab({ id, title, description, is_open }) {
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent
                     // onOpenAutoFocus={(event) => event.preventDefault()}
-                    className="bg-card max-h-[90vh] overflow-y-auto"
+                    className="bg-card max-h-[90svh] overflow-y-auto p-3 md:p-5"
                 >
                     <DialogHeader>
                         <DialogTitle className="text-start">
@@ -112,14 +112,11 @@ export default function PositionTab({ id, title, description, is_open }) {
                                     : "Not accepting"}
                             </small>
                         </div>
-                        <div className="flex justify-end gap-3 pt-4 mt-3">
+                        <div className="grid grid-cols-2 gap-2 mt-3">
                             <DialogClose asChild>
-                                <button
-                                    className="border border-neutral-400 px-4 rounded cursor-pointer dark:border-neutral-700 dark:text-neutral-300"
-                                    type="button"
-                                >
+                                <Button variant="outline" type="button">
                                     Close
-                                </button>
+                                </Button>
                             </DialogClose>
                             <SubmitButton label="Update Details" />
                         </div>
