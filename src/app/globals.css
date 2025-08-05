@@ -189,12 +189,21 @@
 
 @theme {
     --animate-show: show 0.2s ease-out;
+    --animate-hide: hide 0.2s forwards;
     @keyframes show {
         0% {
             transform: translateY(-1rem);
         }
         100% {
             transform: translateY(0);
+        }
+    }
+    @keyframes hide {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
         }
     }
 }

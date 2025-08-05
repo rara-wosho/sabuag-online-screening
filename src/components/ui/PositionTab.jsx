@@ -62,7 +62,7 @@ export default function PositionTab({ id, title, description, is_open }) {
             <Dialog open={openDialog} onOpenChange={setOpenDialog}>
                 <DialogContent
                     // onOpenAutoFocus={(event) => event.preventDefault()}
-                    className="bg-card"
+                    className="bg-card max-h-[90vh] overflow-y-auto"
                 >
                     <DialogHeader>
                         <DialogTitle className="text-start">
@@ -134,17 +134,17 @@ export default function PositionTab({ id, title, description, is_open }) {
                         "border border-neutral-200 dark:border-neutral-700/60 rounded-md p-3 bg-white dark:bg-card flex flex-col"
                     )}
                 >
-                    <DialogTrigger className="w-full cursor-pointer flex flex-col items-start">
-                        <div className="flex items-center mb-1 w-full">
-                            <h1 className="font font-semibold tracking-widest">
-                                {title}
-                            </h1>
+                    <DialogTrigger className="w-full group cursor-pointer flex flex-col items-start">
+                        <div className="flex items-center justify-start mb-1 w-full">
                             {is_open && (
-                                <div className="relative ms-3">
+                                <div className="relative me-2">
                                     <div className="size-2 bg-primary rounded-full"></div>
                                     <div className="size-2 bg-primary rounded-full animate-ping absolute top-0"></div>
                                 </div>
                             )}
+                            <h1 className="font font-semibold tracking-widest text-start">
+                                {title}
+                            </h1>
                             <div className="ms-auto scale-0 group-hover:scale-100 duration-200 transition-transform">
                                 <Pen size={14} />
                             </div>
