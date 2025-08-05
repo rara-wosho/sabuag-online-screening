@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/sidebar";
 import WasThisHelpful from "@/components/ui/wasthishelpful";
 import { createClient } from "@/utils/supabase/server";
-import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 export default async function RightPanel() {
