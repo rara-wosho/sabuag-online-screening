@@ -51,34 +51,12 @@ export function AppSidebar() {
 
             {/* sidebar main content  */}
             <SidebarContent>
-                <SidebarGroup>
-                    <SidebarGroupLabel>Main</SidebarGroupLabel>
-                    <SidebarGroupContent>
-                        <SidebarMenuClient />
-                    </SidebarGroupContent>
-                </SidebarGroup>
+                <SidebarMenuClient />
 
                 <SidebarGroup>
-                    <SidebarGroupLabel>Upcoming Features</SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu className="dark:text-neutral-400">
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <div>
-                                        <Bell />
-                                        <span>Notifications</span>
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <SidebarMenuItem>
-                                <SidebarMenuButton asChild>
-                                    <div>
-                                        <Settings />
-                                        <span>Settings</span>
-                                    </div>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            <div className="py-4 border-t mt-2">
+                            <div className="py-4 border-t dark:border-neutral-800">
                                 <SidebarMenuItem className="text-destructive">
                                     <SidebarMenuButton
                                         onClick={() => logout("/admin")}
@@ -97,16 +75,16 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
 
-            <SidebarFooter className="border-t dark:border-neutral-800">
+            {/* <SidebarFooter className="border-t dark:border-neutral-800">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton>
                             <Mail />
-                            <span>Feedback</span>
+                            <span>Feedbacks</span>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>
-            </SidebarFooter>
+            </SidebarFooter> */}
         </Sidebar>
     );
 }
