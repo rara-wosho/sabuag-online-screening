@@ -95,7 +95,7 @@ export default function SidebarMenuClient() {
                                     >
                                         <Link
                                             className={cn(
-                                                "dark:text-neutral-300/90",
+                                                "text-neutral-500",
                                                 item.isActiveLink &&
                                                     "dark:text-neutral-100"
                                             )}
@@ -103,7 +103,15 @@ export default function SidebarMenuClient() {
                                             onClick={() => setOpenMobile(false)}
                                         >
                                             {item.icon}
-                                            <span>{item.label}</span>
+                                            <span
+                                                className={cn(
+                                                    "dark:text-neutral-300 text-neutral-800",
+                                                    item.isActiveLink &&
+                                                        "dark:text-neutral-100 text-white"
+                                                )}
+                                            >
+                                                {item.label}
+                                            </span>
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
