@@ -19,3 +19,19 @@ export async function submitFeedback(formData) {
     revalidatePath("/join", "page");
     return { success: true };
 }
+
+export async function deleteFeedback(id) {
+    const db = await createClient();
+
+    const { error } = await db.from("feedbacks").delete().eq("id", id);
+
+    if (error) {
+        return {
+            success: false,
+            error: "Unable to delete feedback. Please make sure that you have a stable internet connection then try again.",
+        };
+    }
+
+    revalidatePath("/admin/feedbacks", "page");
+    return { success: true, error: null };
+}

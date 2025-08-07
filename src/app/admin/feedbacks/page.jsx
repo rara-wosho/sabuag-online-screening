@@ -42,7 +42,7 @@ async function FeedbackList() {
                             <h5 className="font-semibold text-neutral-800 dark:text-neutral-300 mb-1">
                                 {fb.feedback_author}
                             </h5>
-                            <ReplyCardAction />
+                            <ReplyCardAction id={fb.id} />
                         </div>
                         <p className="text-xs text-neutral-600 dark:text-neutral-400 pb-2 mb-2">
                             {dateFormatter(fb.created_at)}

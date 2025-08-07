@@ -12,13 +12,32 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { deleteFeedback } from "@/lib/actions/feedback";
 
 import { Trash } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
-export default function ReplyCardAction() {
+export default function ReplyCardAction({ id }) {
+    const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState(false);
+
+    const handleDelete = async () => {
+        setLoading(true);
+        const { error } = await deleteFeedback(id);
+
+        if (error) {
+            toast.error(error);
+        } else {
+            toast.success("Deleted feedback successfully");
+        }
+
+        setLoading(false);
+        setOpen(false);
+    };
     return (
-        <AlertDialog>
-            <AlertDialogTrigger>
+        <AlertDialog open={open} onOpenChange={setOpen}>
+            <AlertDialogTrigger className="cursor-pointer">
                 <Trash size={18} className="text-destructive" />
             </AlertDialogTrigger>
             <AlertDialogContent>
@@ -33,8 +52,12 @@ export default function ReplyCardAction() {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <Button className="bg-destructive text-destructive-foreground hover:bg-destructive/80">
-                        Yes, delete
+                    <Button
+                        disabled={loading}
+                        onClick={handleDelete}
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/80"
+                    >
+                        {loading ? "Deleting..." : "Yes, delete"}
                     </Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
