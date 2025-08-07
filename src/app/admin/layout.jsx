@@ -43,8 +43,12 @@ export default async function Layout({ children }) {
                 </main>
 
                 {/* footer  */}
-                <div className="p-4 border-t border-neutral-900">
+                <div className="p-4 border-t dark:border-neutral-900">
                     <p className="font-bold uppercase py-1">SABUAG</p>
+                    <div className="flex items-center justify-between text-neutral-600 dark:text-neutral-400">
+                        <p className="text-xs">Developed by Israel De Vera</p>
+                        <p className="text-xs">All rights reserved.</p>
+                    </div>
                 </div>
             </div>
         </SidebarProvider>
