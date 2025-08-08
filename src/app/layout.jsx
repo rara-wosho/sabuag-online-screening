@@ -25,6 +25,9 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
+
+
+    // lazy push 
     return (
         <html
             lang="en"
