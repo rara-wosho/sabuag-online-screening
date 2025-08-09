@@ -1,9 +1,15 @@
 import PrimaryLabel from "@/components/ui/PrimaryLabel";
-import { CircleCheckBig, Handshake, TriangleAlert, Users } from "lucide-react";
+import {
+    CircleCheckBig,
+    Handshake,
+    Mail,
+    TriangleAlert,
+    Users,
+} from "lucide-react";
 
 export default function Page() {
     return (
-        <div className="min-h-screen mx-auto max-w-[900px] gap-y-8 md:gap-y-10 flex flex-col mb-8">
+        <div className="min-h-screen mx-auto max-w-[900px] gap-y-8 flex flex-col mb-8">
             <div className="mt-4">
                 <div className="flex items-center gap-3 mb-2">
                     <div className="icon-wrapper rounded-md bg-violet-500/10 p-2 text-primary">
@@ -89,6 +95,18 @@ export default function Page() {
                         system.
                     </li>
                 </ul>
+            </div>
+
+            <div className="p-8 bg-white dark:bg-card border dark:border-neutral-800 rounded-lg">
+                <PrimaryLabel className="flex items-center gap-2">
+                    <Mail className="text-blue-600" size={20} />
+                    <span>Contact Information</span>
+                </PrimaryLabel>
+
+                <p>
+                    If you have questions about our terms and conditions,
+                    contact us at sabuag-panaon@ustp.edu.ph
+                </p>
             </div>
 
             <div className="py-8 border-t dark:border-neutral-800">
