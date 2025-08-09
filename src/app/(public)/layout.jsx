@@ -63,25 +63,25 @@ export default async function Layout({ children }) {
                         <div className="flex flex-col">
                             <h4 className="mb-3 font-semibold">Pages</h4>
                             <Link
-                                href=""
+                                href="/"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 Home
                             </Link>
                             <Link
-                                href=""
+                                href="/about"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 About
                             </Link>
                             <Link
-                                href=""
+                                href="/join"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 Join
                             </Link>
                             <Link
-                                href=""
+                                href="/feedbacks"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 Feedbacks
@@ -90,13 +90,13 @@ export default async function Layout({ children }) {
                         <div className="flex flex-col">
                             <h4 className="mb-3 font-semibold">Legal</h4>
                             <Link
-                                href=""
+                                href="/privacy-policy"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 Privacy Policy
                             </Link>
                             <Link
-                                href=""
+                                href="/terms-conditions"
                                 className="text-neutral-600 mb-2 hover:text-accent-foreground dark:hover:text-accent-foreground dark:text-neutral-400"
                             >
                                 Terms and Conditions

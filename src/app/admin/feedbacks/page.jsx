@@ -82,10 +82,6 @@ async function FeedbackList() {
                                 <Frown size={18} />
                             </div>
                         </div>
-
-                        <div className="pt-2">
-                            <ReplySection feedbackId={fb.id} />
-                        </div>
                     </div>
                 ))
             )}

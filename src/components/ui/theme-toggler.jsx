@@ -26,7 +26,7 @@ export function ThemeToggler({ className }) {
             <PopoverTrigger asChild>
                 <button
                     className={cn(
-                        "text-neutral-700 dark:text-neutral-300",
+                        "text-neutral-700 dark:text-neutral-300 cursor-pointer",
                         className
                     )}
                 >

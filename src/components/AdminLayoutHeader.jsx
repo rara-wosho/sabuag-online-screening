@@ -14,6 +14,15 @@ export default function AdminLayoutHeader({ currentUser }) {
                         Welcome back, {currentUser?.firstname} 👋
                     </p>
                 </div>
+                <div className="flex items-center gap-2 border-s ps-3 ms-2 md:hidden">
+                    <Image
+                        src="/official-sabuag.png"
+                        width={13}
+                        height={15}
+                        alt="sabuag logo"
+                    />
+                    <p className="font-bold">SABUAG</p>
+                </div>
                 <div className="ms-auto flex items-center gap-3 md:pe-2">
                     <div className="text-neutral-700 dark:text-neutral-400 flex items-center justify-center">
                         <ThemeToggler />
