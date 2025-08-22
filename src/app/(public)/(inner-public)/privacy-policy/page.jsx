@@ -1,15 +1,5 @@
 import PrimaryLabel from "@/components/ui/PrimaryLabel";
-import {
-    CircleCheckBig,
-    Database,
-    Eye,
-    Handshake,
-    Mail,
-    Shield,
-    TriangleAlert,
-    UserCheck,
-    Users,
-} from "lucide-react";
+import { Database, Eye, Mail, Shield, UserCheck } from "lucide-react";
 
 export default function Page() {
     return (

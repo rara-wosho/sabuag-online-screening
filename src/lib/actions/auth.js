@@ -10,7 +10,7 @@ export async function login({ email, password }) {
     const supabase = await createClient();
 
     if (!email || !password) {
-        throw new Error("Email and password are required");
+        return { success: false, message: "Email and password are required." };
     }
 
     const { error } = await supabase.auth.signInWithPassword({
@@ -19,11 +19,11 @@ export async function login({ email, password }) {
     });
 
     if (error) {
-        throw new Error("Invalid login credentials");
+        return { success: false, message: "Invalid login credentials" };
     }
 
     revalidatePath("/", "layout");
-    return { success: true };
+    return { success: true, message: "Signed in successfully" };
 }
 
 // registration logic for users

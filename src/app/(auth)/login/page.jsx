@@ -32,13 +32,12 @@ export default function Page() {
             return;
         }
 
-        try {
-            const result = await login(formData);
-            if (result.success) {
-                router.replace("/admin");
-            }
-        } catch (error) {
-            toast.error(error.message);
+        const result = await login(formData);
+        if (!result.success) {
+            toast.error(result.message);
+        }
+        if (result.success) {
+            router.replace("/admin");
         }
     };
 
