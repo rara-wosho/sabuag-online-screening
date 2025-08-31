@@ -90,6 +90,7 @@ export async function createUserWithAdmin(formData) {
         role,
     });
 
+    // error inserting data to users table
     if (userError) {
         console.error("DB insert error:", userError.message);
         // rollback: delete auth user to keep things consistent
