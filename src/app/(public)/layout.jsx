@@ -112,7 +112,7 @@ export default async function Layout({ children }) {
                             </span>
                         </p>
                         <p className="text-xs text-neutral-600 dark:text-neutral-400 md:text-sm">
-                            All right reserved@2025
+                            All right reserved@2025|ver1.0
                         </p>
                     </div>
                 </div>
